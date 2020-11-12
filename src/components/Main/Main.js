@@ -1,25 +1,41 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Image, ImageBackground, Text, View } from 'react-native';
+import { styles } from './styles';
 
 const Main = () => {
 	return (
-		<View>
-			<View>
-				<Text>A</Text>
-			</View>
-			<View>
-				<Text>B</Text>
-			</View>
+		<View style={styles.container}>
+			<View style={styles.main}>
+				<View>
+					<Image 
+						source={require(`../../../assets/Icon1.png`)}
+					/>
+				</View>
+				<View>
+					<Image 
+						source={require(`../../../assets/Icon1.png`)}
+					/>
+				</View>
 
-			<View>
-				<Text>Profile</Text>
-			</View>
+				<View style={styles.wrapper}>
+					<ImageBackground
+						source={require(`../../../assets/Profile-Example.jpg`)}
+						style={styles.profile}
+						imageStyle={styles.image}
+					>
+					</ImageBackground>
+				</View>
 
-			<View>
-				<Text>C</Text>
-			</View>
-			<View>
-				<Text>D</Text>
+				<View>
+					<Image 
+						source={require(`../../../assets/Icon1.png`)}
+					/>
+				</View>
+				<View>
+					<Image 
+						source={require(`../../../assets/Icon1.png`)}
+					/>
+				</View>
 			</View>
 		</View>
 	)
