@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export const styles = (props) => StyleSheet.create({
 	container: {
-        width: 320,
-        height: 430,
+        width: (props.smallSize) ? (260) : (320),
+        height: (props.smallSize) ? (185) : (430),
         marginTop: 38,
+        marginLeft: (props.smallSize) ? (25) : (0),
 
         flex: 1,
         resizeMode: "contain",
@@ -18,9 +19,8 @@ export const styles = StyleSheet.create({
         borderRadius: 15,
     },
     wrapper_text: {
-        width: 300,
-        height: 118,
-
+        width: (props.smallSize) ? (240) : (300),
+        height: (props.smallSize) ? (83) : (118),
         backgroundColor: '#EAEBCF',
 
         display: "flex",
@@ -31,7 +31,8 @@ export const styles = StyleSheet.create({
         borderRadius: 15,
     },
     title: {
-        fontSize: 20,
+        fontSize: (props.smallSize) ? (16) : (20),
+        fontWeight: "400"
     },
     subtitle: {
         fontSize: 14,

@@ -4,29 +4,28 @@ import { ImageBackground, Text, TouchableWithoutFeedback, View } from 'react-nat
 import { styles } from "./styles";
 
 const CardImage = (props) => {
-	const { item } = props;
+	const { item, smallSize } = props;
 	return (
 		<ImageBackground
-			source={require(`../../../assets/Feed-Example.jpg`)}
-			style={styles.container}
-			imageStyle={styles.image}
-			
+			source={item.picture}
+			style={styles(props).container}
+			imageStyle={styles(props).image}
 		>
 			<TouchableWithoutFeedback 
 				onPress={() => {
 					alert('a')
 				}}
 			>
-				<View style={styles.wrapper_text}>
+				<View style={styles(props).wrapper_text}>
 					<Text 
 						key={item.id}
-						style={styles.title}
+						style={styles(props).title}
 					>
 						{item.title}
 					</Text>
 
 					<Text 
-						style={styles.subtitle}
+						style={styles(props).subtitle}
 					>
 						{item.subtitle}
 					</Text>
