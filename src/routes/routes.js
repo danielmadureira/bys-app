@@ -6,11 +6,10 @@ import Stack from 'react-router-native-stack';
 import { Feed, Login } from '../pages';
 import { Main } from '../components';
 
-
 const Routes = () => {
 	return (
 		<NativeRouter>
-			<Stack>
+			<Stack animationType="slide-horizontal">
 				<Route
 					exact
 					path="/"
