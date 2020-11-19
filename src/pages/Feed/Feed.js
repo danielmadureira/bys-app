@@ -7,7 +7,7 @@ import {
 	FlatList,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { CardImage, TitleHeader } from '../../components';
+import { ImageCard, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 import ImagemSVG from '../../../assets/Feed-Example.jpg'
@@ -35,12 +35,13 @@ const Feed = () => {
 									<TitleHeader
 										title={section.title}
 										subtitle="Veja as últimas novidades"
+										top={1}
 									/>
 								</View>
 								<FlatList
 									horizontal
 									data={section.data}
-									renderItem={({ item }) => <CardImage smallSize item={item} />}
+									renderItem={({ item }) => <ImageCard smallSize item={item} />}
 									showsHorizontalScrollIndicator={false}
 								/>
 							</View>
@@ -52,7 +53,7 @@ const Feed = () => {
 							return null;
 						}
 						return <View style={styles.wrapper}>
-							<CardImage item={item} />
+							<ImageCard item={item} />
 						</View>;
 					}}
 				/>
