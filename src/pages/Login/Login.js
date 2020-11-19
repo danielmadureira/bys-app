@@ -7,7 +7,7 @@ import LogoPNG from '../../../assets/logo.png';
 import ButtonBase from '../../components/base/ButtonBase';
 
 const Login = (props) => {
-	const { history } = props;
+	const { navigation  } = props;
 
 	return (
 		<ScrollView contentContainerStyle={styles.container}>
@@ -34,7 +34,7 @@ const Login = (props) => {
 				<ButtonBase
 					title="Entrar"
 					onPress={() => {
-						history.push('/feed')
+						navigation.navigate('Feed')
 					}}
 				/>
 			</View>
