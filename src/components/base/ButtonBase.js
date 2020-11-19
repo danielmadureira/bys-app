@@ -1,21 +1,18 @@
 import { useLinkProps } from '@react-navigation/native';
 import React from 'react';
-import { Button } from 'react-native';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { Text, View } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 import { styles } from "./styles";
 
 const ButtonBase = (props) => {
 	return (
-		<TouchableHighlight
-			style={styles.button}
+		<TouchableWithoutFeedback
+			style={styles(props).touchable}
+			onPress={props.onPress}
 		>
-			<Button
-				color={styles.colorButton.color}
-				title={props.title}
-				onPress={props.onPress}
-			/>
-		</TouchableHighlight>
+			<Text style={styles(props).text}>{props.title}</Text>
+		</TouchableWithoutFeedback>
 	)
 }
 

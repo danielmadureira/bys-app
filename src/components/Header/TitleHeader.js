@@ -6,10 +6,10 @@ import { styles } from "./styles";
 const TitleHeader = (props) => {
 	return (
 		<View>
-			<Text style={styles.title}>
+			<Text style={styles(props).title}>
 				{props.title}
 			</Text>
-			<Text style={styles.subtitle}>
+			<Text style={styles(props).subtitle}>
 				{props.subtitle}
 			</Text>
 		</View>

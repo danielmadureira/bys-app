@@ -3,7 +3,7 @@ import { ImageBackground, Text, TouchableWithoutFeedback, View } from 'react-nat
 
 import { styles } from "./styles";
 
-const CardImage = (props) => {
+const ImageCard = (props) => {
 	const { item, smallSize } = props;
 	return (
 		<ImageBackground
@@ -35,4 +35,4 @@ const CardImage = (props) => {
 	)
 }
 
-export default CardImage;
+export default ImageCard;

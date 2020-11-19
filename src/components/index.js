@@ -5,4 +5,9 @@ export { default as TitleHeader } from './Header/TitleHeader';
 export { default as Main } from './Main/Main';
 
 // Card com background
-export { default as CardImage } from './CardImage/CardImage';
+export { default as ImageCard } from './Card/ImageCard/ImageCard';
+// Card com texto
+export { default as TextCard } from './Card/TextCard/TextCard';
+
+// Componente mensagem básica
+export { default as MessageBase } from './base/MessageBase/MessageBase';

@@ -1,23 +1,32 @@
 import React from 'react';
 import { Image, ImageBackground, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './styles';
 
-const Main = () => {
+const Main = ({ state, descriptors, navigation }) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.main}>
-				<View>
-					<Image 
-						source={require(`../../../assets/Icon1.png`)}
+				<TouchableOpacity
+					onPress={() => navigation.navigate('Diary')}
+				>
+					<Image
+						source={require(`../../../assets/Diary.png`)}
 					/>
-				</View>
-				<View>
-					<Image 
-						source={require(`../../../assets/Icon1.png`)}
-					/>
-				</View>
+				</TouchableOpacity>
 
-				<View style={styles.wrapper}>
+				<TouchableOpacity
+					onPress={() => navigation.navigate('Message')}
+				>
+					<Image
+						source={require(`../../../assets/Message.png`)}
+					/>
+				</TouchableOpacity>
+
+				<View
+					onPress={() => navigation.navigate('Profile')}
+					style={styles.wrapper}
+				>
 					<ImageBackground
 						source={require(`../../../assets/Profile-Example.jpg`)}
 						style={styles.profile}
@@ -26,16 +35,21 @@ const Main = () => {
 					</ImageBackground>
 				</View>
 
-				<View>
-					<Image 
-						source={require(`../../../assets/Icon1.png`)}
+				<TouchableOpacity
+					onPress={() => navigation.navigate('Calculator')}
+				>
+					<Image
+						source={require(`../../../assets/Calculator.png`)}
 					/>
-				</View>
-				<View>
-					<Image 
-						source={require(`../../../assets/Icon1.png`)}
+				</TouchableOpacity>
+
+				<TouchableOpacity
+					onPress={() => navigation.navigate('Notification')}
+				>
+					<Image
+						source={require(`../../../assets/Notification.png`)}
 					/>
-				</View>
+				</TouchableOpacity>
 			</View>
 		</View>
 	)
