@@ -1,11 +1,13 @@
 import { StyleSheet } from "react-native";
 
+let width = '100%';
+
 export const styles = (props) => StyleSheet.create({
 	container: {
-        width: (props.smallSize) ? (260) : (320),
+        width: (props.smallSize) ? (280) : (width),
         height: (props.smallSize) ? (185) : (430),
         marginTop: 38,
-        marginLeft: (props.smallSize) ? (25) : (0),
+        marginLeft: (props.smallSize) ? (15) : (0),
 
         flex: 1,
         resizeMode: "contain",

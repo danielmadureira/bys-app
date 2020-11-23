@@ -4,7 +4,7 @@ import { ImageBackground, Text, TouchableWithoutFeedback, View } from 'react-nat
 import { styles } from "./styles";
 
 const ImageCard = (props) => {
-	const { item, smallSize } = props;
+	const { item, onPress } = props;
 	return (
 		<ImageBackground
 			source={item.picture}
@@ -12,9 +12,7 @@ const ImageCard = (props) => {
 			imageStyle={styles(props).image}
 		>
 			<TouchableWithoutFeedback 
-				onPress={() => {
-					alert('a')
-				}}
+				onPress={onPress}
 			>
 				<View style={styles(props).wrapper_text}>
 					<Text 

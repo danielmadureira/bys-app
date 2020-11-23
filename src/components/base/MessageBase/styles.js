@@ -1,13 +1,14 @@
 import { StyleSheet } from "react-native";
 
+let percent = '85%';
+
 export const styles = (props) => StyleSheet.create({
     wrapper_text: {
-        width: 330,
+        width: percent,
         height: 150,
 
         display: "flex",
         justifyContent: "flex-start",
-        paddingLeft: 19,
         paddingTop: 10,
         marginBottom: 15,
 

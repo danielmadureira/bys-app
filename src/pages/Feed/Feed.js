@@ -13,8 +13,7 @@ import { styles } from './styles'
 import ImagemSVG from '../../../assets/Feed-Example.jpg'
 import HorizontalFirst from '../../../assets/Horizontal.jpg'
 
-
-const Feed = () => {
+const Feed = ({ navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -24,8 +23,9 @@ const Feed = () => {
 					subtitle="Veja as últimas novidades"
 				/>
 			</View>
-			<SafeAreaView style={{ flex: 1 }}>
+			<SafeAreaView >
 				<SectionList
+					contentContainerStyle={styles.space}
 					stickySectionHeadersEnabled={false}
 					sections={SECTIONS}
 					renderSectionHeader={({ section }) => (
@@ -53,7 +53,10 @@ const Feed = () => {
 							return null;
 						}
 						return <View style={styles.wrapper}>
-							<ImageCard item={item} />
+							<ImageCard 
+								onPress={() => navigation.navigate('DetailFeed')} 
+								item={item} 
+							/>
 						</View>;
 					}}
 				/>

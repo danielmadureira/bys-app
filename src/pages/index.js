@@ -1,8 +1,9 @@
 // Página de login
-export { default as Login } from './Login/Login';
+export { default as Login } from './Login/Login'
 
 // Página de feeds
-export { default as Feed } from './Feed/Feed';
+export { default as Feed } from './Feed/Feed'
+export { default as DetailFeed } from './Feed/DetailFeed/DetailFeed'
 
 // Página Diário
 export { default as Diary } from './Diary/Diary'

@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 let width = '85%';
+let titleWidth = '5%';
 
 export const styles = StyleSheet.create({
 	container: {
@@ -16,9 +17,24 @@ export const styles = StyleSheet.create({
 		paddingBottom: 2,
 		width: width
 	},
-	wrapper_button: {
-		marginTop: 27,
-		marginBottom: 24,
+	wrapper_body: {
+		marginTop: 35,
 		width: width
+	},
+	body: {
+		fontSize: 18,
+		textAlign: "justify",
+	},
+	wrapper_picture: {
+		marginTop: 40,
+		display: "flex",
+		alignItems: "center",
+		width: width
+	},
+	picture_title: {
+		transform: [{ rotate: '90deg' }],
+		right: 0,
+		top: 0,
+		width: titleWidth
 	}
 });

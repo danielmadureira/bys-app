@@ -8,6 +8,7 @@ import { styles } from "./styles";
 const ButtonBase = (props) => {
 	return (
 		<TouchableWithoutFeedback
+			containerStyle={styles(props).size}
 			style={styles(props).touchable}
 			onPress={props.onPress}
 		>
