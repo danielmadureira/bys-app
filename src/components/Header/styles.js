@@ -5,6 +5,6 @@ export const styles = (props) => StyleSheet.create({
         fontSize: 24,
     },
     subtitle: {
-        marginTop: props.top || 20,
+        marginTop: props.top || 5,
     }
 });

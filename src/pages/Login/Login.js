@@ -19,8 +19,11 @@ const Login = (props) => {
 				/>
 			</View>
 
-			<Text style={styles.title}>Login</Text>
 			<View style={styles.container_flex}>
+				<View style={styles.wrapper_button}>
+					<Text style={styles.title}>Login</Text>
+				</View>
+				
 				<TextInput
 					placeholder="E-mail"
 					style={styles.input}
@@ -30,18 +33,19 @@ const Login = (props) => {
 					secureTextEntry={true}
 					style={styles.input}
 				/>
+				<View style={styles.wrapper_button}>
+					<ButtonBase
+						title="Entrar"
+						onPress={() => {
+							navigation.navigate('Feed')
+						}}
+					/>
 
-				<ButtonBase
-					title="Entrar"
-					onPress={() => {
-						navigation.navigate('Feed')
-					}}
-				/>
+					<Text style={styles.textHelper}>
+						Preciso de ajuda para acessar
+					</Text>
+				</View>
 			</View>
-
-			<Text style={styles.textHelper}>
-				Preciso de ajuda para acessar
-			</Text>
 		</ScrollView>
 	)
 }

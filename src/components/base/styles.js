@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
 
+let width = '100%';
+
 export const styles = (props) => StyleSheet.create({
     touchable: {
-        width: 300,
         height: 45,
         marginTop: 29,
 
@@ -17,5 +18,8 @@ export const styles = (props) => StyleSheet.create({
     },
     text: {
         color: props.color || '#414141',
+    },
+    size: {
+        width: width,
     }
 });

@@ -1,14 +1,18 @@
 import { StyleSheet } from "react-native";
 
+let width = '100%';
+let wrapperWidth = '90%';
+
 export const styles = StyleSheet.create({
     container: {
         display: "flex",
         justifyContent: "center",
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
+        width: width
     },
     container_image: {
-        width: 340,
+        width: width,
         height: 171,
         display: "flex",
         justifyContent: "center",
@@ -25,6 +29,9 @@ export const styles = StyleSheet.create({
         shadowRadius: 5,
         elevation: 10,
     },
+    wrapper_button: {
+        width: wrapperWidth,
+    },
     image: {
         width: 330,
     },
@@ -34,17 +41,15 @@ export const styles = StyleSheet.create({
         alignItems: "center",
     },
     title: {
-        marginLeft: 20,
         textAlign: "left",
         fontSize: 36,
     },
     input: {
-        width: 300,
+        width: wrapperWidth,
         marginTop: 41,
         borderBottomWidth: 1,
     },
     textHelper: {
         marginTop: 5,
-        marginLeft: 21,
     }
 });

@@ -1,15 +1,17 @@
 import { StyleSheet } from "react-native";
 
+let width = '95%';
+
 export const styles = StyleSheet.create({
     container: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-
-        marginBottom: 20,
+        
+        marginBottom: 15,
     },
 	main: {
-        width: 340,
+        width: width,
         height: 45,
 
         borderRadius: 15,
