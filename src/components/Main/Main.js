@@ -24,7 +24,7 @@ const Main = ({ state, descriptors, navigation }) => {
 				</TouchableOpacity>
 
 				<View
-					onPress={() => navigation.navigate('Profile')}
+					onTouchEnd={() => navigation.navigate('Profile')}
 					style={styles.wrapper}
 				>
 					<ImageBackground
