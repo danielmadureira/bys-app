@@ -6,7 +6,7 @@ import {
 	View,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { TitleHeader } from '../../../components';
+import { BackBase, TitleHeader } from '../../../components';
 
 import { styles } from './styles'
 import ImagemSVG from '../../../../assets/Feed-Example.jpg'
@@ -20,6 +20,7 @@ const DetailFeed = () => {
 					title={FEED.title}
 					subtitle={FEED.subtitle}
 				/>
+				<BackBase />
 			</View>
 
 			<View style={styles.wrapper_picture}>

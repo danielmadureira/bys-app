@@ -4,7 +4,7 @@ import {
 	View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { TextCard, TitleHeader } from '../../components';
+import { BackBase, TextCard, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 
@@ -18,6 +18,7 @@ const Calculator = ({ navigation }) => {
 					title="Calculadoras"
 					subtitle="Na medida certa"
 				/>
+				<BackBase />
 			</View>
 
 			{SECTIONS.map((v, i) => {

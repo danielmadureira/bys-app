@@ -6,7 +6,7 @@ import {
 	View
 } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
-import { TitleHeader } from '../../../components';
+import { BackBase, TitleHeader } from '../../../components';
 
 import { styles } from './styles'
 
@@ -20,6 +20,7 @@ const WriteDiary = ({ navigation }) => {
 					title="Meu diário"
 					subtitle="Tudo sobre o seu dia"
 				/>
+				<BackBase />
 			</View>
 
 			<View style={styles.message_container}>	

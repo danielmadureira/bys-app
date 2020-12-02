@@ -8,7 +8,7 @@ import {
 	Text,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { TextCard, TitleHeader } from '../../components';
+import { BackBase, TextCard, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 
@@ -21,6 +21,8 @@ const Message = ({ navigation }) => {
 					title="Conversa"
 					subtitle="Compartilhe experiências"
 				/>
+
+				<BackBase />
 			</View>
 
 

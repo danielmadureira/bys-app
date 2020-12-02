@@ -12,6 +12,8 @@ export const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	container_header: {
+		display: "flex",
+		alignItems: "flex-start",
 		marginTop: 10,
 		paddingBottom: 2,
 		width: width
