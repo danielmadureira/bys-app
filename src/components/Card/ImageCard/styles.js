@@ -21,15 +21,13 @@ export const styles = (props) => StyleSheet.create({
         borderRadius: 15,
     },
     wrapper_text: {
-        width: (props.smallSize) ? (240) : (300),
         height: (props.smallSize) ? (83) : (118),
         backgroundColor: '#EAEBCF',
 
         display: "flex",
-        justifyContent: "flex-start",
-        paddingLeft: 19,
-        paddingTop: 10,
-        marginBottom: 15,
+        justifyContent: "center",
+        margin: 15,
+        paddingLeft: 20,
         borderRadius: 15,
     },
     title: {

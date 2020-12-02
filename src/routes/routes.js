@@ -12,7 +12,12 @@ import {
 	Diary,
 	Message,
 	Notification,
-	Calculator
+	Calculator,
+	IMCCalculator,
+	WaterCalculator,
+	Profile,
+	WriteDiary,
+	GroupMessage
 } from '../pages';
 
 import { Main } from '../components';
@@ -70,6 +75,13 @@ const RoutesTabs = () => {
 					headerShown: false
 				}}
 			/>
+			<Tab.Screen
+				name="WriteDiary"
+				component={WriteDiary}
+				options={{
+					headerShown: false
+				}}
+			/>
 
 			<Tab.Screen
 				name="Message"
@@ -78,10 +90,39 @@ const RoutesTabs = () => {
 					headerShown: false
 				}}
 			/>
+			<Tab.Screen
+				name="GroupMessage"
+				component={GroupMessage}
+				options={{
+					headerShown: false
+				}}
+			/>
+
+			<Tab.Screen
+				name="Profile"
+				component={Profile}
+				options={{
+					headerShown: false
+				}}
+			/>
 
 			<Tab.Screen
 				name="Calculator"
 				component={Calculator}
+				options={{
+					headerShown: false
+				}}
+			/>
+			<Tab.Screen
+				name="IMCCalculator"
+				component={IMCCalculator}
+				options={{
+					headerShown: false
+				}}
+			/>
+			<Tab.Screen
+				name="WaterCalculator"
+				component={WaterCalculator}
 				options={{
 					headerShown: false
 				}}

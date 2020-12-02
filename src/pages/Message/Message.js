@@ -12,7 +12,7 @@ import { TextCard, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 
-const Message = () => {
+const Message = ({ navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -43,7 +43,7 @@ const Message = () => {
 									data={section.data}
 									renderItem={({ item }) => {
 										return <View key={item.id} style={styles.wrapper_card}>
-											<TextCard smallSize diary={item} />
+											<TextCard smallSize diary={item} event={() => navigation.navigate('GroupMessage')} />
 										</View> 
 									}}
 									showsHorizontalScrollIndicator={false}

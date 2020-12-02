@@ -1,15 +1,14 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
 
 import { styles } from "./styles";
 
 const TextCard = (props) => {
-	const { diary, smallSize } = props;
+	const { diary, event } = props;
 	return (
         <TouchableWithoutFeedback 
-            onPress={() => {
-                alert('a')
-            }}
+            onPress={event}
         >
             <View style={styles(props).wrapper_text}>
                 <Text 

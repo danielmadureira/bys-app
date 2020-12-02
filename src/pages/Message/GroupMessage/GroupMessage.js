@@ -1,33 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
+    Text,
 	View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { MessageBase, TitleHeader } from '../../components';
+import { MessageBase, TitleHeader } from '../../../components';
 
 import { styles } from './styles'
-import ButtonBase from '../../components/base/ButtonBase';
 
-const Diary = ({ navigation }) => {
+const GroupMessage = ({ navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
 			<View style={styles.container_header}>
 				<TitleHeader
-					title="Todos os meus dias"
-					subtitle="Esta é sua história"
+					title="Sala de conversa"
+					subtitle="Deixe um depoimento"
 				/>
 			</View>
 
-			<View style={styles.wrapper_button}>
-				<ButtonBase
-					title="Escrever no diário"
-					background="#EAEBCF"
-					color="#000"
-					radius={15}
-					onPress={() => navigation.navigate('WriteDiary')}
-				/>
+			<View style={styles.wrapper_status}>
+				<View style={styles.status}>
+					<Text style={styles.status_title}>Sala de descompressão</Text>
+					<Text style={styles.status_subtitle}>
+                        Este espaço é dedicado para aqueles que querem 
+                        compartilhar experiências não relacionadas ao COVID-19.
+                    </Text>
+				</View>
 			</View>
 
 			{SECTIONS.map((v, i) => {
@@ -60,4 +60,4 @@ const SECTIONS = [
 	}
 ];
 
-export default Diary;
+export default GroupMessage;

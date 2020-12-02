@@ -9,7 +9,7 @@ import { TextCard, TitleHeader } from '../../components';
 import { styles } from './styles'
 
 
-const Calculator = () => {
+const Calculator = ({ navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -20,23 +20,25 @@ const Calculator = () => {
 				/>
 			</View>
 
-				{SECTIONS.map((v, i) => {
-					return <View key={i} style={styles.wrapper_menu}>
-						<TextCard diary={v} />
-					</View>
-				})}
+			{SECTIONS.map((v, i) => {
+				return <View key={i} style={styles.wrapper_menu}>
+					<TextCard diary={v} event={() => navigation.navigate(`${v.path}`)} />
+				</View>
+			})}
 		</ScrollView>
 	);
 };
 
 const SECTIONS = [
 	{
-        title: 'Índice IMC',
-        texto: 'Descubra instantaneamente seu Índice de Massa Corpórea ideal através desta simples calculadora.'
-    },
+		path: 'IMCCalculator',
+		title: 'Índice IMC',
+		texto: 'Descubra instantaneamente seu Índice de Massa Corpórea ideal através desta simples calculadora.'
+	},
 	{
-        title: 'Ingestão de água',
-        texto: 'Descubra a quantidade de água que você precisa consumir todos os dias para se manter em forma.'
+		path: 'WaterCalculator',
+		title: 'Ingestão de água',
+		texto: 'Descubra a quantidade de água que você precisa consumir todos os dias para se manter em forma.'
 	}
 ];
 
