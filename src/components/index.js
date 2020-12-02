@@ -11,3 +11,6 @@ export { default as TextCard } from './Card/TextCard/TextCard';
 
 // Componente mensagem básica
 export { default as MessageBase } from './base/MessageBase/MessageBase';
+
+// Componente comentário
+export { default as Comment } from './Comment/Comment';

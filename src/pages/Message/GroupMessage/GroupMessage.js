@@ -1,13 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import { StatusBar } from 'expo-status-bar'
+import React from 'react'
 import {
-    Text,
+	Text,
 	View
-} from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { MessageBase, TitleHeader } from '../../../components';
+} from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
+import { Comment, TitleHeader } from '../../../components'
 
 import { styles } from './styles'
+import ProfileImage from '../../../../assets/Profile-picture.png'
 
 const GroupMessage = ({ navigation }) => {
 	return (
@@ -24,39 +25,52 @@ const GroupMessage = ({ navigation }) => {
 				<View style={styles.status}>
 					<Text style={styles.status_title}>Sala de descompressão</Text>
 					<Text style={styles.status_subtitle}>
-                        Este espaço é dedicado para aqueles que querem 
-                        compartilhar experiências não relacionadas ao COVID-19.
-                    </Text>
+						Este espaço é dedicado para aqueles que querem
+						compartilhar experiências não relacionadas ao COVID-19.
+					</Text>
 				</View>
 			</View>
-
-			{SECTIONS.map((v, i) => {
-				return <MessageBase key={i} diary={v} />
-			})}
+			
+			<View style={styles.wrapper_comment}>
+				{SECTIONS.map((v, i) => {
+					return <Comment
+									key={i}
+									diary={v}
+								/>
+				})}
+			</View>
 		</ScrollView>
 	);
 };
 
 const SECTIONS = [
 	{
-		title: 'Orientações nutricionais no COVID-19',
+		name: 'Amanda M. Gonze',
+		profile: ProfileImage,
+		profession: 'Chefe de enfermagem',
 		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
-		data: '20 de Julho',
+		data: 'Enviado ontem, às 15:30',
 	},
 	{
-		title: 'Orientações nutricionais no COVID-19',
-		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
-		data: '20 de Julho',
-	},
-	{
-		title: 'Orientações nutricionais no COVID-19',
+		name: 'Amanda M. Gonze',
+		profile: ProfileImage,
+		profession: 'Chefe de enfermagem',
 		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
-		data: '20 de Julho',
+		data: 'Enviado ontem, às 15:30',
 	},
 	{
-		title: 'Orientações nutricionais no COVID-19',
-		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
-		data: '20 de Julho',
+		name: 'Amanda M. Gonze',
+		profile: ProfileImage,
+		profession: 'Chefe de enfermagem',
+		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
+		data: 'Enviado ontem, às 15:30',
+	},
+	{
+		name: 'Amanda M. Gonze',
+		profile: ProfileImage,
+		profession: 'Chefe de enfermagem',
+		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
+		data: 'Enviado ontem, às 15:30',
 	}
 ];
 

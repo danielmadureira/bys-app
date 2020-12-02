@@ -42,4 +42,7 @@ export const styles = StyleSheet.create({
 		textAlign: "justify",
 		fontSize: 14
 	},
+	wrapper_comment: {
+		marginBottom: '25%',
+	}
 });
