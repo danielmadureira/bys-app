@@ -20,5 +20,15 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_menu: {
 		marginTop: 36,
-	}
+	},
+	wrapper_button: {
+		width: '85%',
+		marginTop: 40,
+	},
+    input: {
+        width: '85%',
+		marginTop: 45,
+		height: 40,
+        borderBottomWidth: 1,
+    }
 });

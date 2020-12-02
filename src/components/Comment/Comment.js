@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { MessageBase } from '..';
 
 import { styles } from "./styles";
@@ -23,7 +24,10 @@ const Comment = ({ diary }) => {
 					</View>
 
 					<View>
-						<Text>:heart:</Text>
+						<Icon 
+							name="favorite"
+							color="#BD2222"
+						/>
 					</View>
 				</View>
 			}

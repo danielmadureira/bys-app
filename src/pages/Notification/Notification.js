@@ -4,7 +4,7 @@ import {
 	View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { TextCard, TitleHeader } from '../../components';
+import { BackBase, TextCard, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 
@@ -18,6 +18,7 @@ const Notification = ({ navigation }) => {
 					title="Alertas"
 					subtitle="Crie alertas que te ajudam a manter a qualidade de vida"
 				/>
+				<BackBase />
 			</View>
 
 			{SECTIONS.map((v, i) => {

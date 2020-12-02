@@ -4,7 +4,7 @@ import {
 	View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { MessageBase, TitleHeader } from '../../components';
+import { BackBase, MessageBase, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 import ButtonBase from '../../components/base/ButtonBase';
@@ -18,6 +18,7 @@ const Diary = ({ navigation }) => {
 					title="Todos os meus dias"
 					subtitle="Esta é sua história"
 				/>
+				<BackBase />
 			</View>
 
 			<View style={styles.wrapper_button}>

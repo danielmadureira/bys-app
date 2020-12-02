@@ -6,7 +6,7 @@ import {
 	View
 } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
-import { TextCard, TitleHeader } from '../../components';
+import { BackBase, TextCard, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 
@@ -20,6 +20,7 @@ const Profile = ({ navigation }) => {
 					title="Perfil"
 					subtitle="Vamos falar sobre você"
 				/>
+				<BackBase />
 			</View>
 
 			<View style={styles.wrapper}>

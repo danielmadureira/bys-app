@@ -6,11 +6,18 @@ export const styles = (props) => StyleSheet.create({
     touchable: {
         height: 45,
         marginTop: 29,
+        marginBottom: 4,
 
         backgroundColor: props.background || '#AFD47B',
         borderColor: props.background || '#AFD47B',
         borderWidth: 1,
         borderRadius: props.radius || 4,
+
+        shadowColor: props.background || '#AFD47B',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.9,
+        shadowRadius: 15,
+        elevation: 5,
 
         display: "flex",
         justifyContent: "center",

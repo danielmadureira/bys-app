@@ -5,7 +5,7 @@ import {
 	View
 } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { Comment, TitleHeader } from '../../../components'
+import { BackBase, Comment, TitleHeader } from '../../../components'
 
 import { styles } from './styles'
 import ProfileImage from '../../../../assets/Profile-picture.png'
@@ -19,6 +19,8 @@ const GroupMessage = ({ navigation }) => {
 					title="Sala de conversa"
 					subtitle="Deixe um depoimento"
 				/>
+				
+				<BackBase />
 			</View>
 
 			<View style={styles.wrapper_status}>
@@ -34,9 +36,9 @@ const GroupMessage = ({ navigation }) => {
 			<View style={styles.wrapper_comment}>
 				{SECTIONS.map((v, i) => {
 					return <Comment
-									key={i}
-									diary={v}
-								/>
+							key={i}
+							diary={v}
+						/>
 				})}
 			</View>
 		</ScrollView>
