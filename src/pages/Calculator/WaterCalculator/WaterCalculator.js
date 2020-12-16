@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import {
+	Alert,
 	View,
 	TextInput
 } from 'react-native';
@@ -12,6 +13,21 @@ import { styles } from './styles'
 
 
 const WaterCalculator = () => {
+	const [peso, setPeso] = useState(0)
+
+	const calcula = (peso) => {
+		let valor = (parseFloat(peso) * 35)
+
+		Alert.alert(
+			"Você deve consumir por dia:",
+			`${valor} ml de água`,
+			[
+				{ text: "OK", onPress: () => console.log("OK Pressed") }
+			],
+			{ cancelable: false }
+		);
+	}
+
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -27,6 +43,8 @@ const WaterCalculator = () => {
 				<TextInput
 					style={styles.input}
 					placeholder="Seu peso em quilogramas"
+					value={peso}
+					onChangeText={(peso) => setPeso(peso)}
 				/>
 
 				<View style={styles.wrapper_button}>
@@ -35,6 +53,7 @@ const WaterCalculator = () => {
 						background="#EAEBCF"
 						color="#000"
 						radius={15}
+						onPress={() => calcula(peso)}
 					/>
 				</View>
 			</View>
