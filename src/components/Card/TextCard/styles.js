@@ -34,6 +34,7 @@ export const styles = (props) => StyleSheet.create({
         borderRadius: 15,
     },
     title: {
+        width: '100%',
         fontSize: (props.smallSize) ? (18) : (20),
         fontWeight: "400"
     },
