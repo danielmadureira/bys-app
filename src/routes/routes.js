@@ -17,7 +17,9 @@ import {
 	WaterCalculator,
 	Profile,
 	WriteDiary,
-	GroupMessage
+	GroupMessage,
+	Register,
+	RegisterPassword
 } from '../pages';
 
 import { Main } from '../components';
@@ -146,6 +148,22 @@ const Routes = () => {
 				<Stack.Screen
 					name="Home"
 					component={Login}
+					options={{
+						headerShown: false
+					}}
+				/>
+
+				<Stack.Screen
+					name="Register"
+					component={Register}
+					options={{
+						headerShown: false
+					}}
+				/>
+
+				<Stack.Screen
+					name="RegisterPassword"
+					component={RegisterPassword}
 					options={{
 						headerShown: false
 					}}

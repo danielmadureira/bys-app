@@ -18,7 +18,7 @@ const Diary = ({ navigation }) => {
 					title="Todos os meus dias"
 					subtitle="Esta é sua história"
 				/>
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.wrapper_button}>

@@ -20,7 +20,7 @@ const Profile = ({ navigation }) => {
 					title="Perfil"
 					subtitle="Vamos falar sobre você"
 				/>
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.wrapper}>

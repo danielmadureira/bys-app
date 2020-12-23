@@ -18,12 +18,12 @@ const Calculator = ({ navigation }) => {
 					title="Calculadoras"
 					subtitle="Na medida certa"
 				/>
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 			{SECTIONS.map((v, i) => {
 				return <View key={i} style={styles.wrapper_menu}>
-					<TextCard diary={v} event={() => navigation.navigate(`${v.path}`)} />
+					<TextCard icon diary={v} event={() => navigation.navigate(`${v.path}`)} />
 				</View>
 			})}
 		</ScrollView>

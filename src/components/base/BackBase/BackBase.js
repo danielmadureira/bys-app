@@ -7,9 +7,13 @@ import {
 import { styles } from './styles'
 import { Icon } from 'react-native-elements'
 
-const BackBase = () => {
+const BackBase = ({ navigation }) => {
+    
 	return (
-        <View style={styles.header_icon}>
+        <View
+            onTouchEnd={() => navigation.goBack() } 
+            style={styles.header_icon}
+        >
             <Icon 
                 name="keyboard-backspace"
                 size={30}

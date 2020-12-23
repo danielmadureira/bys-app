@@ -12,7 +12,7 @@ import ButtonBase from '../../../components/base/ButtonBase';
 import { styles } from './styles'
 
 
-const IMCCalculator = () => {
+const IMCCalculator = ({ navigation }) => {
 	const [peso, setPeso] = useState(0)
 	const [altura, setAltura] = useState(0)
 
@@ -37,7 +37,7 @@ const IMCCalculator = () => {
 					title="Índice IMC"
 					subtitle="O IMC é reconhecido como padrão internacional para avaliar o grau de sobrepeso e obesidade. É calculado dividindo o peso (em kg) pela altura ao quadrado (em metros)."
 				/>
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.wrapper}>

@@ -6,7 +6,7 @@ import { FowardBase } from '../..';
 import { styles } from "./styles";
 
 const TextCard = (props) => {
-	const { diary, event } = props;
+	const { diary, event, icon } = props;
 	return (
         <TouchableWithoutFeedback 
             onPress={event}
@@ -17,8 +17,7 @@ const TextCard = (props) => {
                     style={styles(props).title}
                 >
                     {diary.title}
-                    
-                    <FowardBase />
+                    {(icon) && <FowardBase />}
                 </Text>
 
 

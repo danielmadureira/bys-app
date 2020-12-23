@@ -22,7 +22,7 @@ const Message = ({ navigation }) => {
 					subtitle="Compartilhe experiências"
 				/>
 
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 

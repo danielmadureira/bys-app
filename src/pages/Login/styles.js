@@ -51,5 +51,9 @@ export const styles = StyleSheet.create({
     },
     textHelper: {
         marginTop: 5,
+    },
+    register: {
+        color: 'blue',
+        textDecorationLine: "underline",
     }
 });

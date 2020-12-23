@@ -18,12 +18,16 @@ const Notification = ({ navigation }) => {
 					title="Alertas"
 					subtitle="Crie alertas que te ajudam a manter a qualidade de vida"
 				/>
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 			{SECTIONS.map((v, i) => {
 				return <View key={i} style={styles.wrapper_menu}>
-					<TextCard diary={v} event={() => navigation.navigate('Feed')} />
+					<TextCard 
+						icon 
+						diary={v} 
+						event={() => navigation.navigate('Feed')} 
+					/>
 				</View>
 			})}
 		</ScrollView>

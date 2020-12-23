@@ -20,7 +20,7 @@ const WriteDiary = ({ navigation }) => {
 					title="Meu diário"
 					subtitle="Tudo sobre o seu dia"
 				/>
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.message_container}>	

@@ -12,7 +12,7 @@ import ButtonBase from '../../../components/base/ButtonBase';
 import { styles } from './styles'
 
 
-const WaterCalculator = () => {
+const WaterCalculator = ({ navigation }) => {
 	const [peso, setPeso] = useState(0)
 
 	const calcula = (peso) => {
@@ -36,7 +36,7 @@ const WaterCalculator = () => {
 					title="Ingestão de água"
 					subtitle="A hidratação também deve ser seguida de forma equilibrada. Saiba a quantidade de água que deve ingerir no dia a dia."
 				/>
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.wrapper}>

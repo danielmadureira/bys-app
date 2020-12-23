@@ -20,7 +20,7 @@ const GroupMessage = ({ navigation }) => {
 					subtitle="Deixe um depoimento"
 				/>
 				
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.wrapper_status}>

@@ -1,5 +1,8 @@
 // Página de Login
 export { default as Login } from './Login/Login'
+// Página de Registro
+export { default as Register } from './Register/Register'
+export { default as RegisterPassword } from './Register/RegisterPassword'
 
 // Página de Notícias
 export { default as Feed } from './Feed/Feed'

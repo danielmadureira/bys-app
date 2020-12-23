@@ -44,6 +44,16 @@ const Login = (props) => {
 					<Text style={styles.textHelper}>
 						Preciso de ajuda para acessar
 					</Text>
+					<Text style={styles.textHelper}>
+						Ainda não possui uma conta? 
+						<Text 
+						style={styles.register}
+						onPress={() => {
+							navigation.navigate('Register')
+						}}>
+							&nbsp;Criar conta
+						</Text>
+					</Text>
 				</View>
 			</View>
 		</ScrollView>

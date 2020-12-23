@@ -11,7 +11,7 @@ import { BackBase, TitleHeader } from '../../../components';
 import { styles } from './styles'
 import ImagemSVG from '../../../../assets/Feed-Example.jpg'
 
-const DetailFeed = () => {
+const DetailFeed = ({ navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -20,7 +20,7 @@ const DetailFeed = () => {
 					title={FEED.title}
 					subtitle={FEED.subtitle}
 				/>
-				<BackBase />
+				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.wrapper_picture}>
