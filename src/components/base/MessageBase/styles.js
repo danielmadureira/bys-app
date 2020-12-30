@@ -5,7 +5,7 @@ let percent = '85%';
 export const styles = (props) => StyleSheet.create({
     wrapper_text: {
         width: percent,
-        height: 150,
+        height: props.height || 150,
 
         display: "flex",
         justifyContent: "flex-start",

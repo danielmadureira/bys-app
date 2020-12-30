@@ -61,8 +61,8 @@ const Notification = ({ navigation, type }) => {
 
 const DAYS = [
 	{ day: 'Dom.', selected: false }, 
-	{ day: 'Seg.', selected: false }, 
-	{ day: 'Ter.', selected: false }, 
+	{ day: 'Seg.', selected: true }, 
+	{ day: 'Ter.', selected: true }, 
 	{ day: 'Qua', selected: false },
 	{ day: 'Qui.', selected: false }, 
 	{ day: 'Sex.', selected: true }, 

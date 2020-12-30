@@ -25,7 +25,7 @@ const MainNotification = ({ navigation }) => {
 				<TextCard 
 					icon 
 					diary={SECTIONS[0]} 
-					event={() => navigation.navigate('MedicineNotification')} 
+					event={() => navigation.navigate('AllMedicineNotification')} 
 				/>
 			</View>
 			<View style={styles({}).wrapper_menu}>

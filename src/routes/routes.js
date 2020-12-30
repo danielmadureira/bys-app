@@ -19,6 +19,7 @@ import {
 	GroupMessage,
 	Register,
 	RegisterPassword,
+	AllMedicineNotification,
 	MedicineNotification,
 	WaterNotification,
 	MainNotification
@@ -143,6 +144,13 @@ const RoutesTabs = () => {
 			<Tab.Screen
 				name="WaterNotification"
 				component={WaterNotification}
+				options={{
+					headerShown: false
+				}}
+			/>
+			<Tab.Screen
+				name="AllMedicineNotification"
+				component={AllMedicineNotification}
 				options={{
 					headerShown: false
 				}}

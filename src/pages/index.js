@@ -23,6 +23,7 @@ export { default as Notification } from './Notification/Notification'
 export { default as MainNotification } from './Notification/MainNotification'
 export { default as WaterNotification } from './Notification/WaterNotification/WaterNotification'
 export { default as MedicineNotification } from './Notification/MedicineNotification/MedicineNotification'
+export { default as AllMedicineNotification } from './Notification/MedicineNotification/AllMedicineNotification'
 
 // Página de Perfil
 export { default as Profile } from './Profile/Profile'

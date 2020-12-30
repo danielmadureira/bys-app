@@ -20,5 +20,11 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_menu: {
 		marginTop: 36,
+	},
+	notifications: {
+		display: "flex",
+		alignItems: "center",
+		width: wrapperWidth,
+		marginTop: 10,
 	}
 });

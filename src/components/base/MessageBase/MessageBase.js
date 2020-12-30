@@ -4,9 +4,11 @@ import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import { styles } from "./styles";
 
 const MessageBase = (props) => {
-	const { diary, header } = props;
+	const { diary, header, onPress } = props;
 	return (
-		<TouchableWithoutFeedback>
+		<TouchableWithoutFeedback
+			onPress={onPress}
+		>
 			<View style={styles(props).wrapper_text}>
 				{!header ? (
 					<Text
