@@ -11,7 +11,6 @@ import {
 	Login,
 	Diary,
 	Message,
-	Notification,
 	Calculator,
 	IMCCalculator,
 	WaterCalculator,
@@ -19,7 +18,10 @@ import {
 	WriteDiary,
 	GroupMessage,
 	Register,
-	RegisterPassword
+	RegisterPassword,
+	MedicineNotification,
+	WaterNotification,
+	MainNotification
 } from '../pages';
 
 import { Main } from '../components';
@@ -132,7 +134,22 @@ const RoutesTabs = () => {
 
 			<Tab.Screen
 				name="Notification"
-				component={Notification}
+				component={MainNotification}
+				options={{
+					headerShown: false
+				}}
+			/>
+
+			<Tab.Screen
+				name="WaterNotification"
+				component={WaterNotification}
+				options={{
+					headerShown: false
+				}}
+			/>
+			<Tab.Screen
+				name="MedicineNotification"
+				component={MedicineNotification}
 				options={{
 					headerShown: false
 				}}
