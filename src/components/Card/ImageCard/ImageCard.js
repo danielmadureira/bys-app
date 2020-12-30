@@ -16,6 +16,7 @@ const ImageCard = (props) => {
 			>
 				<View style={styles(props).wrapper_text}>
 					<Text 
+						numberOfLines={2}
 						key={item.id}
 						style={styles(props).title}
 					>
@@ -23,6 +24,7 @@ const ImageCard = (props) => {
 					</Text>
 
 					<Text 
+						numberOfLines={2}
 						style={styles(props).subtitle}
 					>
 						{item.subtitle}

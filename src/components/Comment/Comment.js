@@ -11,7 +11,7 @@ const Comment = ({ diary }) => {
 			diary={diary}
 			header={
 				<View style={styles.wrapper}>
-					<View >
+					<View>
 						<Image 
 							style={styles.profile} 
 							source={diary.profile} 
@@ -19,8 +19,18 @@ const Comment = ({ diary }) => {
 					</View>
 					
 					<View style={styles.wrapper_text}>
-						<Text style={styles.name}>{diary.name}</Text>
-						<Text style={styles.profession}>{diary.profession}</Text>
+						<Text 
+							style={styles.name} 
+							numberOfLines={1}
+						>
+							{diary.name}
+						</Text>
+						<Text 
+							style={styles.profession}
+							numberOfLines={1}
+						>
+							{diary.profession}
+						</Text>
 					</View>
 
 					<View>

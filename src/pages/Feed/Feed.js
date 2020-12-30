@@ -23,7 +23,7 @@ const Feed = ({ navigation }) => {
 					subtitle="Veja as últimas novidades"
 				/>
 			</View>
-			<SafeAreaView >
+			<SafeAreaView style={styles.safearea}>
 				<SectionList
 					contentContainerStyle={styles.space}
 					stickySectionHeadersEnabled={false}

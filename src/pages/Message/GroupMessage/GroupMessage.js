@@ -26,7 +26,10 @@ const GroupMessage = ({ navigation }) => {
 			<View style={styles.wrapper_status}>
 				<View style={styles.status}>
 					<Text style={styles.status_title}>Sala de descompressão</Text>
-					<Text style={styles.status_subtitle}>
+					<Text 
+						style={styles.status_subtitle}
+						numberOfLines={4}
+					>
 						Este espaço é dedicado para aqueles que querem
 						compartilhar experiências não relacionadas ao COVID-19.
 					</Text>

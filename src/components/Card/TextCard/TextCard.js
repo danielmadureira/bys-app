@@ -8,26 +8,27 @@ import { styles } from "./styles";
 const TextCard = (props) => {
 	const { diary, event, icon } = props;
 	return (
-        <TouchableWithoutFeedback 
-            onPress={event}
-        >
-            <View style={styles(props).wrapper_text}>
-                <Text 
-                    key={diary.id}
-                    style={styles(props).title}
-                >
-                    {diary.title}
-                    {(icon) && <FowardBase />}
-                </Text>
+		<TouchableWithoutFeedback
+			onPress={event}
+		>
+			<View style={styles(props).wrapper_text}>
+				<Text
+					numberOfLines={2}
+					key={diary.id}
+					style={styles(props).title}
+				>
+					{diary.title}
+					{(icon) && <FowardBase />}
+				</Text>
 
-
-                <Text 
-                    style={styles(props).subtitle}
-                >
-                    {diary.texto}
-                </Text>
-            </View>
-        </TouchableWithoutFeedback>
+				<Text
+					numberOfLines={4}
+					style={styles(props).subtitle}
+				>
+					{diary.texto}
+				</Text>
+			</View>
+		</TouchableWithoutFeedback>
 	)
 }
 

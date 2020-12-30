@@ -55,5 +55,6 @@ export const styles = StyleSheet.create({
     register: {
         color: 'blue',
         textDecorationLine: "underline",
+        marginLeft: 2,
     }
 });

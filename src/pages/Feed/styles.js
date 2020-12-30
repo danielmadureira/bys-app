@@ -1,13 +1,16 @@
 import { StyleSheet } from "react-native";
 
 let width = '95%';
-let itemWidth = '5%';
+let itemWidth = '4%';
 
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: 22,
-		margin: itemWidth
+		padding: itemWidth
+	},
+	safearea: {
+		marginBottom: 150,
 	},
 	wrapper: {
 		display: "flex",

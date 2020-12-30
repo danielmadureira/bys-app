@@ -25,13 +25,12 @@ export const styles = StyleSheet.create({
 	},
 	status: {
 		width: '90%',
-		height: 126,
-
 		backgroundColor: '#EAEBCF',
 		borderTopRightRadius: 15,
 		borderBottomRightRadius: 15,
 
 		paddingRight: 80,
+		paddingBottom: 15,
 	},
 	status_title: {
 		textAlign: "justify",
@@ -46,5 +45,6 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_comment: {
 		marginBottom: '25%',
+		marginBottom: 150,
 	}
 });
