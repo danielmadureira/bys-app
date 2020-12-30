@@ -11,9 +11,9 @@ import { styles } from './styles'
 
 const MainNotification = ({ navigation }) => {
 	return (
-		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
+		<ScrollView contentContainerStyle={styles({}).wrapper} style={styles({}).container}>
 			<StatusBar style="light" backgroundColor="#000" />
-			<View style={styles.container_header}>
+			<View style={styles({}).container_header}>
 				<TitleHeader
 					title="Alertas"
 					subtitle="Crie alertas que te ajudam a manter a qualidade de vida"
@@ -21,14 +21,14 @@ const MainNotification = ({ navigation }) => {
 				<BackBase navigation={navigation} />
 			</View>
 
-			<View style={styles.wrapper_menu}>
+			<View style={styles({}).wrapper_menu}>
 				<TextCard 
 					icon 
 					diary={SECTIONS[0]} 
 					event={() => navigation.navigate('MedicineNotification')} 
 				/>
 			</View>
-			<View style={styles.wrapper_menu}>
+			<View style={styles({}).wrapper_menu}>
 				<TextCard 
 					icon 
 					diary={SECTIONS[1]} 
