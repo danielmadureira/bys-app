@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { BackBase, TextCard, TitleHeader } from '../../components';
+import ButtonBase from '../../components/base/ButtonBase';
 
 import { styles } from './styles'
 
@@ -74,6 +75,16 @@ const Profile = ({ navigation }) => {
 							multiline={true}
 							numberOfLines={6}
 						/>
+
+						<View style={styles.wrapper_button}>
+							<ButtonBase
+								title="Salvar"
+								background="#EAEBCF"
+								color="#000"
+								radius={15}
+								onPress={() => navigation.navigate('WriteDiary')}
+							/>
+						</View>
 					</View>
 				</ImageBackground>
 			</View>

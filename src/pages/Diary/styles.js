@@ -17,8 +17,11 @@ export const styles = StyleSheet.create({
 		width: width
 	},
 	wrapper_button: {
-		marginTop: 27,
+		marginTop: 20,
 		marginBottom: 24,
 		width: width
+	},
+	messages: {
+		marginBottom: 200,
 	}
 });

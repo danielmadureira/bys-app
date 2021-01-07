@@ -1,11 +1,18 @@
 import React from 'react';
-import { Image, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { MessageBase } from '..';
 
 import { styles } from "./styles";
 
 const Comment = ({ diary }) => {
+
+	const isLiked = () => {
+		let color = (diary.liked) ? '#BD2222' : '#c0c0c0'
+
+		return color
+	}
+
 	return (
 		<MessageBase
 			diary={diary}
@@ -35,8 +42,8 @@ const Comment = ({ diary }) => {
 
 					<View>
 						<Icon 
-							name="favorite"
-							color="#BD2222"
+							name='favorite'
+							color={isLiked()}
 						/>
 					</View>
 				</View>

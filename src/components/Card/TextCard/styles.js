@@ -34,12 +34,16 @@ export const styles = (props) => StyleSheet.create({
         borderRadius: 15,
     },
     title: {
-        width: '100%',
+        width: '87%',
         fontSize: (props.smallSize) ? (18) : (20),
         fontWeight: "400"
     },
     subtitle: {
         fontSize: 14,
         marginTop: 8
-    }
+		},
+		header: {
+			display: 'flex',
+			flexDirection: 'row',
+		}
 });

@@ -16,10 +16,9 @@ const AllMedicineNotification = ({ navigation }) => {
 			<View style={styles.container_header}>
 				<TitleHeader
 					title="Alerta de medicamento"
-					subtitle={
-						<BackBase navigation={navigation} />
-					}
+					subtitle="Todos os seus alertas"
 				/>
+				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.notifications}>

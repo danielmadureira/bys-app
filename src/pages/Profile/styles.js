@@ -87,21 +87,17 @@ export const styles = StyleSheet.create({
         alignItems: "center"
 	},
     message_container: {
-        height: 332,
+        height: 400,
 		width: wrapperWidth,
 		borderRadius: 10,
 
-		marginTop: 24,
-		marginBottom: 150,
+		paddingTop: 75,
+		marginBottom: 200,
 
 		display: "flex",
 		alignItems: "center",
 	},
 	message_title: {
-		display: "flex",
-		alignItems: "flex-start",
-		justifyContent: "flex-start",
-		
 		width: width,
 		marginBottom: 20
 	},	
@@ -132,5 +128,9 @@ export const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderColor: '#555',
 		textAlignVertical: 'top'
-    },
+	},
+	wrapper_button: {
+		width: '80%',
+		marginTop: 30,
+	}
 });

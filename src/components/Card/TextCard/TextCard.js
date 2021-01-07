@@ -12,14 +12,20 @@ const TextCard = (props) => {
 			onPress={event}
 		>
 			<View style={styles(props).wrapper_text}>
-				<Text
-					numberOfLines={2}
-					key={diary.id}
-					style={styles(props).title}
-				>
-					{diary.title}
-					{(icon) && <FowardBase />}
-				</Text>
+				<View style={styles(props).header}>
+					<Text
+						numberOfLines={2}
+						key={diary.id}
+						style={styles(props).title}
+					>
+						{diary.title}
+					</Text>
+					
+					<View>
+						{(icon) && <FowardBase />}
+					</View>
+				</View>
+				
 
 				<Text
 					numberOfLines={4}

@@ -60,5 +60,9 @@ export const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderColor: '#555',
 		textAlignVertical: 'top'
-    },
+	},
+	wrapper_button: {
+		marginTop: 40,
+		width: '85%',
+	}
 });

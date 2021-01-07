@@ -55,6 +55,7 @@ const SECTIONS = [
 		profession: 'Chefe de enfermagem',
 		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
 		data: 'Enviado ontem, às 15:30',
+		liked: true
 	},
 	{
 		name: 'Amanda M. Gonze',
@@ -62,6 +63,7 @@ const SECTIONS = [
 		profession: 'Chefe de enfermagem',
 		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
 		data: 'Enviado ontem, às 15:30',
+		liked: true
 	},
 	{
 		name: 'Amanda M. Gonze',
@@ -69,6 +71,7 @@ const SECTIONS = [
 		profession: 'Chefe de enfermagem',
 		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
 		data: 'Enviado ontem, às 15:30',
+		liked: false
 	},
 	{
 		name: 'Amanda M. Gonze',
@@ -76,6 +79,7 @@ const SECTIONS = [
 		profession: 'Chefe de enfermagem',
 		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
 		data: 'Enviado ontem, às 15:30',
+		liked: true
 	}
 ];
 

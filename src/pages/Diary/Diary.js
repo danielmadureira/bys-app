@@ -31,9 +31,11 @@ const Diary = ({ navigation }) => {
 				/>
 			</View>
 
-			{SECTIONS.map((v, i) => {
-				return <MessageBase key={i} diary={v} />
-			})}
+			<View style={styles.messages}>
+				{SECTIONS.map((v, i) => {
+					return <MessageBase key={i} diary={v} />
+				})}
+			</View>
 		</ScrollView>
 	);
 };

@@ -19,7 +19,8 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_body: {
 		marginTop: 35,
-		width: width
+		width: width,
+		marginBottom: '25%',
 	},
 	body: {
 		fontSize: 18,

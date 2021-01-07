@@ -25,6 +25,7 @@ export const styles = StyleSheet.create({
 	},
 	status: {
 		width: '90%',
+		height: 125,
 		backgroundColor: '#EAEBCF',
 		borderTopRightRadius: 15,
 		borderBottomRightRadius: 15,
@@ -33,9 +34,9 @@ export const styles = StyleSheet.create({
 		paddingBottom: 15,
 	},
 	status_title: {
-		textAlign: "justify",
 		fontSize: 24,
-		marginTop: 20,
+		marginTop: 10,
+		marginBottom: 10,
 		marginLeft: 15,
 	},
 	status_subtitle: {
@@ -44,7 +45,6 @@ export const styles = StyleSheet.create({
 		fontSize: 14
 	},
 	wrapper_comment: {
-		marginBottom: '25%',
-		marginBottom: 150,
+		marginBottom: 200,
 	}
 });

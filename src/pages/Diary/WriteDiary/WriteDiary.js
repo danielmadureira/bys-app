@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { BackBase, TitleHeader } from '../../../components';
+import ButtonBase from '../../../components/base/ButtonBase';
 
 import { styles } from './styles'
 
@@ -37,7 +38,17 @@ const WriteDiary = ({ navigation }) => {
 						numberOfLines={15}
 					/>
 				</View>
+				
+				<View style={styles.wrapper_button}>
+					<ButtonBase
+						title="Salvar"
+						background="#EAEBCF"
+						color="#000"
+						radius={15}
+					/>
+				</View>
 			</View>
+
 		</ScrollView>
 	);
 };
