@@ -1,12 +1,12 @@
 {
   "expo": {
     "name": "bys-app",
-    "slug": "bys-app",
-    "version": "1.0.0",
+    "slug": "BYS",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/bys-splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
