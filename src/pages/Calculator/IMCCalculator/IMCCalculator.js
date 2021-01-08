@@ -45,14 +45,16 @@ const IMCCalculator = ({ navigation }) => {
 					style={styles.input}
 					placeholder="Seu peso em quilogramas"
 					value={peso}
-					onChangeText={(peso) => setPeso(peso)}
+					keyboardType="numeric"
+					onChangeText={(peso) => setPeso(peso.replace(',', '.'))}
 				/>
 
 				<TextInput
 					placeholder="Sua altura em metros"
 					style={styles.input}
 					value={altura}
-					onChangeText={(altura) => setAltura(altura)}
+					keyboardType="numeric"
+					onChangeText={(altura) => setAltura(altura.replace(',', '.'))}
 				/>
 
 				<View style={styles.wrapper_button}>

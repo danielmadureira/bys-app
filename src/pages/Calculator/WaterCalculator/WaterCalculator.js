@@ -44,7 +44,8 @@ const WaterCalculator = ({ navigation }) => {
 					style={styles.input}
 					placeholder="Seu peso em quilogramas"
 					value={peso}
-					onChangeText={(peso) => setPeso(peso)}
+					keyboardType="numeric"
+					onChangeText={(peso) => setPeso(peso.replace(',', '.'))}
 				/>
 
 				<View style={styles.wrapper_button}>
