@@ -10,7 +10,7 @@ import { BackBase, Comment, TitleHeader } from '../../../components'
 import { styles } from './styles'
 import ProfileImage from '../../../../assets/Profile-picture.png'
 
-const GroupMessage = ({ navigation }) => {
+const ForumGroup = ({ navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -83,4 +83,4 @@ const SECTIONS = [
 	}
 ];
 
-export default GroupMessage;
+export default ForumGroup;

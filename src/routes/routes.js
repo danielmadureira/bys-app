@@ -10,13 +10,13 @@ import {
 	DetailFeed,
 	Login,
 	Diary,
-	Message,
+	Forum,
 	Calculator,
 	IMCCalculator,
 	WaterCalculator,
 	Profile,
 	WriteDiary,
-	GroupMessage,
+	ForumGroup,
 	Register,
 	RegisterPassword,
 	AllMedicineNotification,
@@ -89,15 +89,15 @@ const RoutesTabs = () => {
 			/>
 
 			<Tab.Screen
-				name="Message"
-				component={Message}
+				name="Forum"
+				component={Forum}
 				options={{
 					headerShown: false
 				}}
 			/>
 			<Tab.Screen
-				name="GroupMessage"
-				component={GroupMessage}
+				name="ForumGroup"
+				component={ForumGroup}
 				options={{
 					headerShown: false
 				}}

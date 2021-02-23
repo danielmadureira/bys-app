@@ -16,7 +16,7 @@ const Main = ({ state, descriptors, navigation }) => {
 				</TouchableOpacity>
 
 				<TouchableOpacity
-					onPress={() => navigation.navigate('Message')}
+					onPress={() => navigation.navigate('Forum')}
 				>
 					<Image
 						source={require(`../../../assets/Message.png`)}

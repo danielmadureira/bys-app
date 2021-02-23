@@ -1,9 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Provider } from 'react-redux';
 import Routes from './src/routes/routes';
+import { store } from './src/store';
 
 export default function App() {
   return (
-    <Routes />
+    <Provider store={store}>
+      <Routes />
+    </Provider>
   );
 }

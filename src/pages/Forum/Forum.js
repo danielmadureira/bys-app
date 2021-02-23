@@ -12,7 +12,7 @@ import { BackBase, TextCard, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 
-const Message = ({ navigation }) => {
+const Forum = ({ navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -45,7 +45,7 @@ const Message = ({ navigation }) => {
 									data={section.data}
 									renderItem={({ item }) => {
 										return <View key={item.id} style={styles.wrapper_card}>
-											<TextCard smallSize diary={item} event={() => navigation.navigate('GroupMessage')} />
+											<TextCard smallSize diary={item} event={() => navigation.navigate('ForumGroup')} />
 										</View> 
 									}}
 									showsHorizontalScrollIndicator={false}
@@ -101,4 +101,4 @@ const SECTIONS = [
 	}
 ];
 
-export default Message;
+export default Forum;

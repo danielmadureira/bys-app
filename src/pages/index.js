@@ -14,9 +14,9 @@ export { default as Diary } from './Diary/Diary'
 export { default as WriteDiary } from './Diary/WriteDiary/WriteDiary'
 
 // Página de Conversas
-export { default as Message } from './Message/Message'
+export { default as Forum } from './Forum/Forum'
 // Grupo de conversa
-export { default as GroupMessage } from './Message/GroupMessage/GroupMessage'
+export { default as ForumGroup } from './Forum/ForumGroup/ForumGroup'
 
 // Página de Notificações
 export { default as Notification } from './Notification/Notification'
