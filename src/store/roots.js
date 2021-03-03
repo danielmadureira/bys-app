@@ -1,18 +1,18 @@
 import { combineReducers } from 'redux';
 import { all } from 'redux-saga/effects';
 
-import * as diary from './diary';
+import * as user from './user';
 
 const reducers = combineReducers({
-  diary: diary.reducer,
+  user: user.reducer,
 })
 
-export const rootReducer = (state, action) => {
+export const rootReducers = (state, action) => {
   return reducers(state, action);
 }
 
-export function* rootSaga() {
+export function* rootSagas() {
   yield all([
-    diary.saga(),
+    user.saga(),
   ]);
 }

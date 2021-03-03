@@ -3,7 +3,12 @@ import { Image, ImageBackground, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './styles';
 
-const Main = ({ state, descriptors, navigation }) => {
+const Main = ({ 
+	state, 
+	user, 
+	navigation 
+}) => {
+	
 	return (
 		<View style={styles.container}>
 			<View style={styles.main}>
@@ -28,7 +33,7 @@ const Main = ({ state, descriptors, navigation }) => {
 					style={styles.wrapper}
 				>
 					<ImageBackground
-						source={require(`../../../assets/Profile-Example.jpg`)}
+						source={{ uri: user.profile_picture }}
 						style={styles.profile}
 						imageStyle={styles.image}
 					>

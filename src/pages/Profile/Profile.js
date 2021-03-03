@@ -6,13 +6,16 @@ import {
 	View
 } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
 import { BackBase, TextCard, TitleHeader } from '../../components';
 import ButtonBase from '../../components/base/ButtonBase';
 
 import { styles } from './styles'
 
-
 const Profile = ({ navigation }) => {
+	
+  const user = useSelector(state => state.user)
+
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -25,16 +28,18 @@ const Profile = ({ navigation }) => {
 			</View>
 
 			<View style={styles.wrapper}>
+				{/** User's Background Picture */}
 				<ImageBackground
-					source={require(`../../../assets/profile_background.jpg`)}
+					source={{ uri: user.profile_picture }}
 					imageStyle={styles.image}
 					style={styles.profile}
 				>
 				</ImageBackground>
 
+				{/** User's Profile Picture */}
 				<View style={styles.profile_image_wrapper}>
 					<ImageBackground
-						source={require(`../../../assets/Profile-picture.png`)}
+						source={{ uri: user.profile_picture }}
 						imageStyle={styles.profile_image}
 						style={styles.profile}
 					>
@@ -42,11 +47,17 @@ const Profile = ({ navigation }) => {
 				</View>
 			</View>
 
+			{/** User's Name and Profession */}
 			<View style={styles.wrapper}>
-				<Text style={styles.profile_name}>Adriana M. Gonze</Text>
-				<Text style={styles.profile_profession}>Chefe de enfermagem</Text>
+				<Text style={styles.profile_name}>
+					{user.name}
+				</Text>
+				<Text style={styles.profile_profession}>
+					{user.profession}
+				</Text>
 			</View>
 
+			{/** User's Mood */}
 			<View style={styles.wrapper_status}>
 				<View style={styles.status}>
 					<Text style={styles.status_title}>Hoje estou me sentindo:</Text>
@@ -54,6 +65,7 @@ const Profile = ({ navigation }) => {
 				</View>
 			</View>
 
+			{/** User's Diary */}
 			<View style={styles.message_container}>	
 				<ImageBackground
 					source={require(`../../../assets/message-background.jpg`)}

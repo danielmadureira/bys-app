@@ -14,6 +14,7 @@ import ImagemSVG from '../../../assets/Feed-Example.jpg'
 import HorizontalFirst from '../../../assets/Horizontal.jpg'
 
 const Feed = ({ navigation }) => {
+	
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
