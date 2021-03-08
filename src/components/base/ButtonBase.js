@@ -11,6 +11,7 @@ const ButtonBase = (props) => {
 			containerStyle={styles(props).size}
 			style={styles(props).touchable}
 			onPress={props.onPress}
+			disabled={props.disabled}
 		>
 			<Text style={styles(props).text}>{props.title}</Text>
 		</TouchableWithoutFeedback>

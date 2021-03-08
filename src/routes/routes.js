@@ -18,7 +18,12 @@ const Stack = createStackNavigator();
 const Routes = () => {
 	return (
 		<NavigationContainer>
-			<Stack.Navigator animationType="slide-horizontal">
+			<Stack.Navigator 
+				animationType="slide-horizontal"
+				screenOptions={{
+					cardStyle: { backgroundColor: '#FFFFFF' }
+				}}
+			>
 				{/** !AuthServices.isAuthenticated() && ( */}
 					<Stack.Screen
 						name="Home"
