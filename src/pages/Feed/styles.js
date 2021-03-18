@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
 		padding: itemWidth
 	},
 	safearea: {
-		marginBottom: 150,
+		marginBottom: 140,
 	},
 	wrapper: {
 		display: "flex",
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
 		justifyContent: "space-between"
 	},
 	container_header: {
-		marginTop: 10,
+		marginTop: 25,
 		paddingBottom: 2,
 		width: width
 	},

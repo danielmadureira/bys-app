@@ -1,41 +1,54 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect, Suspense } from 'react';
 import {
 	Image,
 	Text,
-	View,
+	View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { BackBase, TitleHeader } from '../../../components';
 
 import { styles } from './styles'
 import ImagemSVG from '../../../../assets/Feed-Example.jpg'
+import { useDispatch, useSelector } from 'react-redux';
+import { actions } from '../../../store/feed'
 
-const DetailFeed = ({ navigation }) => {
+const DetailFeed = ({ route, navigation }) => {
+	const { itemId } = route.params;
+	const { details } = useSelector(state => state.feed)
+	const dispatch = useDispatch()
+	
+	useEffect(() => {
+		dispatch(actions.getFeedById(itemId))
+	}, [itemId])
+
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
-			<StatusBar style="light" backgroundColor="#000" />
+			<StatusBar style="light" backgroundColor="#000" />	
 			<View style={styles.container_header}>
 				<TitleHeader
-					title={FEED.title}
-					subtitle={FEED.subtitle}
+					title={details.title}
+					subtitle={details.author}
 				/>
 				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.wrapper_picture}>
-				<Image style={styles.picture} source={FEED.picture} />
+				<Image 
+					borderRadius={20}
+					style={styles.picture} 
+					source={{ uri: details.picture }} 
+				/>
 				<Text style={styles.picture_title}>
-					
+					{details.picture_description}
 				</Text>
 			</View>
 
 			<View style={styles.wrapper_body}>
 				<Text style={styles.body}>
-					{FEED.body}
+					{details.text}
 				</Text>
 			</View>
-
 		</ScrollView>
 	);
 };

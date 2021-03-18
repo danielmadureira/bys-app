@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
         borderRadius: 50,
         borderWidth: 1,
         borderColor: '#EAEBCF',
+        backgroundColor: '#476044',
         marginTop: 6
     }
 });

@@ -20,22 +20,31 @@ export const styles = StyleSheet.create({
 	wrapper_body: {
 		marginTop: 35,
 		width: width,
-		marginBottom: '25%',
+		marginBottom: '30%',
 	},
 	body: {
 		fontSize: 18,
 		textAlign: "justify",
 	},
+	picture: {
+		width: '100%',
+		height: 350
+	},
 	wrapper_picture: {
 		marginTop: 40,
 		display: "flex",
-		alignItems: "center",
-		width: width
+		alignItems: "flex-end",
+		width: '90%',
+	},
+	wrapper_row: {
+		flex: 1,
+		flexDirection: "row",
+		width: '90%',
 	},
 	picture_title: {
-		transform: [{ rotate: '90deg' }],
+		fontSize: 11,
+		// transform: [{ rotate: '90deg' }],
 		right: 0,
 		top: 0,
-		width: titleWidth
 	}
 });

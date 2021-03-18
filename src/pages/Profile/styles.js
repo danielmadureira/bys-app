@@ -22,9 +22,9 @@ export const styles = StyleSheet.create({
 	wrapper_menu: {
 		marginTop: 36,
 	},
-    profile: {
-        width: wrapperWidth,
-        height: 200,
+	profile: {
+		width: wrapperWidth,
+		height: 200,
 	},
 	profile_name: {
 		marginTop: 150,
@@ -35,20 +35,21 @@ export const styles = StyleSheet.create({
 	},
 	image: {
 		marginTop: 45,
+		backgroundColor: '#EAEBCF'
 	},
 	profile_image_wrapper: {
 		width: 184,
 		height: 184,
-		
+
 		position: 'absolute',
-		marginTop: 150 
+		marginTop: 150
 	},
 	profile_image: {
-		width: 184,
-		height: 184,
+		width: 180,
+		height: 180,
 		borderWidth: 1,
 		borderColor: '#EAEBCF',
-		
+
 		borderRadius: 100,
 	},
 	wrapper_status: {
@@ -76,22 +77,22 @@ export const styles = StyleSheet.create({
 		textAlign: "left",
 		fontSize: 18
 	},
-    message_image: {
+	message_image: {
 		width: messageWidth,
 		flex: 1,
-        resizeMode: "contain",
-        justifyContent: "center",
-        
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "center"
+		resizeMode: "contain",
+		justifyContent: "center",
+
+		display: "flex",
+		justifyContent: "flex-end",
+		alignItems: "center"
 	},
-    message_container: {
-        height: 400,
+	message_container: {
+		height: 400,
 		width: wrapperWidth,
 		borderRadius: 10,
 
-		paddingTop: 75,
+		paddingTop: 80,
 		marginBottom: 200,
 
 		display: "flex",
@@ -100,8 +101,8 @@ export const styles = StyleSheet.create({
 	message_title: {
 		width: width,
 		marginBottom: 20
-	},	
-	title: {	
+	},
+	title: {
 		fontSize: 24,
 		color: '#fff',
 		textAlign: "left"
@@ -109,19 +110,19 @@ export const styles = StyleSheet.create({
 	message: {
 		height: 234,
 		width: messageWidth,
-		
+
 		backgroundColor: '#EAEBCF',
 		borderRadius: 10,
 		display: "flex",
 		alignItems: "center",
 	},
-    input: {
+	input: {
 		width: width,
 		height: 50,
-        borderBottomWidth: 1,
+		borderBottomWidth: 1,
 		borderColor: '#555',
-    },
-    input_area: {
+	},
+	input_area: {
 		width: width,
 		marginTop: 15,
 		padding: 10,
@@ -131,6 +132,5 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_button: {
 		width: '80%',
-		marginTop: 30,
 	}
 });

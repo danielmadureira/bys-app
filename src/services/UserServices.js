@@ -59,6 +59,5 @@ const get = async (id) => {
 export const UserServices = {
   create,
   update,
-  get,
-  saveImage
+  get
 }

@@ -1,69 +1,105 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import { StatusBar } from 'expo-status-bar'
+import React, { useState } from 'react'
 import {
 	ImageBackground,
 	Text,
 	View
-} from 'react-native';
-import { ScrollView, TextInput } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
-import { BackBase, TextCard, TitleHeader } from '../../components';
-import ButtonBase from '../../components/base/ButtonBase';
+} from 'react-native'
+import { ScrollView, TextInput } from 'react-native-gesture-handler'
+import { useSelector } from 'react-redux'
+import { BackBase, TextCard, TitleHeader } from '../../components'
+import BodyWriteDiary from '../Diary/WriteDiary/BodyWriteDiary'
 
+import DefaultProfile from '../../../assets/default-user.png'
 import { styles } from './styles'
+import InputBase from '../../components/base/InputBase'
+import { Field, Formik } from 'formik'
+import * as Yup from 'yup'
+
+const ProfileSchema = Yup.object().shape({
+	status: Yup
+		.string()
+})
 
 const Profile = ({ navigation }) => {
 	
   const user = useSelector(state => state.user)
+	const [isUpdateMode, setUpdateMode] = useState(true)
 
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
-			<View style={styles.container_header}>
-				<TitleHeader
-					title="Perfil"
-					subtitle="Vamos falar sobre você"
-				/>
-				<BackBase navigation={navigation} />
-			</View>
+			<Formik
+				initialValues={{
+					status: '',
+				}}
+				validationSchema={ProfileSchema}
+				onSubmit={values => {
 
-			<View style={styles.wrapper}>
-				{/** User's Background Picture */}
-				<ImageBackground
-					source={{ uri: user.profile_picture }}
-					imageStyle={styles.image}
-					style={styles.profile}
-				>
-				</ImageBackground>
+				}}
+			>
+			{({ handleSubmit, isValid, setFieldTouched, setFieldValue }) => (<>
+				<View style={styles.container_header}>
+					<TitleHeader
+						title="Perfil"
+						subtitle="Vamos falar sobre você"
+					/>
+					<BackBase navigation={navigation} />
+				</View>
 
-				{/** User's Profile Picture */}
-				<View style={styles.profile_image_wrapper}>
+				<View style={styles.wrapper}>
+					{/** User's Background Picture */}
 					<ImageBackground
 						source={{ uri: user.profile_picture }}
-						imageStyle={styles.profile_image}
+						imageStyle={styles.image}
 						style={styles.profile}
+						blurRadius={1.5}
 					>
 					</ImageBackground>
-				</View>
-			</View>
 
-			{/** User's Name and Profession */}
-			<View style={styles.wrapper}>
-				<Text style={styles.profile_name}>
-					{user.name}
-				</Text>
-				<Text style={styles.profile_profession}>
-					{user.profession}
-				</Text>
-			</View>
-
-			{/** User's Mood */}
-			<View style={styles.wrapper_status}>
-				<View style={styles.status}>
-					<Text style={styles.status_title}>Hoje estou me sentindo:</Text>
-					<Text style={styles.status_title}>Abençoada</Text>
+					{/** User's Profile Picture */}
+					<View style={styles.profile_image_wrapper}>
+						<ImageBackground
+							source={
+								user.profile_picture ?
+								{ uri: user.profile_picture } :
+								DefaultProfile
+							}
+							imageStyle={styles.profile_image}
+							style={styles.profile}
+						>
+						</ImageBackground>
+					</View>
 				</View>
-			</View>
+
+				{/** User's Name and Profession */}
+				<View style={styles.wrapper}>
+					<Text style={styles.profile_name}>
+						{user.name}
+					</Text>
+					<Text style={styles.profile_profession}>
+						{user.profession}
+					</Text>
+				</View>
+
+				{/** User's Mood */}
+				<View style={styles.wrapper_status}>
+					<View style={styles.status}>
+						<Text style={styles.status_title}>Hoje estou me sentindo:</Text>
+						{isUpdateMode ? (
+							<Field
+								component={InputBase}
+								name="status"
+								placeholder="Abençoada"
+								style={styles.status_title}
+							/>
+						) : (
+							<Text style={styles.status_title}>Abençoada</Text>
+						)}
+					</View>
+				</View>
+			</>)}
+			</Formik>
 
 			{/** User's Diary */}
 			<View style={styles.message_container}>	
@@ -75,29 +111,11 @@ const Profile = ({ navigation }) => {
 					<View style={styles.message_title}>
 						<Text style={styles.title}>Meu diário</Text>
 					</View>
-					<View style={styles.message}>		
-						<TextInput
-							placeholder="Meu diário hoje, 27 de julho"
-							style={styles.input}
-						/>
-						
-						<TextInput
-							placeholder="Você pode digitar qualquer coisa aqui."
-							style={styles.input_area}
-							multiline={true}
-							numberOfLines={6}
-						/>
-
-						<View style={styles.wrapper_button}>
-							<ButtonBase
-								title="Salvar"
-								background="#EAEBCF"
-								color="#000"
-								radius={15}
-								onPress={() => navigation.navigate('WriteDiary')}
-							/>
-						</View>
-					</View>
+					<BodyWriteDiary 
+						btnStyle={styles.wrapper_button}
+						containerStyle={styles.message}
+						numberOfLines={6}
+					/>
 				</ImageBackground>
 			</View>
 		</ScrollView>

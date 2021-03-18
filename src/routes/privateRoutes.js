@@ -18,7 +18,8 @@ import {
 	AllMedicineNotification,
 	MedicineNotification,
 	WaterNotification,
-	MainNotification
+	MainNotification,
+	DetailsDiary
 } from '../pages';
 
 import { Main } from '../components';
@@ -81,6 +82,13 @@ const PrivateRoutes = () => {
 			<Tab.Screen
 				name="WriteDiary"
 				component={WriteDiary}
+				options={{
+					headerShown: false
+				}}
+			/>
+			<Tab.Screen
+				name="DetailsDiary"
+				component={DetailsDiary}
 				options={{
 					headerShown: false
 				}}

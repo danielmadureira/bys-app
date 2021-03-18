@@ -34,8 +34,9 @@ const Register = (props) => {
 		(async () => {
 			if (Platform.OS !== 'web') {
 				const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
+				
 				if (status !== 'granted') {
-					alert('Sorry, we need camera roll permissions to make this work!');
+					alert('Desculpe, precisamos ter permissão para continuar.');
 				}
 			}
 		})()
@@ -61,7 +62,6 @@ const Register = (props) => {
 				}}
 				validationSchema={RegisterSchemaStepOne}
 				onSubmit={values => {
-					console.log(values, 'here')
 					dispatch(actions.registerStepOne(values))
 					navigation.navigate('RegisterPassword')
 				}}

@@ -12,6 +12,8 @@ export { default as DetailFeed } from './Feed/DetailFeed/DetailFeed'
 export { default as Diary } from './Diary/Diary'
 // Página de Novo Diário
 export { default as WriteDiary } from './Diary/WriteDiary/WriteDiary'
+// Detalhes 
+export { default as DetailsDiary } from './Diary/DetailsDiary'
 
 // Página de Conversas
 export { default as Forum } from './Forum/Forum'

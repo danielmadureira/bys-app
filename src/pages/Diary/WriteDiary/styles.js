@@ -19,18 +19,18 @@ export const styles = StyleSheet.create({
 		paddingBottom: 2,
 		width: width
 	},
-    message_image: {
+	message_image: {
 		width: messageWidth,
 		flex: 1,
-        resizeMode: "contain",
-        justifyContent: "center",
-        
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "center"
+		resizeMode: "contain",
+		justifyContent: "center",
+
+		display: "flex",
+		justifyContent: "flex-end",
+		alignItems: "center"
 	},
-    message_container: {
-        height: 332,
+	message_container: {
+		height: 332,
 		width: wrapperWidth,
 		borderRadius: 10,
 
@@ -42,18 +42,18 @@ export const styles = StyleSheet.create({
 	},
 	message: {
 		height: 234,
-        width: messageWidth,
-        
+		width: messageWidth,
+
 		display: "flex",
 		alignItems: "center",
 	},
-    input: {
+	input: {
 		width: messageWidth,
 		height: 50,
-        borderBottomWidth: 1,
+		borderBottomWidth: 1,
 		borderColor: '#555',
-    },
-    input_area: {
+	},
+	input_area: {
 		width: messageWidth,
 		marginTop: 15,
 		padding: 10,
