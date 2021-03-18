@@ -19,19 +19,19 @@ export const styles = StyleSheet.create({
 		paddingBottom: 2,
 		width: width
 	},
-    message_image: {
+	message_image: {
 		width: messageWidth,
 		flex: 1,
-        resizeMode: "contain",
-        justifyContent: "center",
-        
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "center"
+		resizeMode: "contain",
+		justifyContent: "center",
+
+		display: "flex",
+		justifyContent: "flex-end",
+		alignItems: "center"
 	},
-    message_container: {
-        height: 332,
-		width: wrapperWidth,
+	message_container: {
+		height: 332,
+		width: '90%',
 		borderRadius: 10,
 
 		marginTop: 24,
@@ -41,27 +41,26 @@ export const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	message: {
-		height: 234,
-        width: messageWidth,
-        
+		width: '96%',
+
 		display: "flex",
-		alignItems: "center",
+		alignItems: "flex-start",
 	},
-    input: {
+	input: {
 		width: messageWidth,
 		height: 50,
-        borderBottomWidth: 1,
+		borderBottomWidth: 1,
 		borderColor: '#555',
-    },
-    input_area: {
+	},
+	input_area: {
 		width: messageWidth,
 		marginTop: 15,
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#555',
 		textAlignVertical: 'top'
-    },
-    wrapper_button: {
-        width: '90%',
-    }
+	},
+	wrapper_button: {
+		width: '92%',
+	}
 });

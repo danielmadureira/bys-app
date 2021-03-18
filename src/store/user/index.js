@@ -36,7 +36,6 @@ export const reducer = (
 ) => {
   switch (action.type) {
     case types.FETCH_USER: {
-      console.log(action)
       const {
         id,
         name,

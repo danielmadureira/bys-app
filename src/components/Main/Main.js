@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, ImageBackground, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './styles';
+import DefaultProfile from '../../../assets/default-user-light.png'
 
 const Main = ({ 
 	state, 
@@ -33,7 +34,11 @@ const Main = ({
 					style={styles.wrapper}
 				>
 					<ImageBackground
-						source={{ uri: user.profile_picture }}
+						source={
+							user.profile_picture ?
+							{ uri: user.profile_picture } :
+							DefaultProfile
+						}
 						style={styles.profile}
 						imageStyle={styles.image}
 					>

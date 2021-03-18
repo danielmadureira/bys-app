@@ -7,7 +7,11 @@ const ImageCard = (props) => {
 	const { item, onPress } = props;
 	return (
 		<ImageBackground
-			source={item.picture}
+			source={
+				item.picture ?
+				{ uri: item.picture } :
+				''
+			}
 			style={styles(props).container}
 			imageStyle={styles(props).image}
 		>
@@ -27,7 +31,7 @@ const ImageCard = (props) => {
 						numberOfLines={2}
 						style={styles(props).subtitle}
 					>
-						{item.subtitle}
+						{item.headline}
 					</Text>
 				</View>
 			</TouchableWithoutFeedback >

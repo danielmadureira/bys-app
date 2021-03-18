@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ea6d5e74-f921-4445-9ad9-1d10006110b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/ImageCard/ImageCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/ImageCard/ImageCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/base/MessageBase/MessageBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/base/MessageBase/MessageBase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/base/MessageBase/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/base/MessageBase/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Calculator/IMCCalculator/IMCCalculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Calculator/IMCCalculator/IMCCalculator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Diary/Diary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Diary/Diary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Diary/WriteDiary/WriteDiary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Diary/WriteDiary/WriteDiary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Diary/WriteDiary/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Diary/WriteDiary/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Diary/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Diary/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Feed/DetailFeed/DetailFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feed/DetailFeed/DetailFeed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Feed/DetailFeed/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feed/DetailFeed/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Feed/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feed/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Feed/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Feed/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/privateRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/privateRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/UserServices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/UserServices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/diary/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/diary/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/roots.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/roots.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ote8T79XLR00zSAy7SHEingXjV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ea6d5e74-f921-4445-9ad9-1d10006110b2" name="Default Changelist" comment="" />
+      <created>1614110154630</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614110154630</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-931" y="69" width="864" height="606" key="AVDManager" timestamp="1616026414267">
+      <screen x="-1366" y="30" width="1366" height="738" />
+    </state>
+    <state x="-931" y="69" width="864" height="606" key="AVDManager/-1366.30.1366.738/0.30.1920.1050@-1366.30.1366.738" timestamp="1616026414267" />
+    <state x="360" y="155" width="1200" height="800" key="AVDManager/0.30.1920.1050@0.30.1920.1050" timestamp="1614122709601" />
+    <state x="-1038" y="58" key="SettingsEditor" timestamp="1614123336363">
+      <screen x="-1366" y="30" width="1366" height="738" />
+    </state>
+    <state x="-1038" y="58" key="SettingsEditor/-1366.30.1366.738/0.30.1920.1050@-1366.30.1366.738" timestamp="1614123336363" />
+    <state x="461" y="200" key="SettingsEditor/-1366.30.1366.738/0.30.1920.1050@0.30.1920.1050" timestamp="1614122771385" />
+    <state x="461" y="200" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1614122709234" />
+  </component>
+</project>

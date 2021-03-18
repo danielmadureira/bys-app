@@ -5,18 +5,35 @@ import { ENDPOINTS } from "./enums/Endpoints"
  * Save image profile
  * @param {file} image 
  */
-const _saveImage = (image) => {
-  APIServices.post(
-    ENDPOINTS.USER,
-    { image }
-  )
+const _getFormData = async (uri) => {
+  let filename = uri.split('/').pop();
+
+  let match = /\.(\w+)$/.exec(filename);
+  let type = match ? `image/${match[1]}` : `image`;
+
+  let formData = new FormData();
+  formData.append('profile_picture', { 
+    uri: uri, 
+    name: filename, 
+    type 
+  });
+  
+  return formData
 }
 
-const create = (params) => {
-  APIServices.post(
+const create = async (params) => {
+  return await APIServices.post(
     ENDPOINTS.USER,
     params
   )
+  .then(res => {
+    console.log(res)
+    return res.data
+  })
+  .catch(err => {
+    console.log(err)
+    return err
+  })
 }
 
 const update = (params) => {

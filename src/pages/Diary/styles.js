@@ -22,6 +22,15 @@ export const styles = StyleSheet.create({
 		width: width
 	},
 	messages: {
-		marginBottom: 200,
+		marginBottom: 100,
+	},
+	wrapper_body: {
+		marginTop: 35,
+		width: width,
+		marginBottom: '30%',
+	},
+	body: {
+		fontSize: 18,
+		textAlign: "justify",
 	}
 });
