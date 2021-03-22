@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	View,
 	SectionList,
@@ -8,11 +8,22 @@ import {
 	Text,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { BackBase, TextCard, TitleHeader } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
+import { actions } from '../../store/forum'
+import { AlertBase, BackBase, TextCard, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 
 const Forum = ({ navigation }) => {
+	const { groups, isLoading } = useSelector(state => state.forum)
+	const dispatch = useDispatch()
+	
+	useEffect(() => {
+		if(isLoading) {
+			dispatch(actions.getAllForumGroups())
+		}
+	}, [isLoading])
+
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -21,32 +32,52 @@ const Forum = ({ navigation }) => {
 					title="Conversa"
 					subtitle="Compartilhe experiências"
 				/>
-
 				<BackBase navigation={navigation} />
 			</View>
 
-
-			<SafeAreaView style={{ flex: 1 }}>
+			<SafeAreaView style={{ flex: 1, marginBottom: 100 }}>
+				{!isLoading && (
 				<SectionList
 					stickySectionHeadersEnabled={false}
-					sections={SECTIONS}
+					sections={groups}
 					renderSectionHeader={({ section }) => (
 						<>
 							{<View style={styles.wrapper}>
 								<View style={styles.container_header}>
 									<TitleHeader
 										title={section.title}
-										subtitle="Veja as últimas novidades"
+										subtitle={section.subtitle}
 										top={1}
 									/>
 								</View>
 								<FlatList
 									horizontal
+									ListEmptyComponent={
+										<AlertBase type="warning">
+											<Text>
+												Este grupo não possui salas no momento.
+											</Text>
+										</AlertBase>
+									}
 									data={section.data}
 									renderItem={({ item }) => {
-										return <View key={item.id} style={styles.wrapper_card}>
-											<TextCard smallSize diary={item} event={() => navigation.navigate('ForumGroup')} />
-										</View> 
+										console.log(item, 'here')
+										return (
+											<View key={item.id} style={styles.wrapper_card}>
+												<TextCard 
+													smallSize 
+													diary={item} 
+													event={() => {
+														dispatch(actions.isCommentLoading(true))
+														navigation.navigate('ForumGroup', {
+															title: section.title,
+															subtitle: section.subtitle,
+															id: item.id
+														}
+													)}} 
+												/>
+											</View>
+										) 
 									}}
 									showsHorizontalScrollIndicator={false}
 								/>
@@ -57,48 +88,10 @@ const Forum = ({ navigation }) => {
 						return null;
 					}}
 				/>
+				)}
 			</SafeAreaView>
 		</ScrollView>
 	);
 };
-
-const SECTIONS = [
-	{
-		title: "Grupo de espairecimento",
-		subtitle: "Grupo para assuntos gerais",
-		data: [
-			{
-				id: 1,
-				title: 'Sala de descompressão',
-				texto: 'Este espaço é dedicado para aqueles que querem compartilhar experiências não relacionadas ao COVID-19.',
-				data: '20 de Julho',
-			},
-			{
-				id: 2,
-				title: 'Room name',
-				texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				data: '20 de Julho',
-			}
-		]
-	},
-	{
-		title: "Grupo de espairecimento",
-		subtitle: "Grupo para assuntos gerais",
-		data: [
-			{
-				id: 3,
-				title: 'Coronavírus',
-				texto: 'Esse espaço é destinado para compartilhamento de informações e experiências relacionadas ao covid-19.',
-				data: '20 de Julho',
-			},
-			{
-				id: 4,
-				title: 'Room name',
-				texto: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-				data: '20 de Julho',
-			}
-		]
-	}
-];
 
 export default Forum;

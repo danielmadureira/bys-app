@@ -33,13 +33,13 @@ const Calculator = ({ navigation }) => {
 const SECTIONS = [
 	{
 		path: 'IMCCalculator',
-		title: 'Índice IMC',
-		texto: 'Descubra instantaneamente seu Índice de Massa Corpórea ideal através desta simples calculadora.'
+		name: 'Índice IMC',
+		description: 'Descubra instantaneamente seu Índice de Massa Corpórea ideal através desta simples calculadora.'
 	},
 	{
 		path: 'WaterCalculator',
-		title: 'Ingestão de água',
-		texto: 'Descubra a quantidade de água que você precisa consumir todos os dias para se manter em forma.'
+		name: 'Ingestão de água',
+		description: 'Descubra a quantidade de água que você precisa consumir todos os dias para se manter em forma.'
 	}
 ];
 

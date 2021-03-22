@@ -18,20 +18,19 @@ const TextCard = (props) => {
 						key={diary.id}
 						style={styles(props).title}
 					>
-						{diary.title}
+						{diary.name}
 					</Text>
 					
 					<View>
 						{(icon) && <FowardBase />}
 					</View>
 				</View>
-				
 
 				<Text
 					numberOfLines={4}
 					style={styles(props).subtitle}
 				>
-					{diary.texto}
+					{diary.description}
 				</Text>
 			</View>
 		</TouchableWithoutFeedback>

@@ -56,8 +56,21 @@ const get = async (id) => {
   })
 }
 
+const getById = async (id) => {
+  return await APIServices.get(
+    `${ENDPOINTS.USER}/${id}`,
+  )
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    return err
+  })
+}
+
 export const UserServices = {
   create,
   update,
-  get
+  get,
+  getById
 }

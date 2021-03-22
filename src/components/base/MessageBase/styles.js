@@ -7,7 +7,7 @@ export const styles = (props) => StyleSheet.create({
 		alignItems: "center",
 	},
 	wrapper_text: {
-		width: '92%',
+		width: '100%',
 	},
 	title: {
 		paddingTop: 15,
@@ -17,6 +17,7 @@ export const styles = (props) => StyleSheet.create({
 	subtitle: {
 		fontSize: 14,
 		paddingTop: 5,
+		marginLeft: props.comment ? 5 : 0 
 	},
 	wrapper_date: {
 		display: "flex",

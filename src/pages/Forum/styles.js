@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
 	container_header: {
 		marginTop: 10,
 		paddingBottom: 15,
-		width: 320
+		width: '85%'
 	},
 	wrapper_card: {
 		marginTop: 5,

@@ -41,12 +41,12 @@ const MainNotification = ({ navigation }) => {
 
 const SECTIONS = [
 	{
-		title: 'Alertas de medicamento',
-		texto: 'Nunca mais perca o horário do seu medicamento. Adicione alertas para todos os seus medicamentos.'
+		name: 'Alertas de medicamento',
+		description: 'Nunca mais perca o horário do seu medicamento. Adicione alertas para todos os seus medicamentos.'
 	},
 	{
-		title: 'Alertas de ing. de água',
-		texto: 'Controle seu consumo de água e receba notificações sempre que precisar beber água. '
+		name: 'Alertas de ing. de água',
+		description: 'Controle seu consumo de água e receba notificações sempre que precisar beber água. '
 	}
 ];
 

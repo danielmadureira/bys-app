@@ -45,6 +45,7 @@ export const styles = StyleSheet.create({
 		fontSize: 14
 	},
 	wrapper_comment: {
-		marginBottom: 200,
+		marginBottom: 150,
+		width: '90%'
 	}
 });

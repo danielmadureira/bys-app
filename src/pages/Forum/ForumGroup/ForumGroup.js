@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
 	Text,
 	View
@@ -9,8 +9,24 @@ import { BackBase, Comment, TitleHeader } from '../../../components'
 
 import { styles } from './styles'
 import ProfileImage from '../../../../assets/Profile-picture.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { actions } from '../../../store/forum'
+import { ActivityIndicator } from 'react-native'
 
-const ForumGroup = ({ navigation }) => {
+const ForumGroup = ({ navigation, route }) => {
+  const { title, subtitle, id } = route.params
+	const { 
+		comments, 
+		isCommentLoading 
+	} = useSelector(state => state.forum)
+	const dispatch = useDispatch()
+	
+	useEffect(() => {
+		if(isCommentLoading) {
+			dispatch(actions.getAllForumComments(id))
+		}
+	}, [isCommentLoading])
+
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -25,24 +41,31 @@ const ForumGroup = ({ navigation }) => {
 
 			<View style={styles.wrapper_status}>
 				<View style={styles.status}>
-					<Text style={styles.status_title}>Sala de descompressão</Text>
+					<Text style={styles.status_title}>
+						{title}
+					</Text>
 					<Text 
 						style={styles.status_subtitle}
 						numberOfLines={4}
 					>
-						Este espaço é dedicado para aqueles que querem
-						compartilhar experiências não relacionadas ao COVID-19.
+						{subtitle}
 					</Text>
 				</View>
 			</View>
 			
 			<View style={styles.wrapper_comment}>
-				{SECTIONS.map((v, i) => {
-					return <Comment
-							key={i}
-							diary={v}
-						/>
-				})}
+				{!isCommentLoading ? (
+					comments.map((comment) => {
+						return (
+							<Comment
+								key={comment.id}
+								diary={comment}
+							/>
+						)
+					})
+				) : (
+					<ActivityIndicator color="green" size="large" />
+				)}
 			</View>
 		</ScrollView>
 	);
@@ -53,7 +76,7 @@ const SECTIONS = [
 		name: 'Amanda M. Gonze',
 		profile: ProfileImage,
 		profession: 'Chefe de enfermagem',
-		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
+		text: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
 		data: 'Enviado ontem, às 15:30',
 		liked: true
 	},
@@ -61,7 +84,7 @@ const SECTIONS = [
 		name: 'Amanda M. Gonze',
 		profile: ProfileImage,
 		profession: 'Chefe de enfermagem',
-		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
+		text: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
 		data: 'Enviado ontem, às 15:30',
 		liked: true
 	},

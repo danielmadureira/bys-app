@@ -24,7 +24,6 @@ const MessageBase = (props) => {
 
 					<Text
 						style={styles(props).subtitle}
-						numberOfLines={2}
 					>
 						{diary.text}
 					</Text>

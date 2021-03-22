@@ -14,7 +14,6 @@ import ButtonBase from '../../../components/base/ButtonBase';
 
 import { styles } from './styles'
 
-
 const reference = [
 	{
 		imc: 'Menos que 18,5',
@@ -125,7 +124,7 @@ const IMCCalculator = ({ navigation }) => {
 				/>
 
 				<TextInput
-					placeholder="Sua altura em metros"
+					placeholder="Sua altura em metros (Ex.: 1.65)"
 					style={styles.input}
 					value={altura}
 					keyboardType="numeric"
