@@ -23,6 +23,7 @@ export const styles = StyleSheet.create({
 	},
 	messages: {
 		marginBottom: 100,
+		width: '90%'
 	},
 	wrapper_body: {
 		marginTop: 35,

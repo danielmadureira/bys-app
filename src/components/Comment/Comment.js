@@ -8,20 +8,23 @@ import { styles } from "./styles";
 const Comment = ({ diary }) => {
 
 	const isLiked = () => {
-		let color = (diary.liked) ? '#BD2222' : '#c0c0c0'
-
-		return color
+		return (diary.liked) ? '#BD2222' : '#c0c0c0'
 	}
-
+	
 	return (
 		<MessageBase
+			comment={true}
 			diary={diary}
 			header={
 				<View style={styles.wrapper}>
 					<View>
 						<Image 
 							style={styles.profile} 
-							source={diary.profile} 
+							source={
+								diary.profile_picture ?
+								{ uri: diary.profile_picture } :
+								''
+							} 
 						/>
 					</View>
 					

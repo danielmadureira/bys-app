@@ -5,12 +5,14 @@ import * as user from './user';
 import * as register from './register';
 import * as diary from './diary';
 import * as feed from './feed';
+import * as forum from './forum';
 
 const reducers = combineReducers({
   user: user.reducer,
   register: register.reducer,
   diary: diary.reducer,
-  feed: feed.reducer
+  feed: feed.reducer,
+  forum: forum.reducer
 })
 
 export const rootReducers = (state, action) => {
@@ -22,6 +24,7 @@ export function* rootSagas() {
     user.saga(),
     register.saga(),
     diary.saga(),
-    feed.saga()
+    feed.saga(),
+    forum.saga()
   ]);
 }
