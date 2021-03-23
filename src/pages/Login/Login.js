@@ -9,28 +9,39 @@ import { useDispatch } from 'react-redux';
 import { actions } from '../../store/user';
 import { AuthServices } from '../../services/AuthServices';
 import { SecureStoreServices } from '../../services/SecureStoreServices';
+import { encryptPassword } from '../../helpers/registerHelper';
+import { AlertBase, TextBase } from '../../components';
+import { ActivityIndicator } from 'react-native';
 
 const Login = (props) => {
 	const { navigation } = props
 	const dispatch = useDispatch()
 
 	const [email, setEmail] = useState('administrator@bys-app.com')
-	const [password, setPassword] = useState('123')
+	const [password, setPassword] = useState('')
+	const [showError, setShowError] = useState(false)
+	const [isLoading, setLoading] = useState(false)
 
 	const login = () => {
+		setLoading(true)
 		SecureStoreServices.deleteItemAsync('_token')
 		AuthServices.authenticate({
 			email,
-			password: 'c19760e4c50be2ef8b7c479d2a8cc67e230659e5625ddb31b03ceabc15eea849',
+			password: encryptPassword(password),
 			device_name: 'emulator_client'
 		})
 		.then(async (res) => {
+			setShowError(false)
+			setLoading(false)
 			await SecureStoreServices.setItemAsync('_token', res.plainTextToken)
 
 			dispatch(actions.getUser())
 			navigation.navigate('Feed')
 		})
-		.catch(err => console.log(err, 'Error'))
+		.catch(err => {
+			setShowError(true)
+			setLoading(false)
+		})
 	}
 
 	return (
@@ -45,9 +56,18 @@ const Login = (props) => {
 
 			<View style={styles.container_flex}>
 				<View style={styles.wrapper_button}>
-					<Text style={styles.title}>Login</Text>
+					<TextBase style={styles.title}>
+						Login
+					</TextBase>
 				</View>
-				
+				{showError && (
+					<View style={styles.wrapper_alert}>
+						<AlertBase type="warning">
+							Usuário ou senha estão incorretos.
+						</AlertBase>
+					</View>
+				)}
+
 				<TextInput
 					placeholder="E-mail"
 					style={styles.input}
@@ -66,12 +86,19 @@ const Login = (props) => {
 						title="Entrar"
 						onPress={() => { login() }}
 					/>
+					{isLoading && (
+						<ActivityIndicator 
+							size="large" 
+							color="green" 
+							animating={isLoading}
+						/>
+					)}
 
-					<Text style={styles.textHelper}>
+					<TextBase style={styles.textLink}>
 						Preciso de ajuda para acessar
-					</Text>
-					<Text style={styles.textHelper}>
-						Ainda não possui uma conta?
+					</TextBase>
+					<TextBase style={styles.textHelper}>
+						Ainda não possui uma conta?&nbsp;
 						<Text 
 							style={styles.register}
 							onPress={() => {
@@ -80,7 +107,7 @@ const Login = (props) => {
 						>
 							Criar conta
 						</Text>
-					</Text>
+					</TextBase>
 				</View>
 			</View>
 		</ScrollView>

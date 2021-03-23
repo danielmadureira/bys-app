@@ -12,10 +12,12 @@ import {
 
 import { AuthServices } from '../services/AuthServices';
 import PrivateRoutes from './privateRoutes';
+import { useSelector } from 'react-redux';
 
 const Stack = createStackNavigator();
 
 const Routes = () => {
+  const user = useSelector(state => state.user)
 	return (
 		<NavigationContainer>
 			<Stack.Navigator 
@@ -24,7 +26,9 @@ const Routes = () => {
 					cardStyle: { backgroundColor: '#FFFFFF' }
 				}}
 			>
-				{/** !AuthServices.isAuthenticated() && ( */}
+				{user.name === '' || 
+				user.name === undefined ? 
+				(<>
 					<Stack.Screen
 						name="Home"
 						component={Login}
@@ -48,8 +52,8 @@ const Routes = () => {
 							headerShown: false
 						}}
 					/>
-
-				{AuthServices.isAuthenticated() && (
+				</>) : 
+				(
 					<Stack.Screen
 						name="Feed"
 						component={PrivateRoutes}

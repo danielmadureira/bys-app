@@ -26,6 +26,9 @@ export const actions = {
   fetchUser: (user) => ({
     type: types.FETCH_USER,
     payload: user
+  }),
+  unauthenticate: () => ({
+    type: types.UNAUTHENTICATE_USER
   })
 }
 

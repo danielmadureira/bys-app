@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { MessageBase } from '..';
+import { MessageBase, TextBase } from '..';
 
 import { styles } from "./styles";
 
@@ -29,18 +29,18 @@ const Comment = ({ diary }) => {
 					</View>
 					
 					<View style={styles.wrapper_text}>
-						<Text 
+						<TextBase 
 							style={styles.name} 
 							numberOfLines={1}
 						>
 							{diary.name}
-						</Text>
-						<Text 
+						</TextBase>
+						<TextBase 
 							style={styles.profession}
 							numberOfLines={1}
 						>
 							{diary.profession}
-						</Text>
+						</TextBase>
 					</View>
 
 					<View>

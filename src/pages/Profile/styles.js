@@ -132,5 +132,15 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_button: {
 		width: '80%',
+	},
+	actions_icons: {
+		width: '90%',
+		flex: 1,
+		flexDirection: "row",
+		justifyContent: "space-between",
+		top: 60
+	},
+	icon_edit: {
+		width: 60,
 	}
 });

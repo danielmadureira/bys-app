@@ -1,11 +1,10 @@
 import { StatusBar } from 'expo-status-bar'
 import React, { useEffect } from 'react'
 import {
-	Text,
 	View
 } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { BackBase, Comment, TitleHeader } from '../../../components'
+import { BackBase, Comment, TextBase, TitleHeader } from '../../../components'
 
 import { styles } from './styles'
 import ProfileImage from '../../../../assets/Profile-picture.png'
@@ -41,15 +40,15 @@ const ForumGroup = ({ navigation, route }) => {
 
 			<View style={styles.wrapper_status}>
 				<View style={styles.status}>
-					<Text style={styles.status_title}>
+					<TextBase style={styles.status_title}>
 						{title}
-					</Text>
-					<Text 
+					</TextBase>
+					<TextBase 
 						style={styles.status_subtitle}
 						numberOfLines={4}
 					>
 						{subtitle}
-					</Text>
+					</TextBase>
 				</View>
 			</View>
 			
@@ -70,40 +69,5 @@ const ForumGroup = ({ navigation, route }) => {
 		</ScrollView>
 	);
 };
-
-const SECTIONS = [
-	{
-		name: 'Amanda M. Gonze',
-		profile: ProfileImage,
-		profession: 'Chefe de enfermagem',
-		text: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
-		data: 'Enviado ontem, às 15:30',
-		liked: true
-	},
-	{
-		name: 'Amanda M. Gonze',
-		profile: ProfileImage,
-		profession: 'Chefe de enfermagem',
-		text: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
-		data: 'Enviado ontem, às 15:30',
-		liked: true
-	},
-	{
-		name: 'Amanda M. Gonze',
-		profile: ProfileImage,
-		profession: 'Chefe de enfermagem',
-		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
-		data: 'Enviado ontem, às 15:30',
-		liked: false
-	},
-	{
-		name: 'Amanda M. Gonze',
-		profile: ProfileImage,
-		profession: 'Chefe de enfermagem',
-		texto: 'Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional Larissa Menezes Santos - Nutricionista, especialista em Terapia Nutricional',
-		data: 'Enviado ontem, às 15:30',
-		liked: true
-	}
-];
 
 export default ForumGroup;

@@ -6,6 +6,7 @@ import {
 
 import { styles, colors } from './styles'
 import { Icon } from 'react-native-elements'
+import TextBase from '../TextBase';
 
 const AlertBase = (props) => {
 
@@ -19,9 +20,9 @@ const AlertBase = (props) => {
 				name="warning"
 				size={25}
 			/>
-			<Text style={styles(props).wrapper_text}>
+			<TextBase style={styles(props).wrapper_text}>
         {props.children}
-      </Text>
+      </TextBase>
 		</View>
 	);
 };

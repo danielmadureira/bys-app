@@ -2,14 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Modal } from 'react-native';
 import {
-	Alert,
 	TextInput,
 	View,
-	Text,
 	Pressable
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { BackBase, TitleHeader } from '../../../components';
+import { BackBase, TextBase, TitleHeader } from '../../../components';
 import ButtonBase from '../../../components/base/ButtonBase';
 
 import { styles } from './styles'
@@ -69,27 +67,27 @@ const IMCCalculator = ({ navigation }) => {
 			>
 				<View style={styles.centeredView}>
 					<View style={styles.modalView}>
-						<Text 
+						<TextBase 
 							style={styles.modalTitle}
 						>
 							Seu IMC é: {calcula(peso, altura)}
-						</Text>
-						<Text style={styles.modalText}>
+						</TextBase>
+						<TextBase style={styles.modalText}>
 							Veja a tabela de referência abaixo.
-						</Text>
+						</TextBase>
 
 						<View style={styles.modalTable}>
-							<Text style={styles.modalTableTitle}>IMC</Text>
-							<Text style={styles.modalTableTitle}>Resultado</Text>
+							<TextBase style={styles.modalTableTitle}>IMC</TextBase>
+							<TextBase style={styles.modalTableTitle}>Resultado</TextBase>
 						</View>
 
 						{reference.map(ref => 
 							<View style={styles.modalTableTexts}>
 								<View style={styles.modalTableBorder}>
-									<Text style={styles.modalTableText}>{ref.imc}</Text>
+									<TextBase style={styles.modalTableText}>{ref.imc}</TextBase>
 								</View>
 								<View style={styles.modalTableBorder}>
-									<Text style={styles.modalTableText}>{ref.resultado}</Text>
+									<TextBase style={styles.modalTableText}>{ref.resultado}</TextBase>
 								</View>
 							</View>
 						)}
@@ -97,7 +95,7 @@ const IMCCalculator = ({ navigation }) => {
 							style={styles.button}
 							onPress={() => setVisible(!isVisible)}
 						>
-							<Text>Fechar</Text>
+							<TextBase>Fechar</TextBase>
 						</Pressable>
 					</View>
 				</View>

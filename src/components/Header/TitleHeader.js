@@ -1,17 +1,18 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import { TextBase } from '..';
 
 import { styles } from "./styles";
 
 const TitleHeader = (props) => {
 	return (
 		<View>
-			<Text style={styles(props).title}>
+			<TextBase style={styles(props).title}>
 				{props.title}
-			</Text>
-			<Text style={styles(props).subtitle}>
+			</TextBase>
+			<TextBase style={styles(props).subtitle}>
 				{props.subtitle}
-			</Text>
+			</TextBase>
 		</View>
 	)
 }

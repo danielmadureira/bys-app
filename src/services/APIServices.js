@@ -6,7 +6,7 @@ const request = axios.create({
   baseURL: API_URL,
   responseType: "json",
   headers: {
-    'X-Requested-With': 'XMLHttpRequest'
+    'X-Requested-With': 'XMLHttpRequest',
   }
 })
 

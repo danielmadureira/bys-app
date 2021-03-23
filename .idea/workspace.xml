@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea6d5e74-f921-4445-9ad9-1d10006110b2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Calculator/IMCCalculator/IMCCalculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Calculator/IMCCalculator/IMCCalculator.js" afterDir="false" />
-    </list>
+    <list default="true" id="ea6d5e74-f921-4445-9ad9-1d10006110b2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,10 +35,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-931" y="69" width="864" height="606" key="AVDManager" timestamp="1616357762957">
+    <state x="-931" y="69" width="864" height="606" key="AVDManager" timestamp="1616457608356">
       <screen x="-1366" y="30" width="1366" height="738" />
     </state>
-    <state x="-931" y="69" width="864" height="606" key="AVDManager/-1366.30.1366.738/0.30.1920.1050@-1366.30.1366.738" timestamp="1616357762957" />
+    <state x="-931" y="69" width="864" height="606" key="AVDManager/-1366.30.1366.738/0.30.1920.1050@-1366.30.1366.738" timestamp="1616457608356" />
     <state x="360" y="155" width="1200" height="800" key="AVDManager/0.30.1920.1050@0.30.1920.1050" timestamp="1614122709601" />
     <state x="-1038" y="58" key="SettingsEditor" timestamp="1614123336363">
       <screen x="-1366" y="30" width="1366" height="738" />

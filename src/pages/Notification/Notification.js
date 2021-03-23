@@ -1,11 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text } from 'react-native';
-import { Button } from 'react-native';
 import {
 	View
 } from 'react-native';
 import { ScrollView, TextInput, TouchableHighlight } from 'react-native-gesture-handler';
+import { TextBase } from '../../components';
 import ButtonBase from '../../components/base/ButtonBase';
 
 import { styles } from './styles'
@@ -21,7 +19,7 @@ const Notification = ({ navigation, type }) => {
 			)}
 
 			<View style={styles({}).weekends}>
-				<Text>Dias do alerta:</Text>
+				<TextBase>Dias do alerta:</TextBase>
 			</View>
 			
 			<View style={styles({}).days}>
@@ -32,7 +30,7 @@ const Notification = ({ navigation, type }) => {
 							color: v.selected && '#AFD47B'
 						}).day}
 					>
-						<Text>{v.day}</Text>
+						<TextBase>{v.day}</TextBase>
 					</TouchableHighlight>
 					)
 				})}

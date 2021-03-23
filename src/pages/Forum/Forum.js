@@ -4,13 +4,18 @@ import {
 	View,
 	SectionList,
 	SafeAreaView,
-	FlatList,
-	Text,
+	FlatList
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/forum'
-import { AlertBase, BackBase, TextCard, TitleHeader } from '../../components';
+import { 
+	AlertBase, 
+	BackBase, 
+	TextBase, 
+	TextCard, 
+	TitleHeader 
+} from '../../components';
 
 import { styles } from './styles'
 
@@ -54,9 +59,9 @@ const Forum = ({ navigation }) => {
 									horizontal
 									ListEmptyComponent={
 										<AlertBase type="warning">
-											<Text>
+											<TextBase>
 												Este grupo não possui salas no momento.
-											</Text>
+											</TextBase>
 										</AlertBase>
 									}
 									data={section.data}

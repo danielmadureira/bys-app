@@ -17,6 +17,11 @@ export { default as BackBase } from './base/BackBase/BackBase';
 export { default as FowardBase } from './base/FowardBase/FowardBase';
 // Alerta informativo
 export { default as AlertBase } from './base/AlertBase/AlertBase';
+// Texto
+export { default as TextBase } from './base/TextBase';
 
 // Componente comentário
 export { default as Comment } from './Comment/Comment';
+
+// Botão para configurações
+export { default as ButtonSettings } from './ButtonSettings';

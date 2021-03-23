@@ -6,6 +6,7 @@ import {
 
 import { styles } from './styles'
 import { Icon } from 'react-native-elements'
+import TextBase from '../TextBase';
 
 const BackBase = ({ navigation }) => {
 
@@ -18,7 +19,7 @@ const BackBase = ({ navigation }) => {
 				name="keyboard-backspace"
 				size={30}
 			/>
-			<Text style={styles.header_back}>Voltar</Text>
+			<TextBase style={styles.header_back}>Voltar</TextBase>
 		</View>
 	);
 };

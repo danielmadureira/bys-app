@@ -23,7 +23,7 @@ const RegisterSchemaStepOne = Yup.object().shape({
 		.string()
 		.required('Este campo é obrigatório'),
 	profession: Yup.string(),
-	profile_picture: Yup.string()
+	image: Yup.string()
 })
 
 const Register = (props) => {
@@ -53,12 +53,12 @@ const Register = (props) => {
 					}
 				/>
 			</View>
-			<Formik 
+			<Formik
 				initialValues={{
 					email: '',
 					name: '',
 					profession: '',
-					profile_picture: ''
+					image: ''
 				}}
 				validationSchema={RegisterSchemaStepOne}
 				onSubmit={values => {
@@ -78,11 +78,9 @@ const Register = (props) => {
 										quality: 1,
 									});
 							
-									console.log(result);
-							
 									if (result.uri) {
-										setFieldValue('profile_picture', result.uri)
-										setFieldTouched('profile_picture', true)
+										setFieldValue('image', result.uri)
+										setFieldTouched('image', true)
 									}
 								}}
 							>

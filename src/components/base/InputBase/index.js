@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import { styles } from "../styles";
+import TextBase from '../TextBase';
 
 const InputBase = (props) => {
   const {
@@ -28,7 +28,7 @@ const InputBase = (props) => {
         }}
         {...inputProps}
       />
-      {hasError && <Text style={styles(props).errorText}>{errors[name]}</Text>}
+      {hasError && <TextBase style={styles(props).errorText}>{errors[name]}</TextBase>}
     </>
 	)
 }

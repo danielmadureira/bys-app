@@ -5,7 +5,6 @@ import { CardImage, TitleHeader } from '../../components';
 
 import { styles } from "./styles";
 import ImagemSVG from '../../../assets/Feed-Example.jpg'
-import ButtonBase from '../../components/base/ButtonBase';
 
 const DATA = [
 	{

@@ -1,12 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import {
-	Text,
 	View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
-import { BackBase, TitleHeader } from '../../../components';
+import { BackBase, TextBase, TitleHeader } from '../../../components';
 import { styles } from '../styles'
 import { actions } from '../../../store/diary'
 
@@ -32,9 +31,9 @@ const DetailsDiary = ({ navigation, route }) => {
 			</View>
 
       <View style={styles.wrapper_body}>
-				<Text style={styles.body}>
+				<TextBase style={styles.body}>
 					{item.text}
-				</Text>
+				</TextBase>
 			</View>
 		</ScrollView>
 	);

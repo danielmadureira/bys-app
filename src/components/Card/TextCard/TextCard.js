@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
-import { FowardBase } from '../..';
+import { FowardBase, TextBase } from '../..';
 
 import { styles } from "./styles";
 
@@ -13,25 +13,25 @@ const TextCard = (props) => {
 		>
 			<View style={styles(props).wrapper_text}>
 				<View style={styles(props).header}>
-					<Text
+					<TextBase
 						numberOfLines={2}
 						key={diary.id}
 						style={styles(props).title}
 					>
 						{diary.name}
-					</Text>
+					</TextBase>
 					
 					<View>
 						{(icon) && <FowardBase />}
 					</View>
 				</View>
 
-				<Text
+				<TextBase
 					numberOfLines={4}
 					style={styles(props).subtitle}
 				>
 					{diary.description}
-				</Text>
+				</TextBase>
 			</View>
 		</TouchableWithoutFeedback>
 	)

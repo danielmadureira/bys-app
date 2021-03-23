@@ -4,7 +4,7 @@ let width = '100%';
 
 export const styles = (props) => StyleSheet.create({
 	touchable: {
-		height: 45,
+		height: props.tiny ? 22 : 45,
 		marginTop: 29,
 		marginBottom: 4,
 

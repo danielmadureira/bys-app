@@ -51,6 +51,7 @@ const Diary = ({ navigation }) => {
 							return allTexts.data.map((v, i) => {
 								return (
 									<TouchableWithoutFeedback
+										key={v.id} 
 										onPress={() => {
 											navigation.navigate('DetailsDiary', {
 												id: v.id
@@ -58,7 +59,7 @@ const Diary = ({ navigation }) => {
 										}}
 									>
 										<MessageBase 
-											key={i} 
+											key={v.id} 
 											diary={v} 
 										/>
 									</TouchableWithoutFeedback>

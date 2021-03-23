@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import TextBase from '../TextBase';
 
 import { styles } from "./styles";
 
@@ -12,30 +13,30 @@ const MessageBase = (props) => {
 			<View style={styles(props).wrapper}>
 				<View style={styles(props).wrapper_text}>
 					{!header ? (
-						<Text
+						<TextBase
 							numberOfLines={2}
 							key={diary.id}
 							style={styles(props).title}
 						>
 							{diary.title}
-						</Text>
+						</TextBase>
 					) : 
 					(header)}
 
-					<Text
+					<TextBase
 						style={styles(props).subtitle}
 					>
 						{diary.text}
-					</Text>
+					</TextBase>
 
 					<View style={styles(props).wrapper_date}>
-						<Text style={styles(props).date}>
+						<TextBase style={styles(props).date}>
 							{new Date(diary.created_at).toLocaleDateString("pt-BR", {
 								day: 'numeric',
 								month: 'long',
 								year: 'numeric'
 							})}
-						</Text>
+						</TextBase>
 					</View>
 				</View>
 			</View>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { ImageBackground, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { ImageBackground, TouchableWithoutFeedback, View } from 'react-native';
+import { TextBase } from '../..';
 
 import { styles } from "./styles";
 
@@ -19,20 +20,20 @@ const ImageCard = (props) => {
 				onPress={onPress}
 			>
 				<View style={styles(props).wrapper_text}>
-					<Text 
+					<TextBase 
 						numberOfLines={2}
 						key={item.id}
 						style={styles(props).title}
 					>
 						{item.title}
-					</Text>
+					</TextBase>
 
-					<Text 
+					<TextBase 
 						numberOfLines={2}
 						style={styles(props).subtitle}
 					>
 						{item.headline}
-					</Text>
+					</TextBase>
 				</View>
 			</TouchableWithoutFeedback >
 		</ImageBackground>
