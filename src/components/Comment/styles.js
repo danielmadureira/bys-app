@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export const styles = (props) => StyleSheet.create({
 	wrapper: {
 		display: "flex",
 		flexDirection: "row",
@@ -15,11 +15,14 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_text: {
 		marginRight: '16%',
-	},	
+	},
 	name: {
 		fontSize: 18,
 	},
 	profession: {
 		fontSize: 12,
+	},
+	text_reactions: {
+		color: (props.user_reacted) ? '#BD2222' : '#c0c0c0'
 	}
 });

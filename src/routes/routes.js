@@ -17,51 +17,45 @@ import { useSelector } from 'react-redux';
 const Stack = createStackNavigator();
 
 const Routes = () => {
-  const user = useSelector(state => state.user)
+	const user = useSelector(state => state.user)
+	console.log(user.name)
 	return (
 		<NavigationContainer>
-			<Stack.Navigator 
+			<Stack.Navigator
 				animationType="slide-horizontal"
 				screenOptions={{
 					cardStyle: { backgroundColor: '#FFFFFF' }
 				}}
-			>
-				{user.name === '' || 
-				user.name === undefined ? 
-				(<>
-					<Stack.Screen
-						name="Home"
-						component={Login}
-						options={{
-							headerShown: false
-						}}
-					/>
+			><Stack.Screen
+					name="Home"
+					component={Login}
+					options={{
+						headerShown: false
+					}}
+				/>
 
-					<Stack.Screen
-						name="Register"
-						component={Register}
-						options={{
-							headerShown: false
-						}}
-					/>
+				<Stack.Screen
+					name="Register"
+					component={Register}
+					options={{
+						headerShown: false
+					}}
+				/>
 
-					<Stack.Screen
-						name="RegisterPassword"
-						component={RegisterPassword}
-						options={{
-							headerShown: false
-						}}
-					/>
-				</>) : 
-				(
-					<Stack.Screen
-						name="Feed"
-						component={PrivateRoutes}
-						options={{
-							headerShown: false
-						}}
-					/>
-				)}
+				<Stack.Screen
+					name="RegisterPassword"
+					component={RegisterPassword}
+					options={{
+						headerShown: false
+					}}
+				/>
+				<Stack.Screen
+					name="Feed"
+					component={PrivateRoutes}
+					options={{
+						headerShown: false
+					}}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	)

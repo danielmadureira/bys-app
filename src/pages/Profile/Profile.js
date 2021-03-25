@@ -24,9 +24,9 @@ const ProfileSchema = Yup.object().shape({
 })
 
 const Profile = ({ navigation }) => {
-	
+
 	const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
+	const user = useSelector(state => state.user)
 	const [isEditMode, setEditMode] = useState(false)
 
 	const saveEdition = () => {
@@ -36,16 +36,16 @@ const Profile = ({ navigation }) => {
 	const logout = () => {
 		SecureStoreServices.deleteItemAsync('_token')
 		AuthServices.unauthenticate()
-		.then(async (res) => {
-			console.log(res)
-			dispatch(actions.unauthenticate())
-		})
-		.catch(err => console.log(err, 'Error'))
+			.then(async (res) => {
+				console.log(res)
+				dispatch(actions.unauthenticate())
+			})
+			.catch(err => console.log(err, 'Error'))
 	}
 
 	useEffect(() => {
 		console.log(user.name)
-		if(!user.name) {
+		if (!user.name) {
 			navigation.navigate('Home')
 		}
 	}, [user])
@@ -62,100 +62,100 @@ const Profile = ({ navigation }) => {
 
 				}}
 			>
-			{({ handleSubmit, isValid, setFieldTouched, setFieldValue }) => (<>
-				<View style={styles.container_header}>
-					<TitleHeader
-						title="Perfil"
-						subtitle="Vamos falar sobre você"
-					/>
-					<BackBase navigation={navigation} />
-				</View>
+				{({ handleSubmit, isValid, setFieldTouched, setFieldValue }) => (<>
+					<View style={styles.container_header}>
+						<TitleHeader
+							title="Perfil"
+							subtitle="Vamos falar sobre você"
+						/>
+						<BackBase navigation={navigation} />
+					</View>
 
-				<View style={styles.wrapper}>
-					{/** User's Background Picture */}
-					<ImageBackground
-						source={{ uri: user.profile_picture }}
-						imageStyle={styles.image}
-						style={styles.profile}
-						blurRadius={1.5}
-					>
-					</ImageBackground>
-
-					{/** User's Profile Picture */}
-					<View style={styles.profile_image_wrapper}>
+					<View style={styles.wrapper}>
+						{/** User's Background Picture */}
 						<ImageBackground
-							source={
-								user.profile_picture ?
-								{ uri: user.profile_picture } :
-								DefaultProfile
-							}
-							imageStyle={styles.profile_image}
+							source={{ uri: user.profile_picture }}
+							imageStyle={styles.image}
 							style={styles.profile}
+							blurRadius={2.5}
 						>
 						</ImageBackground>
-					</View>
-				</View>
 
-				{/** Icons with actions*/}
-				<View style={styles.actions_icons}>
-					<View style={styles.icon_edit}>
-						{!isEditMode ? (
-							<ButtonSettings 
-								type="warning"
-								onPress={() => setEditMode(true)}
+						{/** User's Profile Picture */}
+						<View style={styles.profile_image_wrapper}>
+							<ImageBackground
+								source={
+									user.profile_picture ?
+										{ uri: user.profile_picture } :
+										DefaultProfile
+								}
+								imageStyle={styles.profile_image}
+								style={styles.profile}
 							>
-								Editar
-							</ButtonSettings>
-						) : (
-							<ButtonSettings 
-								type="success"
-								onPress={() => saveEdition()}
-							>
-								Salvar
-							</ButtonSettings>
-						)}
+							</ImageBackground>
+						</View>
 					</View>
-					<View style={styles.icon_edit}>
-						<ButtonSettings 
-							type="danger"
-							onPress={() => logout()}
-						>
-							Sair
+
+					{/** Icons with actions*/}
+					<View style={styles.actions_icons}>
+						<View style={styles.icon_edit}>
+							{!isEditMode ? (
+								<ButtonSettings
+									type="warning"
+									onPress={() => setEditMode(true)}
+								>
+									Editar
+								</ButtonSettings>
+							) : (
+								<ButtonSettings
+									type="success"
+									onPress={() => saveEdition()}
+								>
+									Salvar
+								</ButtonSettings>
+							)}
+						</View>
+						<View style={styles.icon_edit}>
+							<ButtonSettings
+								type="danger"
+								onPress={() => logout()}
+							>
+								Sair
 						</ButtonSettings>
+						</View>
 					</View>
-				</View>
 
-				{/** User's Name and Profession */}
-				<View style={styles.wrapper}>
-					<TextBase style={styles.profile_name}>
-						{user.name}
-					</TextBase>
-					<TextBase style={styles.profile_profession}>
-						{user.profession}
-					</TextBase>
-				</View>
-
-				{/** User's Mood */}
-				<View style={styles.wrapper_status}>
-					<View style={styles.status}>
-						<TextBase style={styles.status_title}>Hoje estou me sentindo:</TextBase>
-						{isEditMode ? (
-							<Field
-								component={InputBase}
-								name="status"
-								placeholder="Abençoada"
-								style={styles.status_title}
-							/>
-						) : (
-							<TextBase style={styles.status_title}>Abençoada</TextBase>
-						)}
+					{/** User's Name and Profession */}
+					<View style={styles.wrapper}>
+						<TextBase style={styles.profile_name}>
+							{user.name}
+						</TextBase>
+						<TextBase style={styles.profile_profession}>
+							{user.profession}
+						</TextBase>
 					</View>
-				</View>
-			</>)}
+
+					{/** User's Mood */}
+					<View style={styles.wrapper_status}>
+						<View style={styles.status}>
+							<TextBase style={styles.status_title}>Hoje estou me sentindo:</TextBase>
+							{isEditMode ? (
+								<Field
+									component={InputBase}
+									name="status"
+									placeholder="Abençoada"
+									style={styles.status_title}
+								/>
+							) : (
+								<TextBase style={styles.status_title}>Abençoada</TextBase>
+							)}
+						</View>
+					</View>
+				</>)}
 			</Formik>
 
 			{/** User's Diary */}
-			<View style={styles.message_container}>	
+			<View style={styles.message_container}>
 				<ImageBackground
 					source={require(`../../../assets/message-background.jpg`)}
 					imageStyle={styles.message_container}
@@ -164,7 +164,7 @@ const Profile = ({ navigation }) => {
 					<View style={styles.message_title}>
 						<TextBase style={styles.title}>Meu diário</TextBase>
 					</View>
-					<BodyWriteDiary 
+					<BodyWriteDiary
 						btnStyle={styles.wrapper_button}
 						containerStyle={styles.message}
 						numberOfLines={6}

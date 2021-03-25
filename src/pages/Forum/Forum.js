@@ -9,12 +9,12 @@ import {
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/forum'
-import { 
-	AlertBase, 
-	BackBase, 
-	TextBase, 
-	TextCard, 
-	TitleHeader 
+import {
+	AlertBase,
+	BackBase,
+	TextBase,
+	TextCard,
+	TitleHeader
 } from '../../components';
 
 import { styles } from './styles'
@@ -22,9 +22,9 @@ import { styles } from './styles'
 const Forum = ({ navigation }) => {
 	const { groups, isLoading } = useSelector(state => state.forum)
 	const dispatch = useDispatch()
-	
+
 	useEffect(() => {
-		if(isLoading) {
+		if (isLoading) {
 			dispatch(actions.getAllForumGroups())
 		}
 	}, [isLoading])
@@ -42,57 +42,57 @@ const Forum = ({ navigation }) => {
 
 			<SafeAreaView style={{ flex: 1, marginBottom: 100 }}>
 				{!isLoading && (
-				<SectionList
-					stickySectionHeadersEnabled={false}
-					sections={groups}
-					renderSectionHeader={({ section }) => (
-						<>
-							{<View style={styles.wrapper}>
-								<View style={styles.container_header}>
-									<TitleHeader
-										title={section.title}
-										subtitle={section.subtitle}
-										top={1}
-									/>
-								</View>
-								<FlatList
-									horizontal
-									ListEmptyComponent={
-										<AlertBase type="warning">
-											<TextBase>
-												Este grupo não possui salas no momento.
+					<SectionList
+						stickySectionHeadersEnabled={false}
+						sections={groups}
+						renderSectionHeader={({ section }) => (
+							<>
+								{<View style={styles.wrapper}>
+									<View style={styles.container_header}>
+										<TitleHeader
+											title={section.title}
+											subtitle={section.subtitle}
+											top={1}
+										/>
+									</View>
+									<FlatList
+										horizontal
+										ListEmptyComponent={
+											<AlertBase type="warning">
+												<TextBase>
+													Este grupo não possui salas no momento.
 											</TextBase>
-										</AlertBase>
-									}
-									data={section.data}
-									renderItem={({ item }) => {
-										console.log(item, 'here')
-										return (
-											<View key={item.id} style={styles.wrapper_card}>
-												<TextCard 
-													smallSize 
-													diary={item} 
-													event={() => {
-														dispatch(actions.isCommentLoading(true))
-														navigation.navigate('ForumGroup', {
-															title: section.title,
-															subtitle: section.subtitle,
-															id: item.id
-														}
-													)}} 
-												/>
-											</View>
-										) 
-									}}
-									showsHorizontalScrollIndicator={false}
-								/>
-							</View>}
-						</>
-					)}
-					renderItem={({ item, section }) => {
-						return null;
-					}}
-				/>
+											</AlertBase>
+										}
+										data={section.data}
+										renderItem={({ item }) => {
+											return (
+												<View key={item.id} style={styles.wrapper_card}>
+													<TextCard
+														smallSize
+														diary={item}
+														event={() => {
+															dispatch(actions.isCommentLoading(true))
+															navigation.navigate('ForumGroup', {
+																title: item.name,
+																subtitle: item.description,
+																id: item.id
+															}
+															)
+														}}
+													/>
+												</View>
+											)
+										}}
+										showsHorizontalScrollIndicator={false}
+									/>
+								</View>}
+							</>
+						)}
+						renderItem={({ item, section }) => {
+							return null;
+						}}
+					/>
 				)}
 			</SafeAreaView>
 		</ScrollView>

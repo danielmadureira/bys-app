@@ -17,7 +17,7 @@ const Login = (props) => {
 	const { navigation } = props
 	const dispatch = useDispatch()
 
-	const [email, setEmail] = useState('administrator@bys-app.com')
+	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [showError, setShowError] = useState(false)
 	const [isLoading, setLoading] = useState(false)
@@ -30,18 +30,21 @@ const Login = (props) => {
 			password: encryptPassword(password),
 			device_name: 'emulator_client'
 		})
-		.then(async (res) => {
-			setShowError(false)
-			setLoading(false)
-			await SecureStoreServices.setItemAsync('_token', res.plainTextToken)
+			.then(async (res) => {
+				setShowError(false)
+				setLoading(false)
+				await SecureStoreServices.setItemAsync(
+					'_token',
+					res.token
+				)
 
-			dispatch(actions.getUser())
-			navigation.navigate('Feed')
-		})
-		.catch(err => {
-			setShowError(true)
-			setLoading(false)
-		})
+				dispatch(actions.getUser())
+				navigation.navigate('Feed')
+			})
+			.catch(err => {
+				setShowError(true)
+				setLoading(false)
+			})
 	}
 
 	return (
@@ -87,9 +90,9 @@ const Login = (props) => {
 						onPress={() => { login() }}
 					/>
 					{isLoading && (
-						<ActivityIndicator 
-							size="large" 
-							color="green" 
+						<ActivityIndicator
+							size="large"
+							color="green"
 							animating={isLoading}
 						/>
 					)}
@@ -99,7 +102,7 @@ const Login = (props) => {
 					</TextBase>
 					<TextBase style={styles.textHelper}>
 						Ainda não possui uma conta?&nbsp;
-						<Text 
+						<Text
 							style={styles.register}
 							onPress={() => {
 								navigation.navigate('Register')

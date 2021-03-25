@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
 	},
 	status: {
 		width: '90%',
-		height: 125,
 		backgroundColor: '#EAEBCF',
 		borderTopRightRadius: 15,
 		borderBottomRightRadius: 15,
@@ -34,7 +33,7 @@ export const styles = StyleSheet.create({
 		paddingBottom: 15,
 	},
 	status_title: {
-		fontSize: 24,
+		fontSize: 22,
 		marginTop: 10,
 		marginBottom: 10,
 		marginLeft: 15,
@@ -47,5 +46,18 @@ export const styles = StyleSheet.create({
 	wrapper_comment: {
 		marginBottom: 150,
 		width: '90%'
+	},
+	btn_wrapper: {
+		width: '80%',
+		marginBottom: 15,
+		alignItems: "flex-end"
+	},
+	btn_content: {
+		backgroundColor: "#EAEBCF",
+		height: 25,
+		width: 150,
+		justifyContent: "center",
+		alignItems: "center",
+		borderRadius: 10
 	}
 });

@@ -13,15 +13,15 @@ import { actions } from '../../../store/forum'
 import { ActivityIndicator } from 'react-native'
 
 const ForumGroup = ({ navigation, route }) => {
-  const { title, subtitle, id } = route.params
-	const { 
-		comments, 
-		isCommentLoading 
+	const { title, subtitle, id } = route.params
+	const {
+		comments,
+		isCommentLoading
 	} = useSelector(state => state.forum)
 	const dispatch = useDispatch()
-	
+
 	useEffect(() => {
-		if(isCommentLoading) {
+		if (isCommentLoading) {
 			dispatch(actions.getAllForumComments(id))
 		}
 	}, [isCommentLoading])
@@ -34,7 +34,7 @@ const ForumGroup = ({ navigation, route }) => {
 					title="Sala de conversa"
 					subtitle="Deixe um depoimento"
 				/>
-				
+
 				<BackBase navigation={navigation} />
 			</View>
 
@@ -43,7 +43,7 @@ const ForumGroup = ({ navigation, route }) => {
 					<TextBase style={styles.status_title}>
 						{title}
 					</TextBase>
-					<TextBase 
+					<TextBase
 						style={styles.status_subtitle}
 						numberOfLines={4}
 					>
@@ -51,7 +51,15 @@ const ForumGroup = ({ navigation, route }) => {
 					</TextBase>
 				</View>
 			</View>
-			
+
+			<View style={styles.btn_wrapper}>
+				<View style={styles.btn_content}>
+					<TextBase styles={styles.btn_text}>
+						Escrever mensagem
+					</TextBase>
+				</View>
+			</View>
+
 			<View style={styles.wrapper_comment}>
 				{!isCommentLoading ? (
 					comments.map((comment) => {

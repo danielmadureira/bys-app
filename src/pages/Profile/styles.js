@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
 		height: 200,
 	},
 	profile_name: {
-		marginTop: 150,
+		marginTop: 100,
 		fontSize: 36,
 	},
 	profile_profession: {
