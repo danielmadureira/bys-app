@@ -12,22 +12,22 @@ const _getFormData = (params) => {
   let type = match ? `image/${match[1]}` : `image`;
 
   let formData = new FormData();
-  formData.append('image', JSON.stringify({ 
-    uri: params.image, 
-    name: filename, 
-    type 
-  }));
+  formData.append('image', {
+    uri: params.image,
+    name: filename,
+    type
+  });
   formData.append('name', params.name)
   formData.append('email', params.email)
   formData.append('profession', params.profession)
   formData.append('password', params.password)
-  
+
   return formData
 }
 
 const create = async (params) => {
   const formData = _getFormData(params)
-  
+
   console.log(formData)
   return await APIServices.post(
     ENDPOINTS.USER,
@@ -38,14 +38,14 @@ const create = async (params) => {
       }
     }
   )
-  .then(res => {
-    console.log(res)
-    return res.data
-  })
-  .catch(err => {
-    console.log(err)
-    return err
-  }) 
+    .then(res => {
+      console.log(res)
+      return res.data
+    })
+    .catch(err => {
+      console.log(err)
+      return err
+    })
 }
 
 const update = (params) => {
@@ -60,24 +60,24 @@ const get = async (id) => {
     ENDPOINTS.USER,
     { params: { id } }
   )
-  .then(res => {
-    return res.data
-  })
-  .catch(err => {
-    return err
-  })
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      return err
+    })
 }
 
 const getById = async (id) => {
   return await APIServices.get(
     `${ENDPOINTS.USER}/${id}`,
   )
-  .then(res => {
-    return res.data
-  })
-  .catch(err => {
-    return err
-  })
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      return err
+    })
 }
 
 export const UserServices = {
