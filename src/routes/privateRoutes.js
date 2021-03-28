@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { 
-  createBottomTabNavigator 
+import {
+	createBottomTabNavigator
 } from '@react-navigation/bottom-tabs';
 
 import {
@@ -19,7 +19,8 @@ import {
 	MedicineNotification,
 	WaterNotification,
 	MainNotification,
-	DetailsDiary
+	DetailsDiary,
+	WriteForumComment
 } from '../pages';
 
 import { Main } from '../components';
@@ -29,7 +30,7 @@ import { useSelector } from 'react-redux';
 const Tab = createBottomTabNavigator();
 
 const PrivateRoutes = () => {
-  const user = useSelector(state => state.user)
+	const user = useSelector(state => state.user)
 
 	return (
 		<Tab.Navigator
@@ -53,6 +54,9 @@ const PrivateRoutes = () => {
 					height: 55,
 					paddingBottom: 5,
 				}
+			}}
+			sceneContainerStyle={{
+				backgroundColor: '#ffffff'
 			}}
 			animationType="slide-horizontal"
 		>
@@ -104,6 +108,13 @@ const PrivateRoutes = () => {
 			<Tab.Screen
 				name="ForumGroup"
 				component={ForumGroup}
+				options={{
+					headerShown: false
+				}}
+			/>
+			<Tab.Screen
+				name="WriteForumComment"
+				component={WriteForumComment}
 				options={{
 					headerShown: false
 				}}

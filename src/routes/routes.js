@@ -10,7 +10,6 @@ import {
 	RegisterPassword,
 } from '../pages';
 
-import { AuthServices } from '../services/AuthServices';
 import PrivateRoutes from './privateRoutes';
 import { useSelector } from 'react-redux';
 
@@ -24,9 +23,12 @@ const Routes = () => {
 			<Stack.Navigator
 				animationType="slide-horizontal"
 				screenOptions={{
-					cardStyle: { backgroundColor: '#FFFFFF' }
+					cardStyle: {
+						backgroundColor: '#FFFFFF'
+					}
 				}}
-			><Stack.Screen
+			>
+				<Stack.Screen
 					name="Home"
 					component={Login}
 					options={{

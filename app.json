@@ -5,6 +5,7 @@
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "backgroundColor": "#FFFFFF",
     "splash": {
       "image": "./assets/bys-splash.png",
       "resizeMode": "contain",
@@ -24,7 +25,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.project.first"
+      "package": "com.project.first",
+      "useNextNotificationsApi": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
