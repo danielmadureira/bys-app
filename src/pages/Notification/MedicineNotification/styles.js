@@ -10,8 +10,9 @@ export const styles = StyleSheet.create({
 	},
 	wrapper: {
 		display: "flex",
+		justifyContent: "center",
 		alignItems: "center",
-		width: wrapperWidth
+		width: '100%'
 	},
 	container_header: {
 		marginTop: 10,
@@ -24,7 +25,7 @@ export const styles = StyleSheet.create({
 	notifications: {
 		display: "flex",
 		alignItems: "center",
-		width: wrapperWidth,
+		width: '85%',
 		marginTop: 20,
 	}
 });

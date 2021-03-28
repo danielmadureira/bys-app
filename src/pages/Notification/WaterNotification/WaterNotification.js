@@ -1,16 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	View
 } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { BackBase, TextCard, TitleHeader } from '../../../components';
-import Notification from '../Notification';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
+import { BackBase, TitleHeader } from '../../../components';
+import ButtonBase from '../../../components/base/ButtonBase';
+import { actions } from '../../../store/notification'
 
 import { styles } from './styles'
 
-
 const WaterNotification = ({ navigation }) => {
+	const { water_ingestion } = useSelector(state => state.notifications)
+	const [weight, setWeight] = useState(null)
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		setWeight(water_ingestion.weight)
+	}, [water_ingestion])
+
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -22,21 +31,27 @@ const WaterNotification = ({ navigation }) => {
 				<BackBase navigation={navigation} />
 			</View>
 
-			
-			<Notification type='water' />
+			<View style={styles.body}>
+				<TextInput
+					style={styles.input}
+					placeholder="Seu peso em kg"
+					keyboardType="decimal-pad"
+					onChangeText={(text) => setWeight(text)}
+					value={weight}
+				/>
+
+				<View style={styles.wrapper}>
+					<ButtonBase
+						title="Salvar alerta"
+						radius={5}
+						onPress={() => {
+							dispatch(actions.addWeight(weight))
+						}}
+					/>
+				</View>
+			</View>
 		</ScrollView>
 	);
 };
-
-const SECTIONS = [
-	{
-		title: 'Alertas de medicamento',
-		texto: 'Nunca mais perca o horário do seu medicamento. Adicione alertas para todos os seus medicamentos.'
-	},
-	{
-		title: 'Alertas de ing. de água',
-		texto: 'Controle seu consumo de água e receba notificações sempre que precisar beber água. '
-	}
-];
 
 export default WaterNotification;

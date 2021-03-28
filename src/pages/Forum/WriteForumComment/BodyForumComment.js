@@ -5,7 +5,7 @@ import {
 import * as Yup from 'yup'
 import { Field, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { actions } from '../../../store/diary';
+import { actions } from '../../../store/forum';
 
 import ButtonBase from '../../../components/base/ButtonBase';
 
@@ -13,38 +13,31 @@ import { styles } from './styles'
 import InputBase from '../../../components/base/InputBase';
 
 const DiarySchema = Yup.object().shape({
-  title: Yup
-    .string()
-    .max(60, ({ max }) => 'Máximo de 60 dígitos')
-    .required('Este campo é obrigatório'),
   text: Yup
     .string()
     .max(3000, ({ max }) => 'Máximo de 3000 dígitos')
     .required('Este campo é obrigatório'),
 })
 
-const BodyWriteDiary = (props) => {
+const BodyForumComment = (props) => {
   const dispatch = useDispatch()
 
   return (
     <View style={props.containerStyle}>
       <Formik
         initialValues={{
-          title: '',
           text: ''
         }}
         validationSchema={DiarySchema}
         onSubmit={(form) => {
-          dispatch(actions.writeDiary(form))
+          dispatch(actions.addComment({
+            text: form.text,
+            forum_room_id: props.room_id
+          }))
         }}
       >
         {({ handleSubmit }) => (<>
           <View style={styles.message}>
-            <Field
-              name="title"
-              component={InputBase}
-              placeholder="Meu diário hoje, 27 de julho"
-            />
             <Field
               name="text"
               component={InputBase}
@@ -57,7 +50,7 @@ const BodyWriteDiary = (props) => {
 
           <View style={props.btnStyle}>
             <ButtonBase
-              title="Publicar no diário"
+              title="Comentar"
               background="#EAEBCF"
               color="#000"
               radius={15}
@@ -70,4 +63,4 @@ const BodyWriteDiary = (props) => {
   );
 };
 
-export default BodyWriteDiary;
+export default BodyForumComment;

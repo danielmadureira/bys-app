@@ -4,12 +4,19 @@ import {
 	View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { BackBase, MessageBase, TitleHeader } from '../../../components';
+import { useSelector } from 'react-redux';
+import {
+	BackBase,
+	NotificationCard,
+	TitleHeader,
+	ButtonBase
+} from '../../../components';
 
 import { styles } from './styles'
 
-
 const AllMedicineNotification = ({ navigation }) => {
+	const { medications } = useSelector(state => state.notifications)
+
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -22,28 +29,33 @@ const AllMedicineNotification = ({ navigation }) => {
 			</View>
 
 			<View style={styles.notifications}>
-				{SECTIONS.map((v, i) => {
-					return <MessageBase 
-						height={80} 
-						key={i} 
-						diary={v}
-						onPress={() => navigation.navigate('MedicineNotification')}
-					/>
-				})}
+				<ButtonBase
+					title="Novo alerta"
+					background="#EAEBCF"
+					color="#000"
+					radius={15}
+					onPress={() => navigation.navigate('MedicineNotification', {
+						notification: {}
+					})}
+				/>
+			</View>
+
+			<View style={styles.notifications}>
+				{medications.length > 0 ?
+					medications.map((v, i) => {
+						return <NotificationCard
+							height={80}
+							key={i}
+							notification={v}
+							onPress={() => navigation.navigate('MedicineNotification', {
+								notification: v
+							})}
+						/>
+					})
+					: <></>}
 			</View>
 		</ScrollView>
 	);
 };
-
-const SECTIONS = [
-	{
-		title: 'Rémedio Azul',
-		texto: 'Todos os dias.'
-	},
-	{
-		title: 'Rémedio Verde',
-		texto: 'Seg./Ter./Sex. às 11hrs.'
-	}
-];
 
 export default AllMedicineNotification;

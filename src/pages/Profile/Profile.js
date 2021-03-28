@@ -1,12 +1,18 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
 	ImageBackground,
-	View
+	View,
+	Image
 } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { useDispatch, useSelector } from 'react-redux'
-import { BackBase, ButtonSettings, TextBase, TitleHeader } from '../../components'
+import {
+	BackBase,
+	ButtonSettings,
+	TextBase,
+	TitleHeader
+} from '../../components'
 import BodyWriteDiary from '../Diary/WriteDiary/BodyWriteDiary'
 
 import DefaultProfile from '../../../assets/default-user.png'
@@ -14,55 +20,75 @@ import { styles } from './styles'
 import InputBase from '../../components/base/InputBase'
 import { Field, Formik } from 'formik'
 import * as Yup from 'yup'
-import { SecureStoreServices } from '../../services/SecureStoreServices'
 import { AuthServices } from '../../services/AuthServices'
-import { actions } from '../../store/user';
+import { actions } from '../../store/user'
+import { SecureStoreAdapter } from '../../adapter/SecureStoreAdapter'
+import * as ImagePicker from 'expo-image-picker'
 
 const ProfileSchema = Yup.object().shape({
-	status: Yup
-		.string()
+	status: Yup.string(),
+	image: Yup.string(),
+	emoticon: Yup.string(),
+	name: Yup.string(),
+	profession: Yup.string()
 })
 
 const Profile = ({ navigation }) => {
-
 	const dispatch = useDispatch()
 	const user = useSelector(state => state.user)
 	const [isEditMode, setEditMode] = useState(false)
+	const [imagePath, setPath] = useState('')
 
-	const saveEdition = () => {
+	const updateProfile = (form) => {
 		setEditMode(false)
+		console.log(form)
+		dispatch(actions.updateProfile(form))
+	}
+
+	const activeEditMode = () => {
+		setEditMode(true)
+		setPath('')
 	}
 
 	const logout = () => {
-		SecureStoreServices.deleteItemAsync('_token')
+		SecureStoreAdapter.deleteItemAsync('_token')
 		AuthServices.unauthenticate()
 			.then(async (res) => {
-				console.log(res)
 				dispatch(actions.unauthenticate())
 			})
 			.catch(err => console.log(err, 'Error'))
 	}
 
-	useEffect(() => {
-		console.log(user.name)
-		if (!user.name) {
-			navigation.navigate('Home')
-		}
-	}, [user])
-
 	return (
-		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
+		<ScrollView
+			contentContainerStyle={styles.wrapper}
+			style={styles.container}
+		>
 			<StatusBar style="light" backgroundColor="#000" />
 			<Formik
 				initialValues={{
 					status: '',
+					image: '',
+					emoticon: '',
+					name: '',
+					profession: ''
 				}}
 				validationSchema={ProfileSchema}
-				onSubmit={values => {
-
+				onSubmit={(values, { resetForm }) => {
+					if (values.emoticon) {
+						values.emoticon = (values.emoticon).codePointAt(0)
+					}
+					updateProfile(values)
+					resetForm()
 				}}
 			>
-				{({ handleSubmit, isValid, setFieldTouched, setFieldValue }) => (<>
+				{({
+					values,
+					handleSubmit,
+					isValid,
+					setFieldTouched,
+					setFieldValue,
+				}) => (<>
 					<View style={styles.container_header}>
 						<TitleHeader
 							title="Perfil"
@@ -82,57 +108,115 @@ const Profile = ({ navigation }) => {
 						</ImageBackground>
 
 						{/** User's Profile Picture */}
-						<View style={styles.profile_image_wrapper}>
-							<ImageBackground
-								source={
-									user.profile_picture ?
-										{ uri: user.profile_picture } :
-										DefaultProfile
-								}
-								imageStyle={styles.profile_image}
-								style={styles.profile}
-							>
-							</ImageBackground>
-						</View>
+						{!isEditMode ? (
+							<View style={styles.profile_image_wrapper}>
+								<ImageBackground
+									source={
+										user.profile_picture ?
+											{ uri: user.profile_picture } :
+											DefaultProfile
+									}
+									imageStyle={styles.profile_image}
+									style={styles.profile}
+								>
+								</ImageBackground>
+							</View>
+						) : (
+							<View style={styles.update_image_wrapper}>
+								<TouchableOpacity
+									onPress={async () => {
+										let result = await ImagePicker.launchImageLibraryAsync({
+											mediaTypes: ImagePicker.MediaTypeOptions.All,
+											allowsEditing: true,
+											aspect: [4, 3],
+											quality: 1,
+										});
+
+										if (result.uri) {
+											setPath(result.uri)
+											setFieldValue('image', result.uri)
+											setFieldTouched('image', true)
+										}
+									}}
+								>
+									<Image
+										style={styles.update_profile_image}
+										source={
+											imagePath !== '' ?
+												{ uri: imagePath } :
+												require(`../../../assets/add-user.png`)
+										}
+									/>
+								</TouchableOpacity>
+							</View>
+						)}
+
 					</View>
 
-					{/** Icons with actions*/}
+					{/** Settings */}
 					<View style={styles.actions_icons}>
 						<View style={styles.icon_edit}>
 							{!isEditMode ? (
 								<ButtonSettings
 									type="warning"
-									onPress={() => setEditMode(true)}
+									onPress={() => activeEditMode()}
 								>
 									Editar
 								</ButtonSettings>
-							) : (
+							) : (<>
 								<ButtonSettings
 									type="success"
-									onPress={() => saveEdition()}
+									onPress={() => handleSubmit()}
 								>
 									Salvar
 								</ButtonSettings>
-							)}
+							</>)}
 						</View>
+
 						<View style={styles.icon_edit}>
-							<ButtonSettings
-								type="danger"
-								onPress={() => logout()}
-							>
-								Sair
-						</ButtonSettings>
+							{!isEditMode ? (
+								<ButtonSettings
+									type="danger"
+									onPress={() => logout()}
+								>
+									Sair
+								</ButtonSettings>
+							) : (
+								<ButtonSettings
+									type="danger"
+									onPress={() => setEditMode(false)}
+								>
+									Cancelar
+								</ButtonSettings>
+							)}
 						</View>
 					</View>
 
 					{/** User's Name and Profession */}
 					<View style={styles.wrapper}>
-						<TextBase style={styles.profile_name}>
-							{user.name}
-						</TextBase>
-						<TextBase style={styles.profile_profession}>
-							{user.profession}
-						</TextBase>
+						{isEditMode ? (
+							<>
+								<Field
+									component={InputBase}
+									name="name"
+									placeholder={user.name}
+									style={styles.profile_name}
+								/>
+								<Field
+									component={InputBase}
+									name="profession"
+									placeholder={user.profession}
+									style={styles.profile_profession}
+								/>
+							</>
+						) : (<>
+							<TextBase style={styles.profile_name}>
+								{user.name}
+							</TextBase>
+							<TextBase style={styles.profile_profession}>
+								{user.profession}
+							</TextBase>
+						</>)}
 					</View>
 
 					{/** User's Mood */}
@@ -140,14 +224,34 @@ const Profile = ({ navigation }) => {
 						<View style={styles.status}>
 							<TextBase style={styles.status_title}>Hoje estou me sentindo:</TextBase>
 							{isEditMode ? (
-								<Field
-									component={InputBase}
-									name="status"
-									placeholder="Abençoada"
-									style={styles.status_title}
-								/>
+								<View style={styles.mood}>
+									<Field
+										component={InputBase}
+										name="status"
+										placeholder={user.mood.description}
+										style={styles.mood_status}
+									/>
+									<Field
+										component={InputBase}
+										name="emoticon"
+										placeholder={user.mood.emoji_hex ?
+											String.fromCodePoint(user.mood.emoji_hex)
+											: ''
+										}
+										style={styles.mood_emoticon_edit}
+									/>
+								</View>
 							) : (
-								<TextBase style={styles.status_title}>Abençoada</TextBase>
+								<View style={styles.mood}>
+									<TextBase style={styles.mood_status}>
+										{user.mood.description}
+									</TextBase>
+									<TextBase style={styles.mood_emoticon}>
+										{user.mood.emoji_hex ?
+											String.fromCodePoint(user.mood.emoji_hex)
+											: ''}
+									</TextBase>
+								</View>
 							)}
 						</View>
 					</View>

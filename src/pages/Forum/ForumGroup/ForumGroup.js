@@ -54,7 +54,14 @@ const ForumGroup = ({ navigation, route }) => {
 
 			<View style={styles.btn_wrapper}>
 				<View style={styles.btn_content}>
-					<TextBase styles={styles.btn_text}>
+					<TextBase
+						styles={styles.btn_text}
+						onPress={() => {
+							navigation.navigate('WriteForumComment', {
+								id: id
+							})
+						}}
+					>
 						Escrever mensagem
 					</TextBase>
 				</View>
