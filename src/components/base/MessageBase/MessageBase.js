@@ -20,8 +20,8 @@ const MessageBase = (props) => {
 						>
 							{diary.title}
 						</TextBase>
-					) : 
-					(header)}
+					) :
+						(header)}
 
 					<TextBase
 						style={styles(props).subtitle}
@@ -30,13 +30,15 @@ const MessageBase = (props) => {
 					</TextBase>
 
 					<View style={styles(props).wrapper_date}>
-						<TextBase style={styles(props).date}>
-							{new Date(diary.created_at).toLocaleDateString("pt-BR", {
-								day: 'numeric',
-								month: 'long',
-								year: 'numeric'
-							})}
-						</TextBase>
+						{diary.created_at && (
+							<TextBase style={styles(props).date}>
+								{new Date(diary.created_at).toLocaleDateString("pt-BR", {
+									day: 'numeric',
+									month: 'long',
+									year: 'numeric'
+								})}
+							</TextBase>
+						)}
 					</View>
 				</View>
 			</View>
