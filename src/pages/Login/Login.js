@@ -8,10 +8,10 @@ import ButtonBase from '../../components/base/ButtonBase';
 import { useDispatch } from 'react-redux';
 import { actions } from '../../store/user';
 import { AuthServices } from '../../services/AuthServices';
-import { SecureStoreServices } from '../../services/SecureStoreServices';
 import { encryptPassword } from '../../helpers/registerHelper';
 import { AlertBase, TextBase } from '../../components';
 import { ActivityIndicator } from 'react-native';
+import { SecureStoreAdapter } from '../../adapter/SecureStoreAdapter';
 
 const Login = (props) => {
 	const { navigation } = props
@@ -24,7 +24,7 @@ const Login = (props) => {
 
 	const login = () => {
 		setLoading(true)
-		SecureStoreServices.deleteItemAsync('_token')
+		SecureStoreAdapter.deleteItemAsync('_token')
 		AuthServices.authenticate({
 			email,
 			password: encryptPassword(password),
@@ -33,7 +33,7 @@ const Login = (props) => {
 			.then(async (res) => {
 				setShowError(false)
 				setLoading(false)
-				await SecureStoreServices.setItemAsync(
+				await SecureStoreAdapter.setItemAsync(
 					'_token',
 					res.token
 				)

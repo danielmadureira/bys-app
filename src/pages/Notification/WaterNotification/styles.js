@@ -13,6 +13,11 @@ export const styles = StyleSheet.create({
 		alignItems: "center",
 		width: wrapperWidth
 	},
+	body: {
+		display: "flex",
+		alignItems: "center",
+		width: '90%'
+	},
 	container_header: {
 		marginTop: 10,
 		paddingBottom: 2,
@@ -20,5 +25,11 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_menu: {
 		marginTop: 36,
+	},
+	input: {
+		width: '100%',
+		marginTop: 45,
+		height: 40,
+		borderBottomWidth: 1,
 	}
 });

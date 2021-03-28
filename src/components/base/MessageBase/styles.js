@@ -5,6 +5,7 @@ export const styles = (props) => StyleSheet.create({
 		paddingBottom: 10,
 		display: "flex",
 		alignItems: "center",
+		width: '100%'
 	},
 	wrapper_text: {
 		width: '100%',
@@ -17,12 +18,12 @@ export const styles = (props) => StyleSheet.create({
 	subtitle: {
 		fontSize: 14,
 		paddingTop: 5,
-		marginLeft: props.comment ? 5 : 0 
+		marginLeft: props.comment ? 5 : 0
 	},
 	wrapper_date: {
 		display: "flex",
 		alignItems: "flex-end",
-		
+
 		borderBottomWidth: 1,
 		borderBottomColor: '#CCCCCC',
 		borderRadius: 15,

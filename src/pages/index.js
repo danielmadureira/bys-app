@@ -19,6 +19,8 @@ export { default as DetailsDiary } from './Diary/DetailsDiary'
 export { default as Forum } from './Forum/Forum'
 // Grupo de conversa
 export { default as ForumGroup } from './Forum/ForumGroup/ForumGroup'
+// Escrever um comentário
+export { default as WriteForumComment } from './Forum/WriteForumComment'
 
 // Página de Notificações
 export { default as Notification } from './Notification/Notification'

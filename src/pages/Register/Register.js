@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
-import { ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
 import { StatusBar } from 'expo-status-bar';
@@ -34,7 +34,7 @@ const Register = (props) => {
 		(async () => {
 			if (Platform.OS !== 'web') {
 				const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
-				
+
 				if (status !== 'granted') {
 					alert('Desculpe, precisamos ter permissão para continuar.');
 				}
@@ -77,7 +77,7 @@ const Register = (props) => {
 										aspect: [4, 3],
 										quality: 1,
 									});
-							
+
 									if (result.uri) {
 										setFieldValue('image', result.uri)
 										setFieldTouched('image', true)
@@ -89,20 +89,20 @@ const Register = (props) => {
 								/>
 							</TouchableOpacity>
 						</View>
-						<Field 
+						<Field
 							component={InputBase}
 							name="email"
 							keyboardType="email-address"
 							placeholder="E-mail"
 						/>
 
-						<Field 
+						<Field
 							component={InputBase}
 							name="name"
 							placeholder="Nome"
 						/>
 
-						<Field 
+						<Field
 							component={InputBase}
 							name="profession"
 							placeholder="Profissão"

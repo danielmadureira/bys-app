@@ -18,7 +18,8 @@ export const types = {
   FORUM_LOADING: '[Forum] Loading',
   FORUM_COMMENT_LOADING: '[Forum] Loading Comment',
   FORUM_LIKE_COMMENT: '[Forum] Like Comment',
-  FORUM_SEND_LIKE_COMMENT: '[Forum] Send Like Comment'
+  FORUM_SEND_LIKE_COMMENT: '[Forum] Send Like Comment',
+  FORUM_ADD_COMMENT: '[Forum] Add a comment'
 }
 
 export const actions = {
@@ -52,7 +53,11 @@ export const actions = {
   sendLike: (like) => ({
     type: types.FORUM_SEND_LIKE_COMMENT,
     payload: like
-  })
+  }),
+  addComment: (comment) => ({
+    type: types.FORUM_ADD_COMMENT,
+    payload: comment
+  }),
 }
 
 export const reducer = (
@@ -167,5 +172,14 @@ export function* saga() {
       .catch(async (err) => {
         await ForumServices.removeLikeToComment(id)
       })
+  })
+
+  yield takeLatest(types.FORUM_ADD_COMMENT, function* sendLike(action) {
+    try {
+      const form = action.payload
+      yield ForumServices.addComment(form)
+    } catch (error) {
+      console.log(error)
+    }
   })
 }

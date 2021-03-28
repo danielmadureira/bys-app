@@ -4,7 +4,7 @@ export const ENDPOINTS = Object.freeze({
   USER: '/user',
   USER_IMAGE: '/user/image',
   DIARY: '/diary',
-  MOOD: '/mood',
+  MOOD: '/user/mood',
   ALERT: '/alert',
   FEED: '/feed/post',
   FORUM_GROUP: '/forum/group',

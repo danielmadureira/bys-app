@@ -23,8 +23,11 @@ export const styles = StyleSheet.create({
 		marginBottom: '30%',
 	},
 	body: {
+		flex: 1,
 		fontSize: 18,
 		textAlign: "justify",
+		width: '100%',
+		height: 200
 	},
 	picture: {
 		width: '100%',

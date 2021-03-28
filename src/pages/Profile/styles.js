@@ -44,6 +44,22 @@ export const styles = StyleSheet.create({
 		position: 'absolute',
 		marginTop: 150
 	},
+	update_image_wrapper: {
+		width: 150,
+		height: 150,
+
+		position: 'absolute',
+		marginTop: 150
+	},
+	update_profile_image: {
+		width: 150,
+		height: 150,
+		borderWidth: 1,
+		borderColor: '#EAEBCF',
+		backgroundColor: '#ffffff',
+
+		borderRadius: 100,
+	},
 	profile_image: {
 		width: 180,
 		height: 180,
@@ -69,9 +85,8 @@ export const styles = StyleSheet.create({
 		borderBottomRightRadius: 5,
 
 		display: "flex",
-		alignItems: "flex-end",
-		justifyContent: "center",
-		paddingRight: 80,
+		alignItems: "center",
+		paddingTop: 10,
 	},
 	status_title: {
 		textAlign: "left",
@@ -142,5 +157,26 @@ export const styles = StyleSheet.create({
 	},
 	icon_edit: {
 		width: 60,
+	},
+	mood: {
+		flex: 1,
+		flexDirection: 'row',
+		justifyContent: "center",
+		alignItems: "center"
+	},
+	mood_emoticon: {
+		fontSize: 40
+	},
+	mood_emoticon_edit: {
+		fontSize: 40,
+		borderWidth: 1,
+		borderColor: "#c0c0c0",
+		borderRadius: 5
+	},
+	mood_status: {
+		fontSize: 18,
+		textAlign: 'right',
+		paddingRight: 5,
+		width: '75%'
 	}
 });

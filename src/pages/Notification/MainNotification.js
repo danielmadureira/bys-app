@@ -22,17 +22,17 @@ const MainNotification = ({ navigation }) => {
 			</View>
 
 			<View style={styles({}).wrapper_menu}>
-				<TextCard 
-					icon 
-					diary={SECTIONS[0]} 
-					event={() => navigation.navigate('AllMedicineNotification')} 
+				<TextCard
+					icon
+					diary={SECTIONS[0]}
+					event={() => navigation.navigate('AllMedicineNotification')}
 				/>
 			</View>
 			<View style={styles({}).wrapper_menu}>
-				<TextCard 
-					icon 
-					diary={SECTIONS[1]} 
-					event={() => navigation.navigate('WaterNotification')} 
+				<TextCard
+					icon
+					diary={SECTIONS[1]}
+					event={() => navigation.navigate('WaterNotification')}
 				/>
 			</View>
 		</ScrollView>
