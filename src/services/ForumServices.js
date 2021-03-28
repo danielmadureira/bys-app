@@ -1,8 +1,8 @@
-import { APIServices } from "./APIServices"
-import { ENDPOINTS } from "./enums/Endpoints"
+import { RequestAdapter } from "../adapter/RequestAdapter"
+import { ENDPOINTS } from "../enums/Endpoints"
 
 const getAllGroups = async () => {
-  return await APIServices.get(
+  return await RequestAdapter.get(
     `${ENDPOINTS.FORUM_GROUP}`,
   )
     .then(res => {
@@ -14,7 +14,7 @@ const getAllGroups = async () => {
 }
 
 const getRoomsByGroup = async (id) => {
-  return await APIServices.get(
+  return await RequestAdapter.get(
     `${ENDPOINTS.FORUM_ROOM}`,
     {
       params: {
@@ -33,7 +33,7 @@ const getRoomsByGroup = async (id) => {
 }
 
 const getCommentsByRoom = async (id) => {
-  return await APIServices.get(
+  return await RequestAdapter.get(
     `${ENDPOINTS.FORUM_COMMENT}`,
     {
       params: {
@@ -50,7 +50,7 @@ const getCommentsByRoom = async (id) => {
 }
 
 const addLikeToComment = async (id) => {
-  return await APIServices.post(
+  return await RequestAdapter.post(
     ENDPOINTS.FORUM_COMMENT_REACTION,
     {
       forum_room_comment_id: id
@@ -59,7 +59,7 @@ const addLikeToComment = async (id) => {
 }
 
 const removeLikeToComment = async (id) => {
-  return await APIServices.delete(
+  return await RequestAdapter.delete(
     ENDPOINTS.FORUM_COMMENT_REACTION,
     {
       params: {
@@ -69,10 +69,31 @@ const removeLikeToComment = async (id) => {
   )
 }
 
+/**
+ * Create a comment for 
+ * a specific room 
+ * 
+ * @param {object} form 
+ * @returns Promise
+ */
+const addComment = async (form) => {
+  return await RequestAdapter.post(
+    ENDPOINTS.FORUM_COMMENT,
+    form
+  )
+    .then(res => {
+      return res.data
+    })
+    .catch(async (err) => {
+      return err
+    })
+}
+
 export const ForumServices = {
   getAllGroups,
   getRoomsByGroup,
   getCommentsByRoom,
   addLikeToComment,
-  removeLikeToComment
+  removeLikeToComment,
+  addComment
 }

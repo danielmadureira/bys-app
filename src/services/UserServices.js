@@ -1,8 +1,8 @@
-import { APIServices } from "./APIServices"
-import { ENDPOINTS } from "./enums/Endpoints"
+import { RequestAdapter } from "../adapter/RequestAdapter";
+import { ENDPOINTS } from "../enums/Endpoints"
 
 /**
- * Save image profile
+ * Converte form
  * @param {file} image 
  */
 const _getFormData = (params) => {
@@ -28,8 +28,7 @@ const _getFormData = (params) => {
 const create = async (params) => {
   const formData = _getFormData(params)
 
-  console.log(formData)
-  return await APIServices.post(
+  return await RequestAdapter.post(
     ENDPOINTS.USER,
     formData,
     {
@@ -48,15 +47,90 @@ const create = async (params) => {
     })
 }
 
-const update = (params) => {
-  APIServices.put(
+/**
+ * Update personal data of user
+ * 
+ * @param {object} params 
+ */
+const update = async (params) => {
+  return await RequestAdapter.put(
     ENDPOINTS.USER,
     params
   )
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      return err.response.data
+    })
+}
+
+/**
+ * Update mood of user
+ * 
+ * @param {object} params 
+ */
+const updateMood = async (params) => {
+  return await RequestAdapter.put(
+    ENDPOINTS.MOOD,
+    params
+  )
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      return err.response.data
+    })
+}
+
+/**
+ * Converet image profile
+ * in Form Data
+ * 
+ * @param {file} image 
+ */
+const _getFile = (image) => {
+  let filename = image.split('/').pop();
+
+  let match = /\.(\w+)$/.exec(filename);
+  let type = match ? `image/${match[1]}` : `image`;
+
+  let formData = new FormData();
+  formData.append('image', {
+    uri: image,
+    name: filename,
+    type
+  });
+
+  return formData
+}
+
+/**
+ * Update profile image of user
+ * 
+ * @param {file} image 
+ */
+const updateFile = async (image) => {
+  let formData = _getFile(image)
+  return await RequestAdapter.post(
+    ENDPOINTS.USER_IMAGE,
+    formData,
+    {
+      headers: {
+        'Content-Type': `multipart/form-data`,
+      }
+    }
+  )
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      return err.response.data
+    })
 }
 
 const get = async (id) => {
-  return await APIServices.get(
+  return await RequestAdapter.get(
     ENDPOINTS.USER,
     { params: { id } }
   )
@@ -68,8 +142,20 @@ const get = async (id) => {
     })
 }
 
+const getMood = async () => {
+  return await RequestAdapter.get(
+    ENDPOINTS.MOOD
+  )
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      return err
+    })
+}
+
 const getById = async (id) => {
-  return await APIServices.get(
+  return await RequestAdapter.get(
     `${ENDPOINTS.USER}/${id}`,
   )
     .then(res => {
@@ -82,7 +168,10 @@ const getById = async (id) => {
 
 export const UserServices = {
   create,
-  update,
   get,
-  getById
+  getById,
+  getMood,
+  update,
+  updateFile,
+  updateMood,
 }

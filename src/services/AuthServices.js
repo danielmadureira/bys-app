@@ -1,9 +1,9 @@
-import { APIServices } from "./APIServices"
-import { ENDPOINTS } from "./enums/Endpoints"
-import { SecureStoreServices } from "./SecureStoreServices"
+import { RequestAdapter } from "../adapter/RequestAdapter"
+import { SecureStoreAdapter } from "../adapter/SecureStoreAdapter"
+import { ENDPOINTS } from "../enums/Endpoints"
 
 const authenticate = async (params) => {
-  return await APIServices.post(
+  return await RequestAdapter.post(
     `${ENDPOINTS.AUTHENTICATE}`,
     params
   )
@@ -13,7 +13,7 @@ const authenticate = async (params) => {
 }
 
 const unauthenticate = async (params) => {
-  return await APIServices.post(
+  return await RequestAdapter.post(
     ENDPOINTS.UNAUTHENTICATE,
     params
   )
@@ -28,7 +28,7 @@ const unauthenticate = async (params) => {
 }
 
 const isAuthenticated = () => {
-  return SecureStoreServices.getItemAsync('_token') ?
+  return SecureStoreAdapter.getItemAsync('_token') ?
     true : false
 }
 

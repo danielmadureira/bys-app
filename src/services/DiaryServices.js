@@ -1,22 +1,22 @@
-import { APIServices } from "./APIServices"
-import { ENDPOINTS } from "./enums/Endpoints"
+import { RequestAdapter } from "../adapter/RequestAdapter"
+import { ENDPOINTS } from "../enums/Endpoints"
 
 /**
  *  Create a diary text 
  */
 const create = async (params) => {
-  return await APIServices.post(
+  return await RequestAdapter.post(
     `${ENDPOINTS.USER}${ENDPOINTS.DIARY}`,
     params
   )
-  .then(res => {
-    console.log(res)
-    return res.data
-  })
-  .catch(err => {
-    console.log(err)
-    return err
-  })
+    .then(res => {
+      console.log(res)
+      return res.data
+    })
+    .catch(err => {
+      console.log(err)
+      return err
+    })
 }
 
 /**
@@ -24,30 +24,30 @@ const create = async (params) => {
  * @param {number} id 
  */
 const getById = async (id) => {
-  return await APIServices.get(
+  return await RequestAdapter.get(
     `${ENDPOINTS.USER}${ENDPOINTS.DIARY}/${id}`
   )
-  .then(res => {
-    return res.data
-  })
-  .catch(err => {
-    return err
-  })
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      return err
+    })
 }
 
 /**
  * Returns all diary texts
  */
 const getAll = async () => {
-  return await APIServices.get(
+  return await RequestAdapter.get(
     `${ENDPOINTS.USER}${ENDPOINTS.DIARY}`,
   )
-  .then(res => {
-    return res.data
-  })
-  .catch(err => {
-    return err
-  })
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      return err
+    })
 }
 
 export const DiaryServices = {
