@@ -11,7 +11,7 @@ const persistConfig = {
   storage: AsyncStorage,
   stateReconciler: autoMergeLevel2,
   timeout: null,
-  whitelist: ['user']
+  whitelist: ['user', 'notifications']
 };
 
 const sagaMiddleware = createSagaMiddleware();

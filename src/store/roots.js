@@ -6,13 +6,15 @@ import * as register from './register';
 import * as diary from './diary';
 import * as feed from './feed';
 import * as forum from './forum';
+import * as notification from './notification';
 
 const reducers = combineReducers({
   user: user.reducer,
   register: register.reducer,
   diary: diary.reducer,
   feed: feed.reducer,
-  forum: forum.reducer
+  forum: forum.reducer,
+  notifications: notification.reducer
 })
 
 export const rootReducers = (state, action) => {
