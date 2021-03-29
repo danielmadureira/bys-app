@@ -31,6 +31,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
+    "react-native-autoheight-webview": "^1.5.8",
     "react-native-dotenv": "^2.5.3",
     "react-native-elements": "^3.0.0-alpha.1",
     "react-native-form-validator": "^0.3.5",
