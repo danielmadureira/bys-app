@@ -18,6 +18,10 @@ request.interceptors.request.use(
         'X-Requested-With': 'XMLHttpRequest',
         'Authorization': `Bearer ${token}`
       }
+    } else {
+      config.headers = {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
     }
     return config
   },

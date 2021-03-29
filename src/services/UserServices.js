@@ -6,17 +6,19 @@ import { ENDPOINTS } from "../enums/Endpoints"
  * @param {file} image 
  */
 const _getFormData = (params) => {
-  let filename = params.image.split('/').pop();
-
-  let match = /\.(\w+)$/.exec(filename);
-  let type = match ? `image/${match[1]}` : `image`;
-
   let formData = new FormData();
-  formData.append('image', {
-    uri: params.image,
-    name: filename,
-    type
-  });
+  if (params.image) {
+    let filename = params.image.split('/').pop();
+
+    let match = /\.(\w+)$/.exec(filename);
+    let type = match ? `image/${match[1]}` : `image`;
+
+    formData.append('image', {
+      uri: params.image,
+      name: filename,
+      type
+    });
+  }
   formData.append('name', params.name)
   formData.append('email', params.email)
   formData.append('profession', params.profession)
@@ -38,12 +40,10 @@ const create = async (params) => {
     }
   )
     .then(res => {
-      console.log(res)
       return res.data
     })
     .catch(err => {
-      console.log(err)
-      return err
+      return err.response.data
     })
 }
 
