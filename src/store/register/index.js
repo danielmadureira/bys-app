@@ -8,15 +8,17 @@ const initialState = {
   profile_picture: null,
   email: "",
   password: "",
-  isLoading: true,
+  isLoading: false,
+  error: null
 }
 
 /** Types */
 export const types = {
   REGISTER_STEP_ONE: "[Register] User's Personal Information",
   REGISTER_STEP_TWO: "[Register] User's Password",
-  REGISTER_LOADING: "[Register] Loading"
-} 
+  REGISTER_LOADING: "[Register] Loading",
+  REGISTER_LOAD_ERROR: "[Register] Loading error",
+}
 
 /** Actions */
 export const actions = {
@@ -31,12 +33,16 @@ export const actions = {
   isLoading: (user) => ({
     type: types.REGISTER_LOADING,
     payload: user
+  }),
+  loadErrors: (error) => ({
+    type: types.REGISTER_LOAD_ERROR,
+    payload: error
   })
 }
 
 /** Reducer */
 export const reducer = (
-  state = initialState, 
+  state = initialState,
   action
 ) => {
   switch (action.type) {
@@ -53,7 +59,14 @@ export const reducer = (
         isLoading: action.payload
       }
     }
-    
+
+    case types.REGISTER_LOAD_ERROR: {
+      return {
+        ...state,
+        error: action.payload
+      }
+    }
+
     default:
       return state
   }
@@ -69,8 +82,12 @@ export function* saga() {
     form.password = encryptPassword(form.password)
 
     try {
-      yield UserServices.create(form)
-      yield put(actions.isLoading(false))
+      const data = yield UserServices.create(form)
+      if (data) {
+        yield put(actions.loadErrors(data.message))
+      } else {
+        yield put(actions.isLoading(true))
+      }
     } catch (error) {
       console.log(error)
     }

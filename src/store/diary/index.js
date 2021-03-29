@@ -5,7 +5,9 @@ const initialState = {
   title: '',
   text: '',
   allTexts: {},
-  item: {}
+  item: {},
+  isLoading: true,
+  isSend: false
 }
 
 export const types = {
@@ -15,6 +17,8 @@ export const types = {
   FETCH_ALL_DIARY: '[Diary] Fetch all diary',
   GET_DIARY_DETAILS: '[Diary] Get diary',
   FETCH_DIARY_DETAILS: '[Diary] Fetch diary',
+  LOADER_DIARY: '[Diary] Loader',
+  DIARY_IS_SENDED: '[Diary] Send',
 }
 
 export const actions = {
@@ -36,6 +40,14 @@ export const actions = {
   fetchDiary: (diary) => ({
     type: types.FETCH_DIARY_DETAILS,
     payload: diary
+  }),
+  isLoading: (loading) => ({
+    type: types.LOADER_DIARY,
+    payload: loading
+  }),
+  isSend: (send) => ({
+    type: types.DIARY_IS_SENDED,
+    payload: send
   })
 }
 
@@ -52,7 +64,7 @@ export const reducer = (
         allTexts: data
       }
     }
-    
+
     case types.FETCH_DIARY_DETAILS: {
       const data = action.payload
       return {
@@ -60,7 +72,23 @@ export const reducer = (
         item: data
       }
     }
-  
+
+    case types.LOADER_DIARY: {
+      const loading = action.payload
+      return {
+        ...state,
+        isLoading: loading
+      }
+    }
+
+    case types.DIARY_IS_SENDED: {
+      const send = action.payload
+      return {
+        ...state,
+        isSend: send
+      }
+    }
+
     default:
       return state
   }
@@ -74,6 +102,7 @@ export function* saga() {
 
     try {
       yield DiaryServices.create(form)
+      yield put(actions.isSend(true))
     } catch (error) {
       console.log(error)
     }
@@ -83,6 +112,7 @@ export function* saga() {
     try {
       const data = yield DiaryServices.getAll()
       yield put(actions.fetchAllDiary(data))
+      yield put(actions.isLoading(false))
     } catch (error) {
       console.log(error)
     }

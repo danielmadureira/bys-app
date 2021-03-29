@@ -7,7 +7,8 @@ const initialState = {
   groups: {},
   comments: [],
   isLoading: true,
-  isCommentLoading: true
+  isCommentLoading: true,
+  isSend: false
 }
 
 export const types = {
@@ -19,7 +20,8 @@ export const types = {
   FORUM_COMMENT_LOADING: '[Forum] Loading Comment',
   FORUM_LIKE_COMMENT: '[Forum] Like Comment',
   FORUM_SEND_LIKE_COMMENT: '[Forum] Send Like Comment',
-  FORUM_ADD_COMMENT: '[Forum] Add a comment'
+  FORUM_ADD_COMMENT: '[Forum] Add a comment',
+  COMMENT_IS_SEND: '[Forum] Send comment'
 }
 
 export const actions = {
@@ -58,6 +60,10 @@ export const actions = {
     type: types.FORUM_ADD_COMMENT,
     payload: comment
   }),
+  isSend: (send) => ({
+    type: types.COMMENT_IS_SEND,
+    payload: send
+  })
 }
 
 export const reducer = (
@@ -101,10 +107,16 @@ export const reducer = (
         state.comments,
         action.payload
       )
-      console.log(comments)
       return {
         ...state,
         comments: comments
+      }
+    }
+
+    case types.COMMENT_IS_SEND: {
+      return {
+        ...state,
+        isSend: action.payload
       }
     }
 
@@ -174,10 +186,11 @@ export function* saga() {
       })
   })
 
-  yield takeLatest(types.FORUM_ADD_COMMENT, function* sendLike(action) {
+  yield takeLatest(types.FORUM_ADD_COMMENT, function* sendComment(action) {
     try {
       const form = action.payload
       yield ForumServices.addComment(form)
+      yield put(actions.isSend(true))
     } catch (error) {
       console.log(error)
     }

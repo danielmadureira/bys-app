@@ -5,7 +5,8 @@ import { UserServices } from '../../services/UserServices'
 const initialState = {
   details: {},
   data: [],
-  isLoading: true
+  isLoading: true,
+  isLoadingDetails: true
 }
 
 export const types = {
@@ -15,7 +16,8 @@ export const types = {
   FETCH_FEED_DETAILS: '[Feed] Fetch feed details',
   GET_FEED_AUTHOR: '[Feed] Get feed author',
   FETCH_FEED_AUTHOR: '[Feed] Fetch feed author',
-  FEED_LOADING: "[Feed] Loading"
+  FEED_LOADING: '[Feed] Loading',
+  FEED_LOADING_DETAILS: '[Feed] Loading details'
 }
 
 export const actions = {
@@ -44,6 +46,10 @@ export const actions = {
   }),
   isLoading: (loading) => ({
     type: types.FEED_LOADING,
+    payload: loading
+  }),
+  isLoadingDetails: (loading) => ({
+    type: types.FEED_LOADING_DETAILS,
     payload: loading
   })
 }
@@ -76,18 +82,25 @@ export const reducer = (
         ...state,
         details: {
           ...state.details,
-          author: author.name 
+          author: author.name
         }
       }
     }
-    
+
     case types.FEED_LOADING: {
       return {
         ...state,
         isLoading: action.payload
       }
     }
-  
+
+    case types.FEED_LOADING_DETAILS: {
+      return {
+        ...state,
+        isLoadingDetails: action.payload
+      }
+    }
+
     default:
       return state
   }
@@ -114,6 +127,7 @@ export function* saga() {
       yield data.author = author.name
 
       yield put(actions.fetchFeedById(data))
+      yield put(actions.isLoadingDetails(false))
     } catch (error) {
       console.log(error)
     }
