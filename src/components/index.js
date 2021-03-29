@@ -21,6 +21,8 @@ export { default as AlertBase } from './base/AlertBase/AlertBase';
 export { default as TextBase } from './base/TextBase';
 // Base: Componente Button
 export { default as ButtonBase } from './base/ButtonBase';
+// Base: Componente Loader
+export { default as LoaderBase } from './base/LoaderBase';
 
 // Componente comentário
 export { default as Comment } from './Comment/Comment';

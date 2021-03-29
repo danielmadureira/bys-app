@@ -12,7 +12,14 @@ export const styles = (props) => StyleSheet.create({
     borderRadius: 15
   },
   wrapper_text: {
+    flexDirection: 'row',
+    justifyContent: "space-between",
     width: '95%',
+  },
+  wrapper_delete: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   },
   title: {
     paddingTop: 15,
