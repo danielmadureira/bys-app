@@ -35,16 +35,21 @@ const PrivateRoutes = () => {
 	return (
 		<Tab.Navigator
 			initialRouteName="Feed"
-			tabBar={props =>
-				<View style={{
-					position: 'absolute',
-					left: 0,
-					right: 0,
-					bottom: 0
-				}}>
-					<Main {...props} user={user} />
-				</View>
-			}
+
+			tabBar={props => {
+				return (
+					![3, 7, 8, 10, 11, 13, 15].includes(props.state.index)
+				) ?
+					<View style={{
+						position: 'absolute',
+						left: 0,
+						right: 0,
+						bottom: 0
+					}}>
+						<Main {...props} user={user} />
+					</View>
+					: null
+			}}
 			tabBarOptions={{
 				style: {
 					borderTopWidth: 0,

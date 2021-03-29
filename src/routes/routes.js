@@ -51,6 +51,7 @@ const Routes = () => {
 						headerShown: false
 					}}
 				/>
+
 				<Stack.Screen
 					name="Feed"
 					component={PrivateRoutes}
