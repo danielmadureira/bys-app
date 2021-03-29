@@ -4,17 +4,23 @@ import {
 	Image,
 	View
 } from 'react-native'
-import { WebView } from 'react-native-webview'
+import AutoHeightWebView from 'react-native-autoheight-webview'
 import { ScrollView } from 'react-native-gesture-handler'
-import { BackBase, TextBase, TitleHeader } from '../../../components'
+import {
+	BackBase,
+	LoaderBase,
+	TextBase,
+	TitleHeader
+} from '../../../components'
 
 import { styles } from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from '../../../store/feed'
+import { Dimensions } from 'react-native'
 
 const DetailFeed = ({ route, navigation }) => {
 	const { itemId } = route.params;
-	const { details } = useSelector(state => state.feed)
+	const { details, isLoadingDetails } = useSelector(state => state.feed)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -24,32 +30,48 @@ const DetailFeed = ({ route, navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
-			<View style={styles.container_header}>
-				<TitleHeader
-					title={details.title}
-					subtitle={details.author}
-				/>
-				<BackBase navigation={navigation} />
-			</View>
+			{isLoadingDetails ? (
+				<LoaderBase height />
+			) : (<>
+				<View style={styles.container_header}>
+					<TitleHeader
+						title={details.title}
+						subtitle={details.author}
+					/>
+					<BackBase navigation={navigation} />
+				</View>
 
-			<View style={styles.wrapper_picture}>
-				<Image
-					borderRadius={20}
-					style={styles.picture}
-					source={{ uri: details.picture }}
-				/>
-				<TextBase style={styles.picture_title}>
-					{details.picture_description}
-				</TextBase>
-			</View>
+				<View style={styles.wrapper_picture}>
+					<Image
+						borderRadius={20}
+						style={styles.picture}
+						source={{ uri: details.picture }}
+					/>
+					<TextBase style={styles.picture_title}>
+						{details.picture_description}
+					</TextBase>
+				</View>
 
-			<View style={styles.wrapper_body}>
-				<WebView
-					automaticallyAdjustContentInsets={false}
-					style={styles.body}
-					source={{ html: details.text }}
-				/>
-			</View>
+				<View style={styles.wrapper_body}>
+					<AutoHeightWebView
+						style={{ height: Dimensions.get('screen').height * 3, width: '100%' }}
+						customStyle={`
+						* {
+							font-size: 18px;
+						}
+					`}
+						onSizeUpdated={size => { }}
+						files={[{
+							href: 'cssfileaddress',
+							type: 'text/css',
+							rel: 'stylesheet'
+						}]}
+						source={{ html: details.text }}
+						scalesPageToFit={true}
+						viewportContent={'width=device-width, user-scalable=no'}
+					/>
+				</View>
+			</>)}
 		</ScrollView>
 	);
 };

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	ImageBackground,
 	View,
@@ -8,6 +8,7 @@ import {
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { useDispatch, useSelector } from 'react-redux'
 import {
+	AlertBase,
 	BackBase,
 	ButtonSettings,
 	TextBase,
@@ -22,6 +23,7 @@ import { Field, Formik } from 'formik'
 import * as Yup from 'yup'
 import { AuthServices } from '../../services/AuthServices'
 import { actions } from '../../store/user'
+import { actions as feedActions } from '../../store/diary'
 import { SecureStoreAdapter } from '../../adapter/SecureStoreAdapter'
 import * as ImagePicker from 'expo-image-picker'
 
@@ -38,10 +40,18 @@ const Profile = ({ navigation }) => {
 	const user = useSelector(state => state.user)
 	const [isEditMode, setEditMode] = useState(false)
 	const [imagePath, setPath] = useState('')
+	const { isSend } = useSelector(state => state.diary)
+
+	useEffect(() => {
+		if (isSend) {
+			setTimeout(() => {
+				dispatch(feedActions.isSend(false))
+			}, 2500);
+		}
+	}, [isSend])
 
 	const updateProfile = (form) => {
 		setEditMode(false)
-		console.log(form)
 		dispatch(actions.updateProfile(form))
 	}
 
@@ -51,12 +61,13 @@ const Profile = ({ navigation }) => {
 	}
 
 	const logout = () => {
-		SecureStoreAdapter.deleteItemAsync('_token')
 		AuthServices.unauthenticate()
 			.then(async (res) => {
-				dispatch(actions.unauthenticate())
 			})
 			.catch(err => console.log(err, 'Error'))
+		SecureStoreAdapter.deleteItemAsync('_token')
+		dispatch(actions.unauthenticate())
+		navigation.navigate('Home')
 	}
 
 	return (
@@ -209,14 +220,16 @@ const Profile = ({ navigation }) => {
 									style={styles.profile_profession}
 								/>
 							</>
-						) : (<>
-							<TextBase style={styles.profile_name}>
-								{user.name}
-							</TextBase>
-							<TextBase style={styles.profile_profession}>
-								{user.profession}
-							</TextBase>
-						</>)}
+						) : (
+							user.name && (<>
+								<TextBase style={styles.profile_name}>
+									{user.name}
+								</TextBase>
+								<TextBase style={styles.profile_profession}>
+									{user.profession}
+								</TextBase>
+							</>)
+						)}
 					</View>
 
 					{/** User's Mood */}
@@ -242,22 +255,29 @@ const Profile = ({ navigation }) => {
 									/>
 								</View>
 							) : (
-								<View style={styles.mood}>
-									<TextBase style={styles.mood_status}>
-										{user.mood.description}
-									</TextBase>
-									<TextBase style={styles.mood_emoticon}>
-										{user.mood.emoji_hex ?
-											String.fromCodePoint(user.mood.emoji_hex)
-											: ''}
-									</TextBase>
-								</View>
+								user.name && (
+									<View style={styles.mood}>
+										<TextBase style={styles.mood_status}>
+											{user.mood.description}
+										</TextBase>
+										<TextBase style={styles.mood_emoticon}>
+											{user.mood.emoji_hex ?
+												String.fromCodePoint(user.mood.emoji_hex)
+												: ''}
+										</TextBase>
+									</View>
+								)
 							)}
 						</View>
 					</View>
 				</>)}
 			</Formik>
 
+			{isSend &&
+				<AlertBase type="success">
+					Publicado com sucesso.
+				</AlertBase>
+			}
 			{/** User's Diary */}
 			<View style={styles.message_container}>
 				<ImageBackground

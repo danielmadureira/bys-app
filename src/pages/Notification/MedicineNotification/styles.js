@@ -6,9 +6,10 @@ let wrapperWidth = '100%';
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingTop: 40,
+		paddingTop: 20,
 	},
 	wrapper: {
+		paddingBottom: 150,
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",

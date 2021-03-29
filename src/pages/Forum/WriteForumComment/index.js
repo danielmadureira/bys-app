@@ -4,7 +4,10 @@ import {
   View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { BackBase, TitleHeader } from '../../../components';
+import {
+  BackBase,
+  TitleHeader
+} from '../../../components';
 import BodyForumComment from './BodyForumComment';
 import { styles } from './styles'
 

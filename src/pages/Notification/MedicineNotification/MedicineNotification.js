@@ -23,7 +23,10 @@ const MedicineNotification = ({ navigation, route }) => {
 			</View>
 
 			<View style={styles.wrapper}>
-				<Notification medication={notification} />
+				<Notification
+					navigation={navigation}
+					medication={notification}
+				/>
 			</View>
 		</ScrollView>
 	);

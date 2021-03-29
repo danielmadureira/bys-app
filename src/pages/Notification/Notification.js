@@ -17,11 +17,13 @@ import { actions } from '../../store/notification'
 import uuid from 'react-native-uuid'
 
 import { styles } from './styles'
+import { useNavigation } from '@react-navigation/core';
 
 const Notification = ({ medication }) => {
 	const [name, setName] = useState('')
 	const [days, setDays] = useState(DaysOfWeek)
 	const [hours, setHours] = useState([])
+	const navigation = useNavigation()
 	const dispatch = useDispatch()
 	const { medications } = useSelector(state => state.notifications)
 
@@ -64,6 +66,8 @@ const Notification = ({ medication }) => {
 		}
 		// Update if object exist 
 		updateNotification(daysOfAlert)
+
+		navigation.navigate('AllMedicineNotification')
 	}
 
 	const updateNotification = (daysOfAlert) => {

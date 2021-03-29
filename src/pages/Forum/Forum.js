@@ -12,6 +12,7 @@ import { actions } from '../../store/forum'
 import {
 	AlertBase,
 	BackBase,
+	LoaderBase,
 	TextBase,
 	TextCard,
 	TitleHeader
@@ -41,7 +42,7 @@ const Forum = ({ navigation }) => {
 			</View>
 
 			<SafeAreaView style={{ flex: 1, marginBottom: 100 }}>
-				{!isLoading && (
+				{!isLoading ? (
 					<SectionList
 						stickySectionHeadersEnabled={false}
 						sections={groups}
@@ -93,6 +94,8 @@ const Forum = ({ navigation }) => {
 							return null;
 						}}
 					/>
+				) : (
+					<LoaderBase />
 				)}
 			</SafeAreaView>
 		</ScrollView>

@@ -34,8 +34,9 @@ const BodyWriteDiary = (props) => {
           text: ''
         }}
         validationSchema={DiarySchema}
-        onSubmit={(form) => {
+        onSubmit={(form, { resetForm }) => {
           dispatch(actions.writeDiary(form))
+          resetForm()
         }}
       >
         {({ handleSubmit }) => (<>

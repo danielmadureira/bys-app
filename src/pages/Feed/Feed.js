@@ -6,7 +6,7 @@ import {
 	SafeAreaView,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { ImageCard, TitleHeader } from '../../components';
+import { ImageCard, LoaderBase, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 
@@ -17,9 +17,9 @@ import { ActivityIndicator } from 'react-native';
 const Feed = ({ navigation }) => {
 	const { data, isLoading } = useSelector(state => state.feed)
 	const dispatch = useDispatch()
-	
+
 	useEffect(() => {
-		if(isLoading) {
+		if (isLoading) {
 			dispatch(actions.getAllFeed())
 		}
 	}, [isLoading])
@@ -42,18 +42,25 @@ const Feed = ({ navigation }) => {
 							[{ data: data }]
 						}
 						renderItem={({ item }) => {
-							return <View key={item.id} style={styles.wrapper}>
-								<ImageCard 
-									onPress={() => navigation.navigate('DetailFeed', {
+							return <View
+								key={item.id}
+								style={styles.wrapper}
+								onTouchEnd={() => {
+									dispatch(actions.isLoadingDetails(true))
+
+									navigation.navigate('DetailFeed', {
 										itemId: item.id
-									})} 
-									item={item} 
+									})
+								}}
+							>
+								<ImageCard
+									item={item}
 								/>
 							</View>;
 						}}
 					/>
 				) : (
-					<ActivityIndicator color="green" size="large" />
+					<LoaderBase />
 				)}
 			</SafeAreaView>
 		</ScrollView>

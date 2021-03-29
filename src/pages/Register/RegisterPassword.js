@@ -4,13 +4,14 @@ import { ScrollView, TextInput } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
 import { StatusBar } from 'expo-status-bar';
-import { BackBase, TitleHeader } from '../../components';
+import { AlertBase, BackBase, TitleHeader } from '../../components';
 import ButtonBase from '../../components/base/ButtonBase';
 import InputBase from '../../components/base/InputBase';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/register';
 import * as Yup from 'yup'
 import { Field, Formik } from 'formik';
+import { ActivityIndicator } from 'react-native';
 
 const RegisterSchemaStepTwo = Yup.object().shape({
 	password: Yup
@@ -27,13 +28,26 @@ const RegisterSchemaStepTwo = Yup.object().shape({
 const RegisterPassword = (props) => {
 	const { navigation } = props;
 	const dispatch = useDispatch()
-  const register = useSelector(state => state.register)
+	const register = useSelector(state => state.register)
 	let isLoading = register.isLoading
+	let error = register.error
 
 	useEffect(() => {
-		console.log(isLoading)
-		// navigation.navigate('Home')
+		if (isLoading) {
+			setTimeout(() => {
+				dispatch(actions.isLoading(false))
+				navigation.navigate('Home')
+			}, 1500);
+		}
 	}, [isLoading])
+
+	useEffect(() => {
+		if (error) {
+			setTimeout(() => {
+				dispatch(actions.loadErrors(null))
+			}, 1500);
+		}
+	}, [error])
 
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
@@ -46,8 +60,8 @@ const RegisterPassword = (props) => {
 					}
 				/>
 			</View>
-			
-			<Formik 
+
+			<Formik
 				initialValues={{
 					password: '',
 					confirmPassword: '',
@@ -64,32 +78,47 @@ const RegisterPassword = (props) => {
 					dispatch(actions.registerStepTwo(form))
 				}}
 			>
-			{({ handleSubmit, isValid }) => (
-				<View style={styles.message_container}>	
-					<View style={styles.message}>
-						<Field 
-							component={InputBase}
-							name="password"
-							placeholder="Senha"
-							secureTextEntry={true}
-						/>
-						
-						<Field 
-							component={InputBase}
-							name="confirmPassword"
-							placeholder="Confirmar senha"
-							secureTextEntry={true}
-						/>
-					</View>
+				{({ handleSubmit, isValid }) => (
+					<View style={styles.message_container}>
+						{register.isLoading &&
+							<AlertBase type="success">
+								Cadastrado com sucesso.
+								Efetue Login.
+							</AlertBase>
+						}
 
-					<View style={styles.wrapper_button}>
-						<ButtonBase
-							title="Cadastrar"
-							onPress={handleSubmit}
-						/>
+						{register.error &&
+							<View style={{ width: '95%' }}>
+								<AlertBase type="danger">
+									{register.error}
+								</AlertBase>
+							</View>
+						}
+
+						<View style={styles.message}>
+							<Field
+								component={InputBase}
+								name="password"
+								placeholder="Senha"
+								secureTextEntry={true}
+							/>
+
+							<Field
+								component={InputBase}
+								name="confirmPassword"
+								placeholder="Confirmar senha"
+								secureTextEntry={true}
+							/>
+						</View>
+
+						<View style={styles.wrapper_button}>
+							<ButtonBase
+								title="Cadastrar"
+								onPress={handleSubmit}
+							/>
+						</View>
 					</View>
-				</View>
-			)}
+				)}
 			</Formik>
 		</ScrollView>
 	)

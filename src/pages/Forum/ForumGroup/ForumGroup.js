@@ -4,13 +4,17 @@ import {
 	View
 } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { BackBase, Comment, TextBase, TitleHeader } from '../../../components'
+import {
+	BackBase,
+	Comment,
+	LoaderBase,
+	TextBase,
+	TitleHeader
+} from '../../../components'
 
 import { styles } from './styles'
-import ProfileImage from '../../../../assets/Profile-picture.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from '../../../store/forum'
-import { ActivityIndicator } from 'react-native'
 
 const ForumGroup = ({ navigation, route }) => {
 	const { title, subtitle, id } = route.params
@@ -67,20 +71,23 @@ const ForumGroup = ({ navigation, route }) => {
 				</View>
 			</View>
 
-			<View style={styles.wrapper_comment}>
-				{!isCommentLoading ? (
-					comments.map((comment) => {
+
+			{!isCommentLoading ? (
+				<View style={styles.wrapper_comment}>
+					{comments.map((comment) => {
 						return (
 							<Comment
 								key={comment.id}
 								diary={comment}
 							/>
 						)
-					})
-				) : (
-					<ActivityIndicator color="green" size="large" />
-				)}
-			</View>
+					})}
+				</View>
+			) : (
+				<View style={{ width: '100%' }}>
+					<LoaderBase />
+				</View>
+			)}
 		</ScrollView>
 	);
 };

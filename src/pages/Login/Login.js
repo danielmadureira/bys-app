@@ -1,26 +1,32 @@
-import React, { useState } from 'react';
-import { View, Text, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, ActivityIndicator } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
 import LogoPNG from '../../../assets/logo.png';
 import ButtonBase from '../../components/base/ButtonBase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/user';
 import { AuthServices } from '../../services/AuthServices';
 import { encryptPassword } from '../../helpers/registerHelper';
 import { AlertBase, TextBase } from '../../components';
-import { ActivityIndicator } from 'react-native';
 import { SecureStoreAdapter } from '../../adapter/SecureStoreAdapter';
 
 const Login = (props) => {
 	const { navigation } = props
 	const dispatch = useDispatch()
+	const user = useSelector(state => state.user)
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [showError, setShowError] = useState(false)
 	const [isLoading, setLoading] = useState(false)
+
+	useEffect(() => {
+		if (user.name) {
+			navigation.navigate('Feed')
+		}
+	}, [user])
 
 	const login = () => {
 		setLoading(true)
