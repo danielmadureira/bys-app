@@ -1,7 +1,13 @@
 import { RequestAdapter } from "../adapter/RequestAdapter"
-import { SecureStoreAdapter } from "../adapter/SecureStoreAdapter"
 import { ENDPOINTS } from "../enums/Endpoints"
 
+/**
+ * Log user into 
+ * application
+ * 
+ * @param {object} params 
+ * @returns 
+ */
 const authenticate = async (params) => {
   return await RequestAdapter.post(
     `${ENDPOINTS.AUTHENTICATE}`,
@@ -12,28 +18,27 @@ const authenticate = async (params) => {
     })
 }
 
+/**
+ * Logout user 
+ * of application
+ * 
+ * @param {object} params 
+ * @returns 
+ */
 const unauthenticate = async (params) => {
   return await RequestAdapter.post(
     ENDPOINTS.UNAUTHENTICATE,
     params
   )
     .then(res => {
-      console.log(res, 'login')
       return res.data
     })
     .catch(err => {
-      console.log(err)
       return err
     })
 }
 
-const isAuthenticated = () => {
-  return SecureStoreAdapter.getItemAsync('_token') ?
-    true : false
-}
-
 export const AuthServices = {
   authenticate,
-  unauthenticate,
-  isAuthenticated
+  unauthenticate
 }

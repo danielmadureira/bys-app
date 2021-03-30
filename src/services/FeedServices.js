@@ -2,8 +2,11 @@ import { RequestAdapter } from "../adapter/RequestAdapter"
 import { ENDPOINTS } from "../enums/Endpoints"
 
 /**
- * Returns a feed by id
+ * Returns details 
+ * of feed by id
+ * 
  * @param {number} id 
+ * @returns {Promise}
  */
 const getById = async (id) => {
   return await RequestAdapter.get(
@@ -19,10 +22,17 @@ const getById = async (id) => {
 
 /**
  * Returns all feed
+ * 
+ * @returns {Promise}
  */
-const getAll = async () => {
+const getAll = async (page) => {
   return await RequestAdapter.get(
     `${ENDPOINTS.FEED}`,
+    {
+      params: {
+        page: page
+      }
+    }
   )
     .then(res => {
       return res.data

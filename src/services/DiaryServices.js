@@ -2,7 +2,10 @@ import { RequestAdapter } from "../adapter/RequestAdapter"
 import { ENDPOINTS } from "../enums/Endpoints"
 
 /**
- *  Create a diary text 
+ * Create an account
+ * 
+ * @param {object} params 
+ * @returns {Promise} 
  */
 const create = async (params) => {
   return await RequestAdapter.post(
@@ -10,18 +13,19 @@ const create = async (params) => {
     params
   )
     .then(res => {
-      console.log(res)
       return res.data
     })
     .catch(err => {
-      console.log(err)
-      return err
+      return err.response.data
     })
 }
 
 /**
- * Returns a diary text by id
+ * Returns a diary 
+ * text by id
+ * 
  * @param {number} id 
+ * @returns {Promise} 
  */
 const getById = async (id) => {
   return await RequestAdapter.get(
@@ -36,7 +40,10 @@ const getById = async (id) => {
 }
 
 /**
- * Returns all diary texts
+ * Returns all 
+ * diary texts 
+ * 
+ * @returns {Promise}
  */
 const getAll = async () => {
   return await RequestAdapter.get(
@@ -46,7 +53,7 @@ const getAll = async () => {
       return res.data
     })
     .catch(err => {
-      return err
+      return err.response.data
     })
 }
 

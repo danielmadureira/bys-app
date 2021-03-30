@@ -48,9 +48,11 @@ const create = async (params) => {
 }
 
 /**
- * Update personal data of user
+ * Update personal 
+ * data of user
  * 
  * @param {object} params 
+ * @returns {Promise}
  */
 const update = async (params) => {
   return await RequestAdapter.put(
@@ -68,7 +70,8 @@ const update = async (params) => {
 /**
  * Update mood of user
  * 
- * @param {object} params 
+ * @param {object} params  
+ * @returns {Promise}
  */
 const updateMood = async (params) => {
   return await RequestAdapter.put(
@@ -84,10 +87,10 @@ const updateMood = async (params) => {
 }
 
 /**
- * Converet image profile
+ * Convert image profile
  * in Form Data
  * 
- * @param {file} image 
+ * @param {file} image
  */
 const _getFile = (image) => {
   let filename = image.split('/').pop();
@@ -106,9 +109,11 @@ const _getFile = (image) => {
 }
 
 /**
- * Update profile image of user
+ * Update profile 
+ * picture of user
  * 
  * @param {file} image 
+ * @returns {Promise}
  */
 const updateFile = async (image) => {
   let formData = _getFile(image)
@@ -129,6 +134,13 @@ const updateFile = async (image) => {
     })
 }
 
+/**
+ * Get user 
+ * by id
+ * 
+ * @param {number} id  
+ * @returns {Promise}
+ */
 const get = async (id) => {
   return await RequestAdapter.get(
     ENDPOINTS.USER,
@@ -142,6 +154,12 @@ const get = async (id) => {
     })
 }
 
+/**
+ * Get mood 
+ * by user
+ * 
+ * @returns {Promise}
+ */
 const getMood = async () => {
   return await RequestAdapter.get(
     ENDPOINTS.MOOD
@@ -154,6 +172,13 @@ const getMood = async () => {
     })
 }
 
+/**
+ * Get user 
+ * by id
+ * 
+ * @param {number} id  
+ * @returns {Promise}
+ */
 const getById = async (id) => {
   return await RequestAdapter.get(
     `${ENDPOINTS.USER}/${id}`,
