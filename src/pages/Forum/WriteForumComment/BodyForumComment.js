@@ -11,7 +11,7 @@ import ButtonBase from '../../../components/base/ButtonBase';
 
 import { styles } from './styles'
 import InputBase from '../../../components/base/InputBase';
-import { AlertBase } from '../../../components';
+import { useNavigation } from '@react-navigation/core';
 
 const DiarySchema = Yup.object().shape({
   text: Yup
@@ -22,13 +22,15 @@ const DiarySchema = Yup.object().shape({
 
 const BodyForumComment = (props) => {
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const { isSend } = useSelector(state => state.forum)
+
 
   useEffect(() => {
     if (isSend) {
-      setTimeout(() => {
-        dispatch(actions.isSend(false))
-      }, 2000);
+      dispatch(actions.isSend(false))
+      dispatch(actions.isCommentLoading(true))
+      navigation.goBack()
     }
   }, [isSend])
 
@@ -49,12 +51,6 @@ const BodyForumComment = (props) => {
         }}
       >
         {({ handleSubmit }) => (<>
-          {isSend &&
-            <AlertBase type="success">
-              Seu comentário foi enviado.
-            </AlertBase>
-          }
-
           <View style={styles.message}>
             <Field
               name="text"

@@ -62,24 +62,8 @@ const Notification = ({ medication }) => {
 				type: AlertTypes.MEDICATION
 			}
 			dispatch(actions.addNotification(content))
-			return
 		}
-		// Update if object exist 
-		updateNotification(daysOfAlert)
-
 		navigation.navigate('AllMedicineNotification')
-	}
-
-	const updateNotification = (daysOfAlert) => {
-		let items = medications.map(notify => {
-			if (notify.uuid === medication.uuid) {
-				notify.title = name
-				notify.days = daysOfAlert
-				notify.hours = hours
-			}
-			return notify
-		})
-		dispatch(actions.updateNotification(items))
 	}
 
 	useEffect(() => {
