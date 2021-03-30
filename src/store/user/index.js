@@ -132,7 +132,6 @@ export function* saga() {
           name: form.name,
           profession: form.profession
         })
-        console.log(data)
       }
 
       // Update profile picture
@@ -140,7 +139,6 @@ export function* saga() {
         let data = yield UserServices.updateFile(
           form.image
         )
-        console.log(data)
       }
 
       // Update user's mood
@@ -149,7 +147,6 @@ export function* saga() {
           description: form.status,
           emoji_hex: String(form.emoticon)
         })
-        console.log(data)
       }
 
       yield put(actions.getUser())

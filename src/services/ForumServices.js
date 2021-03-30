@@ -7,9 +7,14 @@ import { ENDPOINTS } from "../enums/Endpoints"
  * 
  * @returns {Promise}
  */
-const getAllGroups = async () => {
+const getAllGroups = async (page) => {
   return await RequestAdapter.get(
     `${ENDPOINTS.FORUM_GROUP}`,
+    {
+      params: {
+        page: page
+      }
+    }
   )
     .then(res => {
       return res.data
@@ -26,19 +31,19 @@ const getAllGroups = async () => {
  * @param {number} id 
  * @returns {Promise}
  */
-const getRoomsByGroup = async (id) => {
+const getRoomsByGroup = async (id, page = 1) => {
   return await RequestAdapter.get(
     `${ENDPOINTS.FORUM_ROOM}`,
     {
       params: {
-        forum_group_id: id
+        page: page,
+        forum_group_id: id,
+        per_page: 5
       }
     }
   )
     .then(res => {
-      const { data } = res.data
-
-      return data
+      return res.data
     })
     .catch(err => {
       return err
@@ -52,12 +57,14 @@ const getRoomsByGroup = async (id) => {
  * @param {number} id 
  * @returns 
  */
-const getCommentsByRoom = async (id) => {
+const getCommentsByRoom = async (id, page = 1) => {
   return await RequestAdapter.get(
     `${ENDPOINTS.FORUM_COMMENT}`,
     {
       params: {
-        forum_room_id: id
+        page: page,
+        forum_room_id: id,
+        per_page: 2
       }
     }
   )

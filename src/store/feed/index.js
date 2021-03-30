@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects'
+import { delay, put, takeLatest } from 'redux-saga/effects'
 import { FeedServices } from '../../services/FeedServices'
 import { UserServices } from '../../services/UserServices'
 
@@ -123,6 +123,7 @@ export function* saga() {
     try {
       const dados = yield FeedServices.getAll(page)
       yield put(actions.fetchAllFeed(dados))
+      yield delay(1500)
       yield put(actions.isLoading(false))
     } catch (error) {
       console.log(error)

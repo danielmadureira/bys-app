@@ -45,12 +45,12 @@ const IMCCalculator = ({ navigation }) => {
 	const [isVisible, setVisible] = useState(false)
 
 	const calcula = (peso, altura) => {
-		altura = altura.replace(',', '')
-		altura = altura.replace('.', '')
+		let height = altura.replace(',', '')
+		height = height.replace('.', '')
 
 		let valorIMC = (
 			(parseFloat(peso) / (
-				parseFloat(altura) * parseFloat(altura)
+				parseFloat(height) * parseFloat(height)
 			)) * 10000
 		).toFixed(2);
 		return valorIMC
@@ -73,7 +73,7 @@ const IMCCalculator = ({ navigation }) => {
 						<TextBase
 							style={styles.modalTitle}
 						>
-							Seu IMC é: {calcula(peso, altura)}
+							Seu IMC é: {isVisible && calcula(peso, altura)}
 						</TextBase>
 						<TextBase style={styles.modalText}>
 							Veja a tabela de referência abaixo.
@@ -84,8 +84,8 @@ const IMCCalculator = ({ navigation }) => {
 							<TextBase style={styles.modalTableTitle}>Resultado</TextBase>
 						</View>
 
-						{reference.map(ref =>
-							<View style={styles.modalTableTexts}>
+						{reference.map((ref, i) =>
+							<View style={styles.modalTableTexts} key={i}>
 								<View style={styles.modalTableBorder}>
 									<TextBase style={styles.modalTableText}>{ref.imc}</TextBase>
 								</View>

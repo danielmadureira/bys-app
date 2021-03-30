@@ -6,6 +6,7 @@ import {
 import { ScrollView } from 'react-native-gesture-handler'
 import {
 	BackBase,
+	ButtonSettings,
 	Comment,
 	LoaderBase,
 	TextBase,
@@ -24,9 +25,18 @@ const ForumGroup = ({ navigation, route }) => {
 	} = useSelector(state => state.forum)
 	const dispatch = useDispatch()
 
+	const fetchMore = () => {
+		if (comments.current_page < comments.last_page) {
+			dispatch(actions.getAllForumComments({
+				id,
+				page: comments.current_page + 1
+			}))
+		}
+	}
+
 	useEffect(() => {
 		if (isCommentLoading) {
-			dispatch(actions.getAllForumComments(id))
+			dispatch(actions.getAllForumComments({ id, page: 1 }))
 		}
 	}, [isCommentLoading])
 
@@ -74,7 +84,7 @@ const ForumGroup = ({ navigation, route }) => {
 
 			{!isCommentLoading ? (
 				<View style={styles.wrapper_comment}>
-					{comments.map((comment) => {
+					{comments.data.map((comment) => {
 						return (
 							<Comment
 								key={comment.id}
@@ -82,6 +92,18 @@ const ForumGroup = ({ navigation, route }) => {
 							/>
 						)
 					})}
+
+					{(comments.current_page < comments.last_page) && (
+						<View style={styles.button}>
+							<ButtonSettings
+								large
+								type="success"
+								onPress={() => fetchMore()}
+							>
+								Carregar mais
+							</ButtonSettings>
+						</View>
+					)}
 				</View>
 			) : (
 				<View style={{ width: '100%' }}>

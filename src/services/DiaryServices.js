@@ -45,9 +45,14 @@ const getById = async (id) => {
  * 
  * @returns {Promise}
  */
-const getAll = async () => {
+const getAll = async (page) => {
   return await RequestAdapter.get(
     `${ENDPOINTS.USER}${ENDPOINTS.DIARY}`,
+    {
+      params: {
+        page: page
+      }
+    }
   )
     .then(res => {
       return res.data

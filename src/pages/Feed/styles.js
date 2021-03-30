@@ -17,11 +17,12 @@ export const styles = StyleSheet.create({
 	},
 	button: {
 		width: '100%',
-		paddingTop: 50,
+		marginTop: 50,
 	},
 	wrapper: {
 		display: "flex",
 		alignItems: "center",
+		paddingBottom: 10
 	},
 	space: {
 		display: "flex",

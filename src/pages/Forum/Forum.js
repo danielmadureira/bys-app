@@ -2,27 +2,32 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import {
 	View,
-	SectionList,
-	SafeAreaView,
-	FlatList
+	SafeAreaView
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/forum'
 import {
-	AlertBase,
 	BackBase,
+	ButtonSettings,
 	LoaderBase,
-	TextBase,
-	TextCard,
 	TitleHeader
 } from '../../components';
 
 import { styles } from './styles'
+import ForumRoom from './Room';
 
 const Forum = ({ navigation }) => {
 	const { groups, isLoading } = useSelector(state => state.forum)
 	const dispatch = useDispatch()
+
+	const fetchMore = () => {
+		if (groups.current_page < groups.last_page) {
+			dispatch(actions.getAllForumGroups(
+				groups.current_page + 1
+			))
+		}
+	}
 
 	useEffect(() => {
 		if (isLoading) {
@@ -43,57 +48,37 @@ const Forum = ({ navigation }) => {
 
 			<SafeAreaView style={{ flex: 1, marginBottom: 100 }}>
 				{!isLoading ? (
-					<SectionList
-						stickySectionHeadersEnabled={false}
-						sections={groups}
-						renderSectionHeader={({ section }) => (
-							<>
-								{<View style={styles.wrapper}>
+					<View>
+						{groups.data.map(section => {
+							return (
+								<View style={styles.wrapper}>
 									<View style={styles.container_header}>
 										<TitleHeader
-											title={section.title}
-											subtitle={section.subtitle}
+											title={section.name}
+											subtitle={section.description}
 											top={1}
 										/>
 									</View>
-									<FlatList
-										horizontal
-										ListEmptyComponent={
-											<AlertBase type="warning">
-												<TextBase>
-													Este grupo não possui salas no momento.
-											</TextBase>
-											</AlertBase>
-										}
-										data={section.data}
-										renderItem={({ item }) => {
-											return (
-												<View key={item.id} style={styles.wrapper_card}>
-													<TextCard
-														smallSize
-														diary={item}
-														event={() => {
-															dispatch(actions.isCommentLoading(true))
-															navigation.navigate('ForumGroup', {
-																title: item.name,
-																subtitle: item.description,
-																id: item.id
-															}
-															)
-														}}
-													/>
-												</View>
-											)
-										}}
-										showsHorizontalScrollIndicator={false}
+
+									<ForumRoom
+										room={section.id}
 									/>
-								</View>}
-							</>
+								</View>
+							)
+						})}
+
+						{(groups.current_page < groups.last_page) && (
+							<View style={styles.button}>
+								<ButtonSettings
+									large
+									type="success"
+									onPress={() => fetchMore()}
+								>
+									Carregar mais
+							</ButtonSettings>
+							</View>
 						)}
-						renderItem={({ item, section }) => {
-							return null;
-						}}
-					/>
+					</View>
 				) : (
 					<LoaderBase />
 				)}

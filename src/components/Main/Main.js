@@ -3,13 +3,16 @@ import { Image, ImageBackground, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './styles';
 import DefaultProfile from '../../../assets/default-user-light.png'
+import { actions } from '../../store/forum'
+import { useDispatch } from 'react-redux';
 
-const Main = ({ 
-	state, 
-	user, 
-	navigation 
+const Main = ({
+	state,
+	user,
+	navigation
 }) => {
-	
+	const dispatch = useDispatch()
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.main}>
@@ -22,7 +25,10 @@ const Main = ({
 				</TouchableOpacity>
 
 				<TouchableOpacity
-					onPress={() => navigation.navigate('Forum')}
+					onPress={() => {
+						dispatch(actions.isLoading(true))
+						navigation.navigate('Forum')
+					}}
 				>
 					<Image
 						source={require(`../../../assets/Message.png`)}
@@ -36,8 +42,8 @@ const Main = ({
 					<ImageBackground
 						source={
 							user.profile_picture ?
-							{ uri: user.profile_picture } :
-							DefaultProfile
+								{ uri: user.profile_picture } :
+								DefaultProfile
 						}
 						style={styles.profile}
 						imageStyle={styles.image}

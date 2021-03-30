@@ -1,5 +1,5 @@
-import { put, takeLatest } from 'redux-saga/effects'
-import { addLikeToComment, formatForumGroups, formatRoomComments } from '../../helpers/forumHelpers'
+import { delay, put, takeLatest } from 'redux-saga/effects'
+import { ForumHelpers } from '../../helpers/forumHelpers'
 import { ForumServices } from '../../services/ForumServices'
 import { UserServices } from '../../services/UserServices'
 
@@ -26,7 +26,8 @@ export const types = {
 
 export const actions = {
   getAllForumGroups: (forum) => ({
-    type: types.GET_FORUM_GROUPS
+    type: types.GET_FORUM_GROUPS,
+    payload: forum
   }),
   fetchAllForumGroups: (forum) => ({
     type: types.FETCH_FORUM_GROUPS,
@@ -81,10 +82,18 @@ export const reducer = (
     }
 
     case types.FETCH_FORUM_COMMENT: {
-      const data = action.payload
+      const { data, page } = action.payload
+      let concated = (state.comments.data && page !== 1) ?
+        state.comments.data.concat(data.data) : data.data
+
+      console.log(concated)
       return {
         ...state,
-        comments: data
+        comments: {
+          current_page: data.current_page,
+          last_page: data.last_page,
+          data: concated
+        }
       }
     }
 
@@ -103,7 +112,7 @@ export const reducer = (
     }
 
     case types.FORUM_LIKE_COMMENT: {
-      const comments = addLikeToComment(
+      const comments = ForumHelpers.addLikeToComment(
         state.comments,
         action.payload
       )
@@ -128,19 +137,11 @@ export const reducer = (
 
 export function* saga() {
 
-  yield takeLatest(types.GET_FORUM_GROUPS, function* getAllGroups() {
+  yield takeLatest(types.GET_FORUM_GROUPS, function* getAllGroups(action) {
+    const id = action.payload
     try {
-      let forum = []
-      const { data } = yield ForumServices.getAllGroups()
-
-      if (data) {
-        forum = yield formatForumGroups(data)
-        yield forum.map(async (forum) => {
-          forum.data = await ForumServices.getRoomsByGroup(forum.id)
-          return forum
-        })
-      }
-      yield put(actions.fetchAllForumGroups(forum))
+      const data = yield ForumServices.getAllGroups(id)
+      yield put(actions.fetchAllForumGroups(data))
       yield put(actions.isLoading(false))
     } catch (error) {
       console.log(error)
@@ -148,24 +149,10 @@ export function* saga() {
   })
 
   yield takeLatest(types.GET_FORUM_COMMENT, function* getAllComments(action) {
-    const id = action.payload
+    const { id, page } = action.payload
     try {
-      let newComments = []
-      const { data } = yield ForumServices.getCommentsByRoom(id)
-      if (data) {
-        let comments = yield formatRoomComments(data)
-        for (let index = 0; index < comments.length; index++) {
-          let user = yield UserServices.getById(comments[index].created_by)
-
-          newComments.push({
-            ...comments[index],
-            name: user.name,
-            profile_picture: user.profile_picture,
-            profession: user.profession
-          })
-        }
-        yield put(actions.fetchAllForumComments(newComments))
-      }
+      const data = yield ForumServices.getCommentsByRoom(id, page)
+      yield put(actions.fetchAllForumComments({ data, page }))
       yield put(actions.isCommentLoading(false))
 
     } catch (error) {
