@@ -10,7 +10,7 @@ export const styles = (props) => StyleSheet.create({
 	profile: {
 		height: 60,
 		width: 60,
-		backgroundColor: '#000',
+		backgroundColor: '#fff',
 		borderRadius: 100
 	},
 	wrapper_text: {

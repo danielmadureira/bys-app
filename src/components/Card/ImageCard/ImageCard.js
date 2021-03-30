@@ -6,7 +6,6 @@ import { styles } from "./styles";
 
 const ImageCard = (props) => {
 	const { item, onPress } = props;
-	console.log(item.picture)
 	return (
 		<View style={styles(props).container_shadow}>
 			<ImageBackground

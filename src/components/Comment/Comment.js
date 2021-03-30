@@ -1,13 +1,14 @@
-import React from 'react';
+import React from 'react'
 import {
 	Image,
 	View,
 	Text
-} from 'react-native';
-import { Icon } from 'react-native-elements';
-import { useDispatch } from 'react-redux';
-import { MessageBase, TextBase } from '..';
+} from 'react-native'
+import { Icon } from 'react-native-elements'
+import { useDispatch } from 'react-redux'
+import { MessageBase, TextBase } from '..'
 import { actions } from '../../store/forum'
+import DefaultProfile from '../../../assets/default-user.png'
 
 import { styles } from "./styles";
 
@@ -34,7 +35,7 @@ const Comment = ({ diary }) => {
 							source={
 								diary.profile_picture ?
 									{ uri: diary.profile_picture } :
-									''
+									DefaultProfile
 							}
 						/>
 					</View>
