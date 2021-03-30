@@ -17,7 +17,6 @@ const Stack = createStackNavigator();
 
 const Routes = () => {
 	const user = useSelector(state => state.user)
-	console.log(user.name)
 	return (
 		<NavigationContainer>
 			<Stack.Navigator

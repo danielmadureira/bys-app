@@ -37,9 +37,9 @@ const formatRoomComments = async (
   await comments.map((comment) => {
     newComments.push({
       id: comment.id,
-      name: '',
-      profile_picture: '',
-      profession: '',
+      name: comment.created_by ? comment.created_by.name : 'Usuário indisponível',
+      profile_picture: comment.created_by ? comment.created_by.profile_picture : '',
+      profession: comment.created_by ? comment.created_by.profession : '',
       text: comment.text,
       user_reacted: comment.user_reacted,
       total_reactions: comment.total_reactions,

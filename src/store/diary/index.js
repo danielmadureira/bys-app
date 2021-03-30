@@ -28,7 +28,8 @@ export const actions = {
     payload: diary
   }),
   getAllDiary: (diary) => ({
-    type: types.GET_ALL_DIARY
+    type: types.GET_ALL_DIARY,
+    payload: diary
   }),
   fetchAllDiary: (diary) => ({
     type: types.FETCH_ALL_DIARY,
@@ -125,9 +126,10 @@ export function* saga() {
     }
   })
 
-  yield takeLatest(types.GET_ALL_DIARY, function* fetchAllDiary() {
+  yield takeLatest(types.GET_ALL_DIARY, function* fetchAllDiary(action) {
+    const page = action.payload
     try {
-      const data = yield DiaryServices.getAll()
+      const data = yield DiaryServices.getAll(page)
       yield put(actions.fetchAllDiary(data))
       yield put(actions.isLoading(false))
     } catch (error) {
