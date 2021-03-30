@@ -5,7 +5,7 @@
  * @param {array} groups 
  * @returns an array
  */
-export const formatForumGroups = async (
+const formatForumGroups = async (
   groups
 ) => {
   let forum = []
@@ -29,7 +29,7 @@ export const formatForumGroups = async (
  * @param {array} comments 
  * @returns an array
  */
-export const formatRoomComments = async (
+const formatRoomComments = async (
   comments
 ) => {
   let newComments = []
@@ -59,7 +59,7 @@ export const formatRoomComments = async (
  * @param {array} comments 
  * @returns an array
  */
-export const addLikeToComment = (
+const addLikeToComment = (
   comments,
   id
 ) => {
@@ -76,4 +76,10 @@ export const addLikeToComment = (
   })
 
   return newComments
+}
+
+export const ForumHelpers = {
+  addLikeToComment,
+  formatForumGroups,
+  formatRoomComments
 }

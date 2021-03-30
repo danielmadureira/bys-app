@@ -3,7 +3,7 @@ import { View, Text, Image, ActivityIndicator } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
-import LogoPNG from '../../../assets/logo.png';
+import LogoPNG from '../../../assets/login.png';
 import ButtonBase from '../../components/base/ButtonBase';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/user';

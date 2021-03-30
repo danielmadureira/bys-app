@@ -1,5 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects'
-import { addLikeToComment, formatForumGroups, formatRoomComments } from '../../helpers/forumHelpers'
+import { ForumHelpers } from '../../helpers/forumHelpers'
 import { ForumServices } from '../../services/ForumServices'
 import { UserServices } from '../../services/UserServices'
 
@@ -103,7 +103,7 @@ export const reducer = (
     }
 
     case types.FORUM_LIKE_COMMENT: {
-      const comments = addLikeToComment(
+      const comments = ForumHelpers.addLikeToComment(
         state.comments,
         action.payload
       )
@@ -134,7 +134,7 @@ export function* saga() {
       const { data } = yield ForumServices.getAllGroups()
 
       if (data) {
-        forum = yield formatForumGroups(data)
+        forum = yield ForumHelpers.formatForumGroups(data)
         yield forum.map(async (forum) => {
           forum.data = await ForumServices.getRoomsByGroup(forum.id)
           return forum
@@ -153,7 +153,7 @@ export function* saga() {
       let newComments = []
       const { data } = yield ForumServices.getCommentsByRoom(id)
       if (data) {
-        let comments = yield formatRoomComments(data)
+        let comments = yield ForumHelpers.formatRoomComments(data)
         for (let index = 0; index < comments.length; index++) {
           let user = yield UserServices.getById(comments[index].created_by)
 
