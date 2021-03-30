@@ -11,14 +11,21 @@ import { styles } from './styles'
 import { actions } from '../../../store/diary';
 
 const WriteDiary = ({ navigation }) => {
-	const { isSend } = useSelector(state => state.diary)
+	const { hasError, isSend } = useSelector(state => state.diary)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		if (isSend) {
+		if (hasError) {
 			setTimeout(() => {
-				dispatch(actions.isSend(false))
+				dispatch(actions.hasError(null))
 			}, 2500);
+		}
+	}, [hasError])
+
+	useEffect(() => {
+		if (isSend) {
+			dispatch(actions.isSend(false))
+			navigation.goBack()
 		}
 	}, [isSend])
 
@@ -33,10 +40,10 @@ const WriteDiary = ({ navigation }) => {
 				<BackBase navigation={navigation} />
 			</View>
 
-			{isSend &&
-				<AlertBase type="success">
-					Publicado com sucesso.
-        </AlertBase>
+			{hasError &&
+				<AlertBase type="danger">
+					{hasError}
+				</AlertBase>
 			}
 
 			<BodyWriteDiary

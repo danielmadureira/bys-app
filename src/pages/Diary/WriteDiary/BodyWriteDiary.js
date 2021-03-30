@@ -15,8 +15,7 @@ import InputBase from '../../../components/base/InputBase';
 const DiarySchema = Yup.object().shape({
   title: Yup
     .string()
-    .max(60, ({ max }) => 'Máximo de 60 dígitos')
-    .required('Este campo é obrigatório'),
+    .max(60, ({ max }) => 'Máximo de 60 dígitos'),
   text: Yup
     .string()
     .max(3000, ({ max }) => 'Máximo de 3000 dígitos')
@@ -25,6 +24,9 @@ const DiarySchema = Yup.object().shape({
 
 const BodyWriteDiary = (props) => {
   const dispatch = useDispatch()
+  const titleDefault = `Meu diário hoje, ${new Date().getDate()} de ${new Date().toLocaleString('pt-BR', {
+    month: 'long'
+  })}`
 
   return (
     <View style={props.containerStyle}>
@@ -35,6 +37,9 @@ const BodyWriteDiary = (props) => {
         }}
         validationSchema={DiarySchema}
         onSubmit={(form, { resetForm }) => {
+          if (form.title === '') {
+            form.title = titleDefault
+          }
           dispatch(actions.writeDiary(form))
           resetForm()
         }}
@@ -44,7 +49,7 @@ const BodyWriteDiary = (props) => {
             <Field
               name="title"
               component={InputBase}
-              placeholder="Meu diário hoje, 27 de julho"
+              placeholder={titleDefault}
             />
             <Field
               name="text"
