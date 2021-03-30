@@ -10,7 +10,14 @@ export const styles = StyleSheet.create({
 		padding: itemWidth
 	},
 	safearea: {
-		marginBottom: 140,
+		flex: 1,
+		marginBottom: 150,
+		alignItems: "center",
+		justifyContent: "center"
+	},
+	button: {
+		width: '100%',
+		paddingTop: 50,
 	},
 	wrapper: {
 		display: "flex",

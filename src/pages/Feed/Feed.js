@@ -6,17 +6,24 @@ import {
 	SafeAreaView,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { ImageCard, LoaderBase, TitleHeader } from '../../components';
+import { ButtonSettings, ImageCard, LoaderBase, TitleHeader } from '../../components';
 
 import { styles } from './styles'
 
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/feed'
-import { ActivityIndicator } from 'react-native';
 
 const Feed = ({ navigation }) => {
-	const { data, isLoading } = useSelector(state => state.feed)
+	const { news, isLoading } = useSelector(state => state.feed)
 	const dispatch = useDispatch()
+
+	const fetchMore = () => {
+		if (news.current_page < news.last_page) {
+			dispatch(actions.getAllFeed(
+				news.current_page + 1
+			))
+		}
+	}
 
 	useEffect(() => {
 		if (isLoading) {
@@ -34,12 +41,12 @@ const Feed = ({ navigation }) => {
 				/>
 			</View>
 			<SafeAreaView style={styles.safearea}>
-				{!isLoading ? (
+				{!isLoading ? (<>
 					<SectionList
 						contentContainerStyle={styles.space}
 						stickySectionHeadersEnabled={false}
 						sections={
-							[{ data: data }]
+							[{ data: news.data }]
 						}
 						renderItem={({ item }) => {
 							return <View
@@ -56,10 +63,21 @@ const Feed = ({ navigation }) => {
 								<ImageCard
 									item={item}
 								/>
-							</View>;
+							</View>
 						}}
 					/>
-				) : (
+					{(news.current_page < news.last_page) && (
+						<View style={styles.button}>
+							<ButtonSettings
+								large
+								type="success"
+								onPress={() => fetchMore()}
+							>
+								Carregar mais
+							</ButtonSettings>
+						</View>
+					)}
+				</>) : (
 					<LoaderBase />
 				)}
 			</SafeAreaView>
