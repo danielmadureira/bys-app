@@ -45,21 +45,24 @@ const IMCCalculator = ({ navigation }) => {
 	const [isVisible, setVisible] = useState(false)
 
 	const calcula = (peso, altura) => {
+		altura = altura.replace(',', '')
+		altura = altura.replace('.', '')
+
 		let valorIMC = (
-			parseFloat(peso) / (
+			(parseFloat(peso) / (
 				parseFloat(altura) * parseFloat(altura)
-			)
+			)) * 10000
 		).toFixed(2);
 		return valorIMC
 	}
 
 	return (
-		<ScrollView 
-			contentContainerStyle={styles.wrapper} 
+		<ScrollView
+			contentContainerStyle={styles.wrapper}
 			style={styles.container}
 		>
 			<StatusBar style="light" backgroundColor="#000" />
-			
+
 			<Modal
 				animationType="fade"
 				visible={isVisible}
@@ -67,7 +70,7 @@ const IMCCalculator = ({ navigation }) => {
 			>
 				<View style={styles.centeredView}>
 					<View style={styles.modalView}>
-						<TextBase 
+						<TextBase
 							style={styles.modalTitle}
 						>
 							Seu IMC é: {calcula(peso, altura)}
@@ -81,7 +84,7 @@ const IMCCalculator = ({ navigation }) => {
 							<TextBase style={styles.modalTableTitle}>Resultado</TextBase>
 						</View>
 
-						{reference.map(ref => 
+						{reference.map(ref =>
 							<View style={styles.modalTableTexts}>
 								<View style={styles.modalTableBorder}>
 									<TextBase style={styles.modalTableText}>{ref.imc}</TextBase>
@@ -122,11 +125,11 @@ const IMCCalculator = ({ navigation }) => {
 				/>
 
 				<TextInput
-					placeholder="Sua altura em metros (Ex.: 1.65)"
+					placeholder="Sua altura em centímetros"
 					style={styles.input}
 					value={altura}
-					keyboardType="numeric"
-					onChangeText={(altura) => setAltura(altura.replace(',', '.'))}
+					keyboardType="number-pad"
+					onChangeText={(altura) => setAltura(altura)}
 				/>
 
 				<View style={styles.wrapper_button}>
