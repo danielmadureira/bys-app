@@ -9,6 +9,7 @@ import { actions } from '../../store/diary'
 import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import {
 	BackBase,
+	ButtonSettings,
 	LoaderBase,
 	MessageBase,
 	TitleHeader
@@ -21,8 +22,18 @@ const Diary = ({ navigation }) => {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch(actions.getAllDiary())
-	}, [])
+		if (isLoading) {
+			dispatch(actions.getAllDiary())
+		}
+	}, [isLoading])
+
+	const fetchMore = () => {
+		if (allTexts.current_page < allTexts.last_page) {
+			dispatch(actions.getAllDiary(
+				allTexts.current_page + 1
+			))
+		}
+	}
 
 	return (
 		<View style={styles.container}>
@@ -70,6 +81,18 @@ const Diary = ({ navigation }) => {
 								})
 							}
 						})()}
+					</View>
+				)}
+
+				{(allTexts.current_page < allTexts.last_page) && (
+					<View style={styles.button}>
+						<ButtonSettings
+							large
+							type="success"
+							onPress={() => fetchMore()}
+						>
+							Carregar mais
+						</ButtonSettings>
 					</View>
 				)}
 			</ScrollView>

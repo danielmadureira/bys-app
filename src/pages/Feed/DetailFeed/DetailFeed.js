@@ -17,6 +17,7 @@ import { styles } from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { actions } from '../../../store/feed'
 import { Dimensions } from 'react-native'
+import ImageDefault from '../../../../assets/feed-default.png'
 
 const DetailFeed = ({ route, navigation }) => {
 	const { itemId } = route.params;
@@ -45,7 +46,11 @@ const DetailFeed = ({ route, navigation }) => {
 					<Image
 						borderRadius={20}
 						style={styles.picture}
-						source={{ uri: details.picture }}
+						source={
+							details.picture ?
+								{ uri: details.picture } :
+								ImageDefault
+						}
 					/>
 					<TextBase style={styles.picture_title}>
 						{details.picture_description}
