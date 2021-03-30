@@ -4,7 +4,9 @@ import { UserServices } from '../../services/UserServices'
 
 const initialState = {
   details: {},
-  data: [],
+  news: {
+    data: []
+  },
   isLoading: true,
   isLoadingDetails: true
 }
@@ -22,7 +24,8 @@ export const types = {
 
 export const actions = {
   getAllFeed: (feed) => ({
-    type: types.GET_ALL_FEED
+    type: types.GET_ALL_FEED,
+    payload: feed
   }),
   fetchAllFeed: (feed) => ({
     type: types.FETCH_ALL_FEED,
@@ -61,10 +64,16 @@ export const reducer = (
 
   switch (action.type) {
     case types.FETCH_ALL_FEED: {
-      const data = action.payload
+      const feed = action.payload
+      let { news: { data } } = state
+      let oldData = data.concat(feed.data)
+
       return {
         ...state,
-        data: data
+        news: {
+          ...feed,
+          data: oldData
+        }
       }
     }
 
@@ -109,10 +118,11 @@ export const reducer = (
 
 export function* saga() {
 
-  yield takeLatest(types.GET_ALL_FEED, function* getAllFeed() {
+  yield takeLatest(types.GET_ALL_FEED, function* getAllFeed(action) {
+    const page = action.payload
     try {
-      const { data } = yield FeedServices.getAll()
-      yield put(actions.fetchAllFeed(data))
+      const dados = yield FeedServices.getAll(page)
+      yield put(actions.fetchAllFeed(dados))
       yield put(actions.isLoading(false))
     } catch (error) {
       console.log(error)

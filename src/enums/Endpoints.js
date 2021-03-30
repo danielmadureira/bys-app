@@ -1,5 +1,5 @@
 export const ENDPOINTS = Object.freeze({
-  AUTHENTICATE: '/',
+  AUTHENTICATE: '/login',
   UNAUTHENTICATE: '/logout',
   USER: '/user',
   USER_IMAGE: '/user/image',

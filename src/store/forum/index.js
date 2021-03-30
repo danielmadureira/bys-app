@@ -135,7 +135,7 @@ export function* saga() {
 
       if (data) {
         forum = yield formatForumGroups(data)
-        forum.map(async (forum) => {
+        yield forum.map(async (forum) => {
           forum.data = await ForumServices.getRoomsByGroup(forum.id)
           return forum
         })

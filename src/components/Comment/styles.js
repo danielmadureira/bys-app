@@ -14,7 +14,7 @@ export const styles = (props) => StyleSheet.create({
 		borderRadius: 100
 	},
 	wrapper_text: {
-		marginRight: '16%',
+		width: '60%'
 	},
 	name: {
 		fontSize: 18,
