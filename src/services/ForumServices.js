@@ -63,8 +63,7 @@ const getCommentsByRoom = async (id, page = 1) => {
     {
       params: {
         page: page,
-        forum_room_id: id,
-        per_page: 2
+        forum_room_id: id
       }
     }
   )
