@@ -49,9 +49,9 @@ const Forum = ({ navigation }) => {
 			<SafeAreaView style={{ flex: 1, marginBottom: 100 }}>
 				{!isLoading ? (
 					<View>
-						{groups.data.map(section => {
+						{groups.data.map((section, i) => {
 							return (
-								<View style={styles.wrapper}>
+								<View key={`${i}`} style={styles.wrapper}>
 									<View style={styles.container_header}>
 										<TitleHeader
 											title={section.name}

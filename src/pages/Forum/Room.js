@@ -93,6 +93,7 @@ const ForumRoom = ({ room }) => {
               </View>
             )
           }}
+          keyExtractor={(item, index) => String(index)}
           showsHorizontalScrollIndicator={false}
         />
         : null
