@@ -43,7 +43,6 @@ const Feed = ({ navigation }) => {
 			<SafeAreaView style={styles.safearea}>
 				{!isLoading ? (<>
 					<SectionList
-						contentContainerStyle={styles.space}
 						stickySectionHeadersEnabled={false}
 						sections={
 							[{ data: news.data }]

@@ -40,8 +40,8 @@ const reference = [
 ]
 
 const IMCCalculator = ({ navigation }) => {
-	const [peso, setPeso] = useState(0)
-	const [altura, setAltura] = useState(0)
+	const [peso, setPeso] = useState('')
+	const [altura, setAltura] = useState('')
 	const [isVisible, setVisible] = useState(false)
 
 	const calcula = (peso, altura) => {
@@ -119,7 +119,7 @@ const IMCCalculator = ({ navigation }) => {
 				<TextInput
 					style={styles.input}
 					placeholder="Seu peso em quilogramas"
-					value={peso}
+					value={String(peso)}
 					keyboardType="numeric"
 					onChangeText={(peso) => setPeso(peso.replace(',', '.'))}
 				/>

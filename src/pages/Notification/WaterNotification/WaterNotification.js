@@ -14,15 +14,11 @@ import { styles } from './styles'
 const WaterNotification = ({ navigation }) => {
 	const { water_ingestion } = useSelector(state => state.notifications)
 	const [weight, setWeight] = useState(null)
-	const [isSaved, setSave] = useState(false)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
 		setWeight(water_ingestion.weight)
 
-		setTimeout(() => {
-			setSave(false)
-		}, 3000);
 	}, [water_ingestion])
 
 	return (
@@ -37,11 +33,6 @@ const WaterNotification = ({ navigation }) => {
 			</View>
 
 			<View style={styles.body}>
-				{isSaved &&
-					<AlertBase type="success">
-						Salvo com sucesso!
-					</AlertBase>
-				}
 				<TextInput
 					style={styles.input}
 					placeholder="Seu peso em kg"
@@ -55,8 +46,8 @@ const WaterNotification = ({ navigation }) => {
 						title="Salvar alerta"
 						radius={5}
 						onPress={() => {
-							setSave(true)
 							dispatch(actions.addWeight(weight))
+							navigation.goBack()
 						}}
 					/>
 				</View>

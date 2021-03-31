@@ -11,6 +11,7 @@ import ButtonBase from '../../../components/base/ButtonBase';
 
 import { styles } from './styles'
 import InputBase from '../../../components/base/InputBase';
+import { DateHelpers } from '../../../helpers/dateHelpers';
 
 const DiarySchema = Yup.object().shape({
   title: Yup
@@ -24,9 +25,7 @@ const DiarySchema = Yup.object().shape({
 
 const BodyWriteDiary = (props) => {
   const dispatch = useDispatch()
-  const titleDefault = `Meu diário hoje, ${new Date().getDate()} de ${new Date().toLocaleString('pt-BR', {
-    month: 'long'
-  })}`
+  const titleDefault = `Meu diário hoje, ${DateHelpers.getBrazilianLongDate(new Date())}`
 
   return (
     <View style={props.containerStyle}>
