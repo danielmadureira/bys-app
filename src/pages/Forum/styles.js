@@ -32,5 +32,8 @@ export const styles = StyleSheet.create({
 		marginRight: 10,
 		borderWidth: 1,
 		borderColor: '#476044'
+	},
+	button: {
+		margin: '10%'
 	}
 });

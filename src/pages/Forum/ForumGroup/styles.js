@@ -29,8 +29,19 @@ export const styles = StyleSheet.create({
 		borderTopRightRadius: 15,
 		borderBottomRightRadius: 15,
 
-		paddingRight: 80,
-		paddingBottom: 15,
+		marginRight: 80,
+		marginBottom: 15,
+
+		borderTopEndRadius: 15,
+		borderBottomEndRadius: 15,
+		shadowColor: "#F5F5F5",
+		shadowOffset: {
+			width: 1,
+			height: 1
+		},
+		shadowOpacity: 1,
+		shadowRadius: 15,
+		elevation: 5
 	},
 	status_title: {
 		fontSize: 22,
@@ -39,8 +50,7 @@ export const styles = StyleSheet.create({
 		marginLeft: 15,
 	},
 	status_subtitle: {
-		marginLeft: 15,
-		textAlign: "justify",
+		margin: 15,
 		fontSize: 14
 	},
 	wrapper_comment: {
@@ -50,7 +60,7 @@ export const styles = StyleSheet.create({
 	btn_wrapper: {
 		width: '80%',
 		marginBottom: 15,
-		alignItems: "flex-end"
+		alignItems: "flex-end",
 	},
 	btn_content: {
 		backgroundColor: "#EAEBCF",
@@ -58,7 +68,17 @@ export const styles = StyleSheet.create({
 		width: 150,
 		justifyContent: "center",
 		alignItems: "center",
-		borderRadius: 10
+		borderRadius: 10,
+		borderTopEndRadius: 15,
+		borderBottomEndRadius: 15,
+		shadowColor: "#F5F5F5",
+		shadowOffset: {
+			width: 1,
+			height: 1
+		},
+		shadowOpacity: 1,
+		shadowRadius: 15,
+		elevation: 5
 	},
 	button: {
 		width: '100%',

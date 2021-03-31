@@ -31,7 +31,15 @@ const Forum = ({ navigation }) => {
 
 	useEffect(() => {
 		if (isLoading) {
-			dispatch(actions.getAllForumGroups())
+			if (!groups.current_page) {
+				dispatch(actions.getAllForumGroups(1))
+				return
+			}
+
+			if (groups.current_page === 1) {
+				dispatch(actions.getAllForumGroups(1))
+				return
+			}
 		}
 	}, [isLoading])
 

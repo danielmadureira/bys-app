@@ -5,13 +5,11 @@ import {
 import * as Yup from 'yup'
 import { Field, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/core';
 import { actions } from '../../../store/forum';
 
-import ButtonBase from '../../../components/base/ButtonBase';
-
+import { ButtonBase, InputBase } from '../../../components';
 import { styles } from './styles'
-import InputBase from '../../../components/base/InputBase';
-import { useNavigation } from '@react-navigation/core';
 
 const DiarySchema = Yup.object().shape({
   text: Yup
@@ -24,7 +22,6 @@ const BodyForumComment = (props) => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const { isSend } = useSelector(state => state.forum)
-
 
   useEffect(() => {
     if (isSend) {
