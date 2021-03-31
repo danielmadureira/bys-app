@@ -83,10 +83,11 @@ export const reducer = (
 
     case types.FETCH_FORUM_COMMENT: {
       const { data, page } = action.payload
-      let concated = (state.comments.data && page !== 1) ?
-        state.comments.data.concat(data.data) : data.data
+      let newData = ForumHelpers.formatRoomComments(data.data)
 
-      console.log(concated)
+      let concated = (state.comments.data && page !== 1) ?
+        state.comments.data.concat(newData) : newData
+
       return {
         ...state,
         comments: {
@@ -112,13 +113,16 @@ export const reducer = (
     }
 
     case types.FORUM_LIKE_COMMENT: {
-      const comments = ForumHelpers.addLikeToComment(
-        state.comments,
+      const comment = ForumHelpers.addLikeToComment(
+        state.comments.data,
         action.payload
       )
       return {
         ...state,
-        comments: comments
+        comments: {
+          ...state.comments,
+          data: comment
+        }
       }
     }
 
