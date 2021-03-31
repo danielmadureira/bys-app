@@ -7,12 +7,13 @@ import { ENDPOINTS } from "../enums/Endpoints"
  * 
  * @returns {Promise}
  */
-const getAllGroups = async (page) => {
+const getAllGroups = async (page = 1) => {
   return await RequestAdapter.get(
     `${ENDPOINTS.FORUM_GROUP}`,
     {
       params: {
-        page: page
+        page: page,
+        per_page: 4
       }
     }
   )

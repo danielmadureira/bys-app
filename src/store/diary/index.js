@@ -64,10 +64,17 @@ export const reducer = (
 
   switch (action.type) {
     case types.FETCH_ALL_DIARY: {
-      const data = action.payload
+      const { dados, page } = action.payload
+      let concated = (state.allTexts.data && page !== 1) ?
+        state.allTexts.data.concat(dados.data) : dados.data
+
       return {
         ...state,
-        allTexts: data
+        allTexts: {
+          current_page: dados.current_page,
+          last_page: dados.last_page,
+          data: concated
+        }
       }
     }
 
@@ -131,7 +138,7 @@ export function* saga() {
     const page = action.payload
     try {
       const data = yield DiaryServices.getAll(page)
-      yield put(actions.fetchAllDiary(data))
+      yield put(actions.fetchAllDiary({ dados: data, page }))
       yield put(actions.isLoading(false))
     } catch (error) {
       console.log(error)

@@ -1,7 +1,6 @@
-import { delay, put, takeLatest } from 'redux-saga/effects'
+import { put, takeLatest } from 'redux-saga/effects'
 import { ForumHelpers } from '../../helpers/forumHelpers'
 import { ForumServices } from '../../services/ForumServices'
-import { UserServices } from '../../services/UserServices'
 
 const initialState = {
   groups: {},
@@ -74,10 +73,18 @@ export const reducer = (
 
   switch (action.type) {
     case types.FETCH_FORUM_GROUPS: {
-      const data = action.payload
+      const { dados, page } = action.payload
+
+      let concated = (state.groups.data && page !== 1) ?
+        state.groups.data.concat(dados.data) : dados.data
+
       return {
         ...state,
-        groups: data
+        groups: {
+          current_page: dados.current_page,
+          last_page: dados.last_page,
+          data: concated
+        }
       }
     }
 
@@ -142,10 +149,10 @@ export const reducer = (
 export function* saga() {
 
   yield takeLatest(types.GET_FORUM_GROUPS, function* getAllGroups(action) {
-    const id = action.payload
     try {
-      const data = yield ForumServices.getAllGroups(id)
-      yield put(actions.fetchAllForumGroups(data))
+      const page = action.payload
+      const dados = yield ForumServices.getAllGroups(page)
+      yield put(actions.fetchAllForumGroups({ dados, page }))
       yield put(actions.isLoading(false))
     } catch (error) {
       console.log(error)
