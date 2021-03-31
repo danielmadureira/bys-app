@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageBackground, TouchableWithoutFeedback, View } from 'react-native';
-import { TextBase } from '../..';
+import TextBase from '../../base/TextBase';
 import ImageDefault from '../../../../assets/feed-default.png'
 import { styles } from "./styles";
 

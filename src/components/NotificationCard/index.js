@@ -21,7 +21,7 @@ const NotificationCard = (props) => {
         <View style={styles(props).wrapper_text}>
           <View>
             <TextBase
-              numberOfLines={2}
+              numberOfLines={1}
               key={notification.id}
               style={styles(props).title}
             >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageBackground, Text, View } from 'react-native';
+import { Image, ImageBackground, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './styles';
 import DefaultProfile from '../../../assets/default-user-light.png'

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 let width = '80%';
 
 export const styles = (props) => StyleSheet.create({
-	container: {
+    container: {
         width: (props.smallSize) ? (248) : (width),
         height: (props.smallSize) ? (140) : (430),
         marginTop: 38,
@@ -12,7 +12,7 @@ export const styles = (props) => StyleSheet.create({
         flex: 1,
         resizeMode: "contain",
         justifyContent: "center",
-        
+
         display: "flex",
         justifyContent: "flex-end",
         alignItems: "center"
@@ -32,6 +32,15 @@ export const styles = (props) => StyleSheet.create({
         paddingTop: 10,
         marginBottom: 15,
         borderRadius: 15,
+
+        borderColor: '#EAEBCF',
+        borderWidth: 1,
+
+        shadowColor: '#EAEBCF',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.9,
+        shadowRadius: 15,
+        elevation: 5,
     },
     title: {
         width: '87%',
@@ -41,9 +50,9 @@ export const styles = (props) => StyleSheet.create({
     subtitle: {
         fontSize: 14,
         marginTop: 8
-		},
-		header: {
-			display: 'flex',
-			flexDirection: 'row',
-		}
+    },
+    header: {
+        display: 'flex',
+        flexDirection: 'row',
+    }
 });

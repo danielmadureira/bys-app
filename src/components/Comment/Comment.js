@@ -6,7 +6,8 @@ import {
 } from 'react-native'
 import { Icon } from 'react-native-elements'
 import { useDispatch } from 'react-redux'
-import { MessageBase, TextBase } from '..'
+import TextBase from '../base/TextBase'
+import MessageBase from '../base/MessageBase/MessageBase'
 import { actions } from '../../store/forum'
 import DefaultProfile from '../../../assets/default-user.png'
 

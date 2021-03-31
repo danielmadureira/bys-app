@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { TextBase } from '..';
+import TextBase from '../base/TextBase';
 
 import { styles, colors } from './styles'
 
@@ -12,8 +12,8 @@ const ButtonSettings = (props) => {
 			onPress={props.onPress}
 		>
 			<TextBase style={styles(props).wrapper_text}>
-        {props.children}
-      </TextBase>
+				{props.children}
+			</TextBase>
 		</TouchableWithoutFeedback>
 	);
 };

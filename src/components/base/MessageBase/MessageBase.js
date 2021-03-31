@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import TextBase from '../TextBase';
 
 import { styles } from "./styles";

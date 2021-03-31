@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 
-import { styles } from "../styles";
+import { styles } from "./styles";
 import TextBase from '../TextBase';
 
 const InputBase = (props) => {
@@ -12,9 +12,9 @@ const InputBase = (props) => {
   } = props
 
   const hasError = errors[name] && touched[name]
-  
-	return (
-		<>
+
+  return (
+    <>
       <TextInput
         style={[
           styles(props).textInput,
@@ -30,7 +30,7 @@ const InputBase = (props) => {
       />
       {hasError && <TextBase style={styles(props).errorText}>{errors[name]}</TextBase>}
     </>
-	)
+  )
 }
 
 export default InputBase;

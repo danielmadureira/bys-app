@@ -16,7 +16,7 @@ export const styles = (props) => StyleSheet.create({
 		alignItems: "center",
 	},
 	container_shadow: {
-		width: (props.smallSize) ? (280) : ('98%'),
+		width: (props.smallSize) ? (280) : ('95%'),
 		height: (props.smallSize) ? (185) : (430),
 		marginTop: 38,
 		marginLeft: (props.smallSize) ? (15) : (0),

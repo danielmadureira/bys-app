@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { TextBase } from '..';
+import TextBase from '../TextBase';
 
 import { styles } from "./styles";
 

@@ -3,7 +3,7 @@ import {
   View,
   ActivityIndicator
 } from 'react-native'
-import { TextBase } from '../../../components'
+import TextBase from '../TextBase'
 
 import { styles } from './styles'
 
