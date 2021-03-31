@@ -27,6 +27,7 @@ export function* rootSagas() {
     register.saga(),
     diary.saga(),
     feed.saga(),
-    forum.saga()
+    forum.saga(),
+    notification.saga()
   ]);
 }

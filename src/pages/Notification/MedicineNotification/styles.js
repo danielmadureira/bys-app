@@ -6,7 +6,7 @@ let wrapperWidth = '100%';
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingTop: 20,
+		paddingTop: 10,
 	},
 	wrapper: {
 		paddingBottom: 150,
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
 		width: '100%'
 	},
 	container_header: {
-		marginTop: 10,
+		marginTop: 40,
 		paddingBottom: 2,
 		width: width
 	},

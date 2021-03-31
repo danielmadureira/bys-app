@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Text } from 'react-native';
 import {
 	View
 } from 'react-native';
@@ -41,6 +42,8 @@ const AllMedicineNotification = ({ navigation }) => {
 					/>
 				</View>
 
+				<Text>{JSON.stringify(medications)}</Text>
+
 				<View style={styles.notifications}>
 					{medications.length > 0 ?
 						medications.map((v, i) => {
@@ -48,9 +51,6 @@ const AllMedicineNotification = ({ navigation }) => {
 								height={80}
 								key={i}
 								notification={v}
-								onPress={() => navigation.navigate('MedicineNotification', {
-									notification: v
-								})}
 							/>
 						})
 						: <></>}

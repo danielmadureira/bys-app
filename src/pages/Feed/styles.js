@@ -1,13 +1,11 @@
 import { StyleSheet } from "react-native";
 
 let width = '95%';
-let itemWidth = '4%';
 
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: 22,
-		padding: itemWidth,
 		display: "flex",
 		alignItems: "center",
 		paddingBottom: 10
@@ -24,7 +22,7 @@ export const styles = StyleSheet.create({
 	wrapper: {
 		display: "flex",
 		alignItems: "center",
-		paddingBottom: 10
+		padding: 10
 	},
 	space: {
 		display: "flex",

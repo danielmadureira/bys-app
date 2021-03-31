@@ -9,8 +9,7 @@ import Notification from '../Notification';
 
 import { styles } from './styles'
 
-const MedicineNotification = ({ navigation, route }) => {
-	const { notification } = route.params
+const MedicineNotification = ({ navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -25,7 +24,6 @@ const MedicineNotification = ({ navigation, route }) => {
 			<View style={styles.wrapper}>
 				<Notification
 					navigation={navigation}
-					medication={notification}
 				/>
 			</View>
 		</ScrollView>

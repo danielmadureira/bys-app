@@ -5,7 +5,6 @@ import {
 	SectionList,
 	SafeAreaView,
 } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 import { ButtonSettings, ImageCard, LoaderBase, TitleHeader } from '../../components';
 
 import { styles } from './styles'
@@ -34,12 +33,7 @@ const Feed = ({ navigation }) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
-			<View style={styles.container_header}>
-				<TitleHeader
-					title="Feed"
-					subtitle="Veja as últimas novidades"
-				/>
-			</View>
+
 			<SafeAreaView style={styles.safearea}>
 				{!isLoading ? (<>
 					<SectionList
@@ -47,6 +41,14 @@ const Feed = ({ navigation }) => {
 						stickySectionHeadersEnabled={false}
 						sections={
 							[{ data: news.data }]
+						}
+						ListHeaderComponent={
+							<View style={styles.container_header}>
+								<TitleHeader
+									title="Feed"
+									subtitle="Veja as últimas novidades"
+								/>
+							</View>
 						}
 						ListFooterComponent={
 							(news.current_page < news.last_page) && (

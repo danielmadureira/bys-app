@@ -13,11 +13,14 @@ import ButtonBase from '../../components/base/ButtonBase';
 import { AlertTypes } from '../../enums/AlertTypes';
 import { WEEK } from '../../enums/Week';
 import { NotificationHelper } from '../../helpers/notificationHelper';
+import { ExpoNotificationAdapter } from '../../adapter/ExpoNotificationAdapter';
 import { actions } from '../../store/notification'
 import uuid from 'react-native-uuid'
 
 import { styles } from './styles'
 import { useNavigation } from '@react-navigation/core';
+
+ExpoNotificationAdapter.StepOne()
 
 const Notification = ({ medication }) => {
 	const [name, setName] = useState('')
@@ -53,46 +56,28 @@ const Notification = ({ medication }) => {
 
 	const createNotification = () => {
 		let daysOfAlert = NotificationHelper.convertWeek(days)
-		if (!medication.uuid) {
-			let content = {
-				uuid: uuid.v1(),
-				title: name,
-				days: daysOfAlert,
-				hours: hours,
-				type: AlertTypes.MEDICATION
-			}
-			dispatch(actions.addNotification(content))
+		let content = {
+			uuid: uuid.v1(),
+			title: name,
+			days: daysOfAlert,
+			hours: hours,
+			type: AlertTypes.MEDICATION,
+			identificadores: []
 		}
+		dispatch(actions.addNotification(content))
 		navigation.navigate('AllMedicineNotification')
 	}
 
 	useEffect(() => {
-		if (medication.uuid) {
-			setName(medication.title)
-			setHours(medication.hours)
-
-			setDays((days) => {
-				return days.map(day => {
-					if ((medication.days).includes(day.id)) {
-						day.selected = true
-					} else {
-						day.selected = false
-					}
-					return day
-				})
+		setName('')
+		setHours([])
+		setDays((days) => {
+			return days.map(day => {
+				day.selected = false
+				return day
 			})
-		} else {
-			setName('')
-			setHours([])
-			setDays((days) => {
-				return days.map(day => {
-					day.selected = false
-					return day
-				})
-			})
-		}
-
-	}, [medication])
+		})
+	}, [])
 
 	return (
 		<View style={styles({}).container}>
