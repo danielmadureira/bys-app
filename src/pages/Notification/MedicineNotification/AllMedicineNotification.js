@@ -48,9 +48,6 @@ const AllMedicineNotification = ({ navigation }) => {
 								height={80}
 								key={i}
 								notification={v}
-								onPress={() => navigation.navigate('MedicineNotification', {
-									notification: v
-								})}
 							/>
 						})
 						: <></>}

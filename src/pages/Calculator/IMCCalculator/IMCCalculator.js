@@ -7,8 +7,7 @@ import {
 	Pressable
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { BackBase, TextBase, TitleHeader } from '../../../components';
-import ButtonBase from '../../../components/base/ButtonBase';
+import { BackBase, TextBase, TitleHeader, ButtonBase } from '../../../components';
 
 import { styles } from './styles'
 

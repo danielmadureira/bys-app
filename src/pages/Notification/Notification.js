@@ -8,8 +8,7 @@ import {
 	TouchableWithoutFeedback
 } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
-import { TextBase } from '../../components';
-import ButtonBase from '../../components/base/ButtonBase';
+import { TextBase, ButtonBase } from '../../components';
 import { AlertTypes } from '../../enums/AlertTypes';
 import { WEEK } from '../../enums/Week';
 import { NotificationHelper } from '../../helpers/notificationHelper';

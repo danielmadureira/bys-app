@@ -8,6 +8,10 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		paddingTop: 20,
 	},
+	alert_container: {
+		flex: 1,
+		paddingTop: 40,
+	},
 	wrapper: {
 		paddingBottom: 150,
 		display: "flex",
@@ -26,7 +30,7 @@ export const styles = StyleSheet.create({
 	notifications: {
 		display: "flex",
 		alignItems: "center",
-		width: '85%',
+		width: '90%',
 		marginTop: 20,
 	}
 });

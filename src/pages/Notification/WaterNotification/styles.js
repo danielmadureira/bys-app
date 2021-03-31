@@ -27,9 +27,14 @@ export const styles = StyleSheet.create({
 		marginTop: 36,
 	},
 	input: {
-		width: '100%',
+		width: '90%',
 		marginTop: 45,
 		height: 40,
 		borderBottomWidth: 1,
-	}
+	},
+	btn_wrapper: {
+		display: "flex",
+		alignItems: "center",
+		width: '90%'
+	},
 });

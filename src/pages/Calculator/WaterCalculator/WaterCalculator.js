@@ -6,14 +6,13 @@ import {
 	TextInput
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { BackBase, TitleHeader } from '../../../components';
-import ButtonBase from '../../../components/base/ButtonBase';
+import { BackBase, TitleHeader, ButtonBase } from '../../../components';
 
 import { styles } from './styles'
 
 
 const WaterCalculator = ({ navigation }) => {
-	const [peso, setPeso] = useState(0)
+	const [peso, setPeso] = useState('')
 
 	const calcula = (peso) => {
 		let valor = (parseFloat(peso) * 35)

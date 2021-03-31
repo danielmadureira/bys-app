@@ -12,7 +12,7 @@ import { styles } from './styles'
 const MedicineNotification = ({ navigation, route }) => {
 	const { notification } = route.params
 	return (
-		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
+		<ScrollView contentContainerStyle={styles.wrapper} style={styles.alert_container}>
 			<StatusBar style="light" backgroundColor="#000" />
 			<View style={styles.container_header}>
 				<TitleHeader

@@ -5,8 +5,7 @@ import {
 } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
-import { AlertBase, BackBase, TitleHeader } from '../../../components';
-import ButtonBase from '../../../components/base/ButtonBase';
+import { BackBase, TitleHeader, ButtonBase } from '../../../components';
 import { actions } from '../../../store/notification'
 
 import { styles } from './styles'
@@ -41,7 +40,7 @@ const WaterNotification = ({ navigation }) => {
 					value={weight}
 				/>
 
-				<View style={styles.wrapper}>
+				<View style={styles.btn_wrapper}>
 					<ButtonBase
 						title="Salvar alerta"
 						radius={5}
