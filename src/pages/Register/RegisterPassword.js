@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
-import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
 import { StatusBar } from 'expo-status-bar';
-import { AlertBase, BackBase, TitleHeader } from '../../components';
-import ButtonBase from '../../components/base/ButtonBase';
-import InputBase from '../../components/base/InputBase';
+import {
+	AlertBase,
+	BackBase,
+	TitleHeader,
+	ButtonBase,
+	InputBase
+} from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store/register';
 import * as Yup from 'yup'
 import { Field, Formik } from 'formik';
-import { ActivityIndicator } from 'react-native';
 
 const RegisterSchemaStepTwo = Yup.object().shape({
 	password: Yup

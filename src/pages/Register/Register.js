@@ -4,11 +4,9 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
 import { StatusBar } from 'expo-status-bar';
-import { BackBase, TitleHeader } from '../../components';
-import ButtonBase from '../../components/base/ButtonBase';
+import { BackBase, TitleHeader, ButtonBase, InputBase } from '../../components';
 import * as Yup from 'yup'
 import { Field, Formik } from 'formik';
-import InputBase from '../../components/base/InputBase';
 import { useDispatch } from 'react-redux';
 import { actions } from '../../store/register';
 import * as ImagePicker from 'expo-image-picker';

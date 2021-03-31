@@ -7,11 +7,9 @@ import { Field, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { actions } from '../../../store/diary';
 
-import ButtonBase from '../../../components/base/ButtonBase';
-
 import { styles } from './styles'
-import InputBase from '../../../components/base/InputBase';
 import { DateHelpers } from '../../../helpers/dateHelpers';
+import { ButtonBase, InputBase } from '../../../components';
 
 const DiarySchema = Yup.object().shape({
   title: Yup

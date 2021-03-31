@@ -24,8 +24,8 @@ const WriteDiary = ({ navigation }) => {
 
 	useEffect(() => {
 		if (isSend) {
-			dispatch(actions.isSend(false))
 			navigation.goBack()
+			dispatch(actions.isSend(false))
 		}
 	}, [isSend])
 

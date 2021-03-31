@@ -33,5 +33,8 @@ export const styles = StyleSheet.create({
 	body: {
 		fontSize: 18,
 		textAlign: "justify",
+	},
+	button: {
+		marginTop: 20,
 	}
 });

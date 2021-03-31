@@ -12,9 +12,9 @@ import {
 	ButtonSettings,
 	LoaderBase,
 	MessageBase,
-	TitleHeader
+	TitleHeader,
+	ButtonBase
 } from '../../components';
-import ButtonBase from '../../components/base/ButtonBase'
 import { styles } from './styles'
 
 const Diary = ({ navigation }) => {
@@ -23,7 +23,7 @@ const Diary = ({ navigation }) => {
 
 	useEffect(() => {
 		if (isLoading) {
-			dispatch(actions.getAllDiary())
+			dispatch(actions.getAllDiary(1))
 		}
 	}, [isLoading])
 
@@ -81,18 +81,18 @@ const Diary = ({ navigation }) => {
 								})
 							}
 						})()}
-					</View>
-				)}
 
-				{(allTexts.current_page < allTexts.last_page) && (
-					<View style={styles.button}>
-						<ButtonSettings
-							large
-							type="success"
-							onPress={() => fetchMore()}
-						>
-							Carregar mais
-						</ButtonSettings>
+						{(allTexts.current_page < allTexts.last_page) && (
+							<View style={styles.button}>
+								<ButtonSettings
+									large
+									type="success"
+									onPress={() => fetchMore()}
+								>
+									Carregar mais
+							</ButtonSettings>
+							</View>
+						)}
 					</View>
 				)}
 			</ScrollView>
