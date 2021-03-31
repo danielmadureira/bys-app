@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: 22,
-		padding: itemWidth,
 		display: "flex",
 		alignItems: "center",
 		paddingBottom: 10
@@ -33,7 +32,8 @@ export const styles = StyleSheet.create({
 	container_header: {
 		marginTop: 25,
 		paddingBottom: 2,
-		width: width
+		width: width,
+		margin: '2%'
 	},
 	sectionHeader: {
 		fontWeight: '800',
