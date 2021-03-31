@@ -45,7 +45,7 @@ const Comment = ({ diary }) => {
 							style={styles(diary).name}
 							numberOfLines={1}
 						>
-							{diary.name}
+							{diary.name || 'Usuário indisponível'}
 						</TextBase>
 						<TextBase
 							style={styles(diary).profession}

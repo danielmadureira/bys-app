@@ -29,12 +29,12 @@ const formatForumGroups = async (
  * @param {array} comments 
  * @returns an array
  */
-const formatRoomComments = async (
+const formatRoomComments = (
   comments
 ) => {
   let newComments = []
 
-  await comments.map((comment) => {
+  comments.map((comment) => {
     newComments.push({
       id: comment.id,
       name: comment.created_by ? comment.created_by.name : 'Usuário indisponível',
