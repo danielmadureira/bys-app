@@ -7,17 +7,19 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: 22,
-		padding: itemWidth
+		padding: itemWidth,
+		display: "flex",
+		alignItems: "center",
+		paddingBottom: 10
 	},
 	safearea: {
 		flex: 1,
-		marginBottom: 150,
 		alignItems: "center",
 		justifyContent: "center"
 	},
 	button: {
 		width: '100%',
-		marginTop: 50,
+		marginTop: 20,
 	},
 	wrapper: {
 		display: "flex",

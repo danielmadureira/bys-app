@@ -32,7 +32,7 @@ const Feed = ({ navigation }) => {
 	}, [isLoading])
 
 	return (
-		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
 			<View style={styles.container_header}>
 				<TitleHeader
@@ -43,9 +43,23 @@ const Feed = ({ navigation }) => {
 			<SafeAreaView style={styles.safearea}>
 				{!isLoading ? (<>
 					<SectionList
+						contentContainerStyle={{ paddingBottom: 60 }}
 						stickySectionHeadersEnabled={false}
 						sections={
 							[{ data: news.data }]
+						}
+						ListFooterComponent={
+							(news.current_page < news.last_page) && (
+								<View style={styles.button}>
+									<ButtonSettings
+										large
+										type="success"
+										onPress={() => fetchMore()}
+									>
+										Carregar mais
+									</ButtonSettings>
+								</View>
+							)
 						}
 						renderItem={({ item }) => {
 							return <View
@@ -65,22 +79,11 @@ const Feed = ({ navigation }) => {
 							</View>
 						}}
 					/>
-					{(news.current_page < news.last_page) && (
-						<View style={styles.button}>
-							<ButtonSettings
-								large
-								type="success"
-								onPress={() => fetchMore()}
-							>
-								Carregar mais
-							</ButtonSettings>
-						</View>
-					)}
 				</>) : (
 					<LoaderBase />
 				)}
 			</SafeAreaView>
-		</ScrollView>
+		</SafeAreaView>
 	);
 };
 
