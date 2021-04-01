@@ -123,9 +123,6 @@ export function* saga() {
   yield takeLatest(types.CREATE_MEDICATION_ALERT, function* createMedicationsAlert(action) {
     let alerts = action.payload
     const AlertService = new MedicationAlertService()
-    console.log(AlertService)
-    console.log(alerts, 'before')
-
     alerts.identifiers = yield AlertService.register(
       alerts.title,
       alerts.days,
