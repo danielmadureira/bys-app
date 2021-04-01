@@ -19,8 +19,7 @@ export const types = {
   FETCH_WATER_ALERT: '[Notification] Fetch water alert',
   DELETE_WATER_ALERT: '[Notification] Delete water alert',
   UPDATE_NOTIFICATION: '[Notification] Update',
-  ADD_HEIGHT: '[Notification] Add Weight',
-  LOADER_NOTIFICATION: '[Notification] Loader'
+  ADD_HEIGHT: '[Notification] Add Weight'
 }
 
 /** Actions */
@@ -48,9 +47,6 @@ export const actions = {
   deleteWaterAlert: (notification) => ({
     type: types.DELETE_WATER_ALERT,
     payload: notification
-  }),
-  isLoading: () => ({
-    type: types.LOADER_NOTIFICATION,
   }),
   updateMedicationAlert: (notification) => ({
     type: types.UPDATE_NOTIFICATION,
@@ -115,16 +111,10 @@ export const reducer = (
 
 export function* saga() {
 
-  yield takeLatest(types.LOADER_NOTIFICATION, function* getUser() {
-    put(actions.isLoading())
-  })
-
   // CREATE MEDICATION ALERT
   yield takeLatest(types.CREATE_MEDICATION_ALERT, function* createMedicationsAlert(action) {
     let alerts = action.payload
     const AlertService = new MedicationAlertService()
-    console.log(AlertService)
-    console.log(alerts, 'before')
 
     alerts.identifiers = yield AlertService.register(
       alerts.title,
@@ -174,7 +164,7 @@ export function* saga() {
   })
 
   // DELETE WATER ALERT
-  yield takeLatest(types.DELETE_WATER_ALERT, function* createWaterAlert() {
+  yield takeLatest(types.DELETE_WATER_ALERT, function* deleteWaterAlert() {
     let weight = ''
     let { identifiers } = yield select(state => state.notifications.water_ingestion)
 

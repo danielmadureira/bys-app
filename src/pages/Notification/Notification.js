@@ -60,8 +60,9 @@ const Notification = ({ medication }) => {
 			hours.length > 0 &&
 			hours[0] !== ''
 		) {
+			alert(JSON.stringify(content))
 			dispatch(actions.createMedicationAlert(content))
-			navigation.navigate('AllMedicineNotification')
+			// navigation.navigate('AllMedicineNotification')
 		}
 	}
 
