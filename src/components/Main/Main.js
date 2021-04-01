@@ -38,7 +38,13 @@ const Main = ({
 				</TouchableOpacity>
 
 				<View
-					onTouchEnd={() => navigation.navigate('Profile')}
+					onTouchEnd={() => {
+						if (state.index > 0) {
+							navigation.navigate('Feed')
+						} else {
+							navigation.navigate('Profile')
+						}
+					}}
 					style={styles.wrapper}
 				>
 					<ImageBackground
