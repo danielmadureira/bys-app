@@ -8,11 +8,17 @@ import { styles } from './styles'
 import { Icon } from 'react-native-elements'
 import TextBase from '../TextBase';
 
-const BackBase = ({ navigation }) => {
+const BackBase = ({ navigation, initial }) => {
 
 	return (
 		<View
-			onTouchEnd={() => navigation.goBack()}
+			onTouchEnd={() => {
+				if (initial) {
+					navigation.navigate('Feed')
+				} else {
+					navigation.goBack()
+				}
+			}}
 			style={styles.header_icon}
 		>
 			<Icon

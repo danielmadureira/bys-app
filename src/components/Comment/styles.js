@@ -23,6 +23,6 @@ export const styles = (props) => StyleSheet.create({
 		fontSize: 12,
 	},
 	text_reactions: {
-		color: (props.user_reacted) ? '#BD2222' : '#c0c0c0'
+		color: (props.liked) ? '#BD2222' : '#c0c0c0'
 	}
 });

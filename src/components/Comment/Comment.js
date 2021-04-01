@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
 	Image,
 	View,
@@ -14,10 +14,11 @@ import DefaultProfile from '../../../assets/default-user.png'
 import { styles } from "./styles";
 
 const Comment = ({ diary }) => {
+	const [like, setLike] = useState(diary.user_reacted)
 	const dispatch = useDispatch()
 
 	const isLiked = () => {
-		return (diary.user_reacted) ? '#BD2222' : '#c0c0c0'
+		return (like) ? '#BD2222' : '#c0c0c0'
 	}
 
 	const likeComment = () => {
@@ -58,14 +59,17 @@ const Comment = ({ diary }) => {
 
 					<View style={styles(diary).wrapper}>
 						{diary.total_reactions > 0 && (
-							<Text style={styles(diary).text_reactions}>
+							<Text style={styles({ liked: like }).text_reactions}>
 								{diary.total_reactions}
 							</Text>
 						)}
 						<Icon
 							name='favorite'
 							color={isLiked()}
-							onPress={() => likeComment()}
+							onPress={() => {
+								setLike(like === 0 ? 1 : 0)
+								likeComment()
+							}}
 						/>
 					</View>
 				</View>
