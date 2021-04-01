@@ -7,12 +7,12 @@ export const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        
+
         marginBottom: 15,
     },
-	main: {
+    main: {
         width: width,
-        height: 45,
+        height: 50,
 
         borderRadius: 15,
         backgroundColor: '#476044',
@@ -30,8 +30,8 @@ export const styles = StyleSheet.create({
         alignItems: "center",
     },
     profile: {
-        width: 60,
-        height: 60,
+        width: 65,
+        height: 65,
     },
     image: {
         borderRadius: 50,

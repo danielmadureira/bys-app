@@ -35,6 +35,18 @@ const daysInString = [
   WEEK.NAME.SATURDAY
 ]
 
+const daysOfWeek = () => {
+  return [
+    { id: WEEK.NUMBER.SUNDAY, day: WEEK.NAME.SUNDAY, selected: false },
+    { id: WEEK.NUMBER.MONDAY, day: WEEK.NAME.MONDAY, selected: false },
+    { id: WEEK.NUMBER.TUESDAY, day: WEEK.NAME.TUESDAY, selected: false },
+    { id: WEEK.NUMBER.WEDNESDAY, day: WEEK.NAME.WEDNESDAY, selected: false },
+    { id: WEEK.NUMBER.THURSDAY, day: WEEK.NAME.THURSDAY, selected: false },
+    { id: WEEK.NUMBER.FRIDAY, day: WEEK.NAME.FRIDAY, selected: false },
+    { id: WEEK.NUMBER.SATURDAY, day: WEEK.NAME.SATURDAY, selected: false }
+  ]
+}
+
 /**
  * Transform numbers of day
  * of week into name, 
@@ -61,8 +73,10 @@ const convertHoursToString = (hours) => {
   return hours.join('/')
 }
 
+
 export const NotificationHelper = {
   convertWeek,
   convertDaysToString,
-  convertHoursToString
+  convertHoursToString,
+  daysOfWeek
 }

@@ -20,6 +20,7 @@ const Main = ({
 					onPress={() => navigation.navigate('Diary')}
 				>
 					<Image
+						style={{ marginRight: 10 }}
 						source={require(`../../../assets/Diary.png`)}
 					/>
 				</TouchableOpacity>
@@ -31,6 +32,7 @@ const Main = ({
 					}}
 				>
 					<Image
+						style={{ margin: 10 }}
 						source={require(`../../../assets/Message.png`)}
 					/>
 				</TouchableOpacity>
@@ -55,6 +57,7 @@ const Main = ({
 					onPress={() => navigation.navigate('Calculator')}
 				>
 					<Image
+						style={{ margin: 10 }}
 						source={require(`../../../assets/Calculator.png`)}
 					/>
 				</TouchableOpacity>
@@ -63,6 +66,7 @@ const Main = ({
 					onPress={() => navigation.navigate('Notification')}
 				>
 					<Image
+						style={{ margin: 10 }}
 						source={require(`../../../assets/Notification.png`)}
 					/>
 				</TouchableOpacity>

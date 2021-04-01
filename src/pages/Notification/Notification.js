@@ -9,7 +9,6 @@ import {
 } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
 import { TextBase, ButtonBase } from '../../components';
-import { WEEK } from '../../enums/Week';
 import { NotificationHelper } from '../../helpers/notificationHelper';
 import { actions } from '../../store/notification'
 import { v4 as uuid } from 'uuid'
@@ -19,8 +18,8 @@ import { useNavigation } from '@react-navigation/core';
 
 const Notification = ({ medication }) => {
 	const [name, setName] = useState('')
-	const [days, setDays] = useState(DaysOfWeek)
-	const [hours, setHours] = useState([])
+	const [days, setDays] = useState(NotificationHelper.daysOfWeek())
+	const [hours, setHours] = useState([''])
 	const navigation = useNavigation()
 	const dispatch = useDispatch()
 
@@ -50,44 +49,26 @@ const Notification = ({ medication }) => {
 
 	const createNotification = () => {
 		let daysOfAlert = NotificationHelper.convertWeek(days)
-		if (!medication.uuid) {
-			let content = {
-				uuid: uuid(),
-				title: name,
-				days: daysOfAlert,
-				hours: hours,
-				identifiers: []
-			}
-			dispatch(actions.createMedicationAlert(content))
+		let content = {
+			uuid: uuid(),
+			title: name,
+			days: daysOfAlert,
+			hours: hours,
+			identifiers: []
 		}
+		dispatch(actions.createMedicationAlert(content))
 		navigation.navigate('AllMedicineNotification')
 	}
 
 	useEffect(() => {
-		if (medication.uuid) {
-			setName(medication.title)
-			setHours(medication.hours)
-
-			setDays((days) => {
-				return days.map(day => {
-					if ((medication.days).includes(day.id)) {
-						day.selected = true
-					} else {
-						day.selected = false
-					}
-					return day
-				})
+		setName('')
+		setHours([])
+		setDays((days) => {
+			return days.map(day => {
+				day.selected = false
+				return day
 			})
-		} else {
-			setName('')
-			setHours([])
-			setDays((days) => {
-				return days.map(day => {
-					day.selected = false
-					return day
-				})
-			})
-		}
+		})
 
 	}, [medication])
 
@@ -183,15 +164,5 @@ const Notification = ({ medication }) => {
 		</View >
 	);
 };
-
-const DaysOfWeek = [
-	{ id: WEEK.NUMBER.SUNDAY, day: WEEK.NAME.SUNDAY, selected: false },
-	{ id: WEEK.NUMBER.MONDAY, day: WEEK.NAME.MONDAY, selected: false },
-	{ id: WEEK.NUMBER.TUESDAY, day: WEEK.NAME.TUESDAY, selected: false },
-	{ id: WEEK.NUMBER.WEDNESDAY, day: WEEK.NAME.WEDNESDAY, selected: false },
-	{ id: WEEK.NUMBER.THURSDAY, day: WEEK.NAME.THURSDAY, selected: false },
-	{ id: WEEK.NUMBER.FRIDAY, day: WEEK.NAME.FRIDAY, selected: false },
-	{ id: WEEK.NUMBER.SATURDAY, day: WEEK.NAME.SATURDAY, selected: false }
-]
 
 export default Notification;
