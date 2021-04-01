@@ -21,7 +21,7 @@ const WaterCalculator = ({ navigation }) => {
 			"Você deve consumir por dia:",
 			`${valor} ml de água`,
 			[
-				{ text: "OK", onPress: () => console.log("OK Pressed") }
+				{ text: "OK" }
 			],
 			{ cancelable: false }
 		);
