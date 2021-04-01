@@ -33,11 +33,25 @@ export const styles = StyleSheet.create({
 		width: '100%',
 		height: 350
 	},
+	shadow_picture: {
+		width: '100%',
+
+		borderRadius: 5,
+		shadowColor: "#F5F5F5",
+		shadowOffset: {
+			width: 1,
+			height: 0
+		},
+		shadowOpacity: 0.3,
+		shadowRadius: 30,
+		elevation: 15
+	},
 	wrapper_picture: {
 		marginTop: 40,
 		display: "flex",
 		alignItems: "flex-end",
-		width: '90%',
+
+		width: '90%'
 	},
 	wrapper_row: {
 		flex: 1,

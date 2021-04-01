@@ -43,15 +43,17 @@ const DetailFeed = ({ route, navigation }) => {
 				</View>
 
 				<View style={styles.wrapper_picture}>
-					<Image
-						borderRadius={20}
-						style={styles.picture}
-						source={
-							details.picture ?
-								{ uri: details.picture } :
-								ImageDefault
-						}
-					/>
+					<View style={styles.shadow_picture}>
+						<Image
+							borderRadius={20}
+							style={styles.picture}
+							source={
+								details.picture ?
+									{ uri: details.picture } :
+									ImageDefault
+							}
+						/>
+					</View>
 					<TextBase style={styles.picture_title}>
 						{details.picture_description}
 					</TextBase>
