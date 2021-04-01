@@ -76,6 +76,12 @@ export const styles = StyleSheet.create({
 		width: wrapperWidth,
 		marginTop: 29,
 	},
+	flexbox: {
+		width: '80%',
+		textAlign: 'right',
+		alignItems: 'flex-end',
+		justifyContent: 'center'
+	},
 	status: {
 		width: '90%',
 		height: 93,
@@ -84,9 +90,10 @@ export const styles = StyleSheet.create({
 		borderTopRightRadius: 5,
 		borderBottomRightRadius: 5,
 
-		display: "flex",
-		alignItems: "center",
-		paddingTop: 10,
+		flex: 1,
+		flexDirection: "row",
+		justifyContent: "space-between",
+		marginTop: 10,
 	},
 	status_title: {
 		textAlign: "left",
@@ -97,16 +104,15 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		resizeMode: "contain",
 
-		display: "flex",
 		alignItems: "center",
 		justifyContent: "center"
 	},
 	message_container: {
-		height: 420,
+		height: 400,
 		width: wrapperWidth,
 		borderRadius: 10,
 
-		paddingTop: 40,
+		marginTop: 40,
 		marginBottom: 150,
 
 		display: "flex",
@@ -180,7 +186,7 @@ export const styles = StyleSheet.create({
 	mood_status: {
 		fontSize: 18,
 		textAlign: 'right',
-		paddingRight: 5,
+		justifyContent: "center",
 		width: '75%'
 	}
 });

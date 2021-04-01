@@ -235,18 +235,21 @@ const Profile = ({ navigation }) => {
 					{/** User's Mood */}
 					<View style={styles.wrapper_status}>
 						<View style={styles.status}>
-							<TextBase style={styles.status_title}>Hoje estou me sentindo:</TextBase>
-							{isEditMode ? (
-								<View style={styles.mood}>
+							{isEditMode ? (<>
+								<View style={styles.flexbox}>
+									<TextBase style={styles.status_title}>Hoje estou me sentindo:</TextBase>
 									<Field
 										component={InputBase}
 										name="status"
 										placeholder={user.mood.description}
 										style={styles.mood_status}
 									/>
+								</View>
+								<View style={styles.mood}>
 									<Field
 										component={InputBase}
 										name="emoticon"
+										maxLeng
 										placeholder={user.mood.emoji_hex ?
 											String.fromCodePoint(user.mood.emoji_hex)
 											: ''
@@ -254,19 +257,23 @@ const Profile = ({ navigation }) => {
 										style={styles.mood_emoticon_edit}
 									/>
 								</View>
+							</>
 							) : (
-								user.name && (
-									<View style={styles.mood}>
+								user.name && (<>
+									<View style={styles.flexbox}>
+										<TextBase style={styles.status_title}>Hoje estou me sentindo:</TextBase>
 										<TextBase style={styles.mood_status}>
 											{user.mood.description}
 										</TextBase>
+									</View>
+									<View style={styles.mood}>
 										<TextBase style={styles.mood_emoticon}>
 											{user.mood.emoji_hex ?
 												String.fromCodePoint(user.mood.emoji_hex)
 												: ''}
 										</TextBase>
 									</View>
-								)
+								</>)
 							)}
 						</View>
 					</View>
@@ -274,12 +281,14 @@ const Profile = ({ navigation }) => {
 			</Formik>
 
 			{isSend &&
-				<View style={styles.alert_container}>
+				<TouchableOpacity
+					style={styles.alert_container}
+					onPress={() => { navigation.navigate('Diary') }}
+				>
 					<AlertBase type="success">
-						Publicado com sucesso.
-						Clique aqui, para ver seus diários.
+						{`Publicado com sucesso. \nClique aqui, para ver seus diários.`}
 					</AlertBase>
-				</View>
+				</TouchableOpacity>
 			}
 			{/** User's Diary */}
 			<View style={styles.message_container}>
