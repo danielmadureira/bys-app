@@ -46,6 +46,7 @@ const Notification = ({ medication }) => {
 	}
 
 	const createNotification = () => {
+		alert('entra')
 		let daysOfAlert = NotificationHelper.convertWeek(days)
 		let content = {
 			uuid: uuid(),
@@ -54,7 +55,8 @@ const Notification = ({ medication }) => {
 			hours: hours,
 			identifiers: []
 		}
-		console.log(daysOfAlert, name, hours[0])
+		alert('continua')
+
 		if (name !== '' &&
 			daysOfAlert.length > 0 &&
 			hours.length > 0 &&
@@ -71,7 +73,7 @@ const Notification = ({ medication }) => {
 	}
 
 	const toNumericString = (string) => {
-		return string.replace(/[^0-9]/g,'')
+		return string.replace(/[^0-9]/g, '')
 	}
 
 	const formatHours = (hourNumbers) => {
