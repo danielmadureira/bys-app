@@ -120,9 +120,11 @@ export function* saga() {
   })
 
   // CREATE MEDICATION ALERT
-  yield takeLatest(types.CREATE_MEDICATION_ALERT, function* createMedicationAlert(action) {
+  yield takeLatest(types.CREATE_MEDICATION_ALERT, function* createMedicationsAlert(action) {
     let alerts = action.payload
     const AlertService = new MedicationAlertService()
+    console.log(AlertService)
+    console.log(alerts, 'before')
 
     alerts.identifiers = yield AlertService.register(
       alerts.title,
@@ -153,7 +155,7 @@ export function* saga() {
   })
 
   // CREATE WATER ALERT
-  yield takeLatest(types.CREATE_WATER_ALERT, function* createWaterAlert(action) {
+  yield takeLatest(types.CREATE_WATER_ALERT, function* createWatersAlert(action) {
     let weight = action.payload
     let { identifiers } = yield select(state => state.notifications.water_ingestion)
 

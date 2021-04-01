@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Alert, Image, Platform } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
@@ -10,7 +10,7 @@ import { Field, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { actions } from '../../store/register';
 import * as ImagePicker from 'expo-image-picker';
-import { Image, Platform } from 'react-native';
+
 
 const RegisterSchemaStepOne = Yup.object().shape({
 	email: Yup
@@ -28,17 +28,33 @@ const Register = (props) => {
 	const { navigation } = props;
 	const dispatch = useDispatch()
 
+	const getPermission = async () => {
+		if (Platform.OS !== 'web') {
+			const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+			console.log(status)
+			return status
+		}
+	}
 	useEffect(() => {
 		(async () => {
-			if (Platform.OS !== 'web') {
-				const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
-
-				if (status !== 'granted') {
-					alert('Desculpe, precisamos ter permissão para continuar.');
-				}
+			const status = await getPermission()
+			if (status !== 'granted') {
+				Alert.alert(
+					null,
+					"Desculpe, precisamos ter permissão para acessar a galeria de imagens.",
+					[
+						{
+							text: "OK",
+							onPress: () => {
+								// props.navigation.navigate('Home')
+							}
+						}
+					],
+					{ cancelable: false }
+				);
 			}
 		})()
-	})
+	}, [])
 
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
@@ -69,16 +85,19 @@ const Register = (props) => {
 						<View style={styles.message}>
 							<TouchableOpacity
 								onPress={async () => {
-									let result = await ImagePicker.launchImageLibraryAsync({
-										mediaTypes: ImagePicker.MediaTypeOptions.All,
-										allowsEditing: true,
-										aspect: [4, 3],
-										quality: 1,
-									});
+									const status = await getPermission()
+									if (status === 'granted') {
+										let result = await ImagePicker.launchImageLibraryAsync({
+											mediaTypes: ImagePicker.MediaTypeOptions.All,
+											allowsEditing: true,
+											aspect: [4, 3],
+											quality: 1,
+										});
 
-									if (result.uri) {
-										setFieldValue('image', result.uri)
-										setFieldTouched('image', true)
+										if (result.uri) {
+											setFieldValue('image', result.uri)
+											setFieldTouched('image', true)
+										}
 									}
 								}}
 							>

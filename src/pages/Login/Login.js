@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, ActivityIndicator } from 'react-native';
-import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import React, { useEffect, useState } from 'react'
+import { View, Text, Image, ActivityIndicator } from 'react-native'
+import { ScrollView, TextInput } from 'react-native-gesture-handler'
 
-import { styles } from './styles';
-import LogoPNG from '../../../assets/login.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { actions } from '../../store/user';
-import { AuthServices } from '../../services/AuthServices';
-import { encryptPassword } from '../../helpers/registerHelper';
-import { AlertBase, ButtonBase, TextBase } from '../../components';
-import { SecureStoreAdapter } from '../../adapter/SecureStoreAdapter';
+import { styles } from './styles'
+import LogoPNG from '../../../assets/login.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { actions } from '../../store/user'
+import { AuthServices } from '../../services/AuthServices'
+import { encryptPassword } from '../../helpers/registerHelper'
+import { AlertBase, ButtonBase, TextBase } from '../../components'
+import { SecureStoreAdapter } from '../../adapter/SecureStoreAdapter'
 
 const Login = (props) => {
 	const { navigation } = props
