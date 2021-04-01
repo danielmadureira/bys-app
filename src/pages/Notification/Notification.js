@@ -66,6 +66,22 @@ const Notification = ({ medication }) => {
 		}
 	}
 
+	const zeroFill = (integer, length = 2) => {
+		return `${'0'.repeat(length)}${integer}`.substr(length * -1)
+	}
+
+	const toNumericString = (string) => {
+		return string.replace(/[^0-9]/g,'')
+	}
+
+	const formatHours = (hourNumbers) => {
+		hourNumbers = zeroFill(toNumericString(hourNumbers), 4)
+		const textHours = Math.min(hourNumbers.substr(0, 2), 23)
+		const textMinutes = Math.min(hourNumbers.substr(2, 2), 59)
+
+		return `${zeroFill(textHours)}:${zeroFill(textMinutes)}`
+	}
+
 	useEffect(() => {
 		setName('')
 		setHours([''])
@@ -121,14 +137,33 @@ const Notification = ({ medication }) => {
 								value={hour}
 								keyboardType="numeric"
 								maxLength={5}
+								selectTextOnFocus
+								onEndEditing={event => {
+									const inputValue = event.nativeEvent?.text || null
+									setHours((hours) => {
+										return hours.map((item, index) => {
+											if (i === index) {
+												if (!inputValue) return null
+												if (inputValue.match(/^(\d{2}):(\d{2})/, '$1:$2')) {
+													return inputValue
+												}
+												return formatHours(toNumericString(inputValue))
+											}
+											return item
+										})
+									})
+								}}
 								onChangeText={(text) => {
 									setHours((hours) => {
 										return hours.map((item, index) => {
-											return (i === index) ?
-												text.replace(
-													/^(\d{2})(\d{2})/, '$1:$2'
-												)
-												: item
+											if (i === index) {
+												const textNumbers = toNumericString(text);
+												if (textNumbers.length >= 4) {
+													return formatHours(textNumbers)
+												}
+												return text
+											}
+											return item
 										})
 									});
 								}}
