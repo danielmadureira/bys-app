@@ -48,6 +48,7 @@ const Notification = ({ medication }) => {
 	const createNotification = () => {
 		alert('entra')
 		let daysOfAlert = NotificationHelper.convertWeek(days)
+		alert('daysOfWeek')
 		let content = {
 			uuid: uuid(),
 			title: name,
@@ -204,7 +205,7 @@ const Notification = ({ medication }) => {
 					/>
 				</View>
 			</ScrollView>
-		</View >
+		</View>
 	);
 };
 
