@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	View,
 	SectionList,
@@ -15,6 +15,7 @@ import { actions } from '../../store/feed'
 const Feed = ({ navigation }) => {
 	const { news, isLoading } = useSelector(state => state.feed)
 	const dispatch = useDispatch()
+	const [loading, setLoading] = useState(false)
 
 	const fetchMore = () => {
 		if (news.current_page < news.last_page) {
@@ -22,6 +23,10 @@ const Feed = ({ navigation }) => {
 				news.current_page + 1
 			))
 		}
+
+		setTimeout(() => {
+			setLoading(false)
+		}, 10);
 	}
 
 	useEffect(() => {
@@ -54,8 +59,12 @@ const Feed = ({ navigation }) => {
 								<View style={styles.button}>
 									<ButtonSettings
 										large
+										loader={loading}
 										type="success"
-										onPress={() => fetchMore()}
+										onPress={() => {
+											setLoading(true)
+											fetchMore()
+										}}
 									>
 										Carregar mais
 									</ButtonSettings>
