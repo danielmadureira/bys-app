@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import {
+	Alert,
 	View
 } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
@@ -14,6 +15,23 @@ const WaterNotification = ({ navigation }) => {
 	const { water_ingestion } = useSelector(state => state.notifications)
 	const [weight, setWeight] = useState(null)
 	const dispatch = useDispatch()
+
+	const callMenssage = () => {
+		Alert.alert(
+			"Alerta cadastrado.",
+			"Agora você pode controlar seu consumo de água!",
+			[
+				{
+					text: "OK",
+					onPress: () => {
+						setWeight('')
+						navigation.goBack()
+					}
+				}
+			],
+			{ cancelable: false }
+		);
+	}
 
 	useEffect(() => {
 		setWeight(water_ingestion.weight)
@@ -46,7 +64,7 @@ const WaterNotification = ({ navigation }) => {
 						radius={5}
 						onPress={() => {
 							dispatch(actions.createWaterAlert(weight))
-							// navigation.goBack()
+							callMenssage()
 						}}
 					/>
 				</View>

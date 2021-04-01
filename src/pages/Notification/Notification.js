@@ -7,13 +7,12 @@ import {
 	TextInput,
 	TouchableWithoutFeedback
 } from 'react-native-gesture-handler';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { TextBase, ButtonBase } from '../../components';
-import { AlertTypes } from '../../enums/AlertTypes';
 import { WEEK } from '../../enums/Week';
 import { NotificationHelper } from '../../helpers/notificationHelper';
 import { actions } from '../../store/notification'
-import uuid from 'react-native-uuid'
+import { v4 as uuid } from 'uuid'
 
 import { styles } from './styles'
 import { useNavigation } from '@react-navigation/core';
@@ -53,7 +52,7 @@ const Notification = ({ medication }) => {
 		let daysOfAlert = NotificationHelper.convertWeek(days)
 		if (!medication.uuid) {
 			let content = {
-				uuid: uuid.v1(),
+				uuid: uuid(),
 				title: name,
 				days: daysOfAlert,
 				hours: hours,
