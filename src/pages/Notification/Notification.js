@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { TextBase, ButtonBase } from '../../components';
 import { NotificationHelper } from '../../helpers/notificationHelper';
 import { actions } from '../../store/notification'
-import { v4 as uuid } from 'uuid'
+import { v4 as uuidGenerator } from 'uuid'
 
 import { styles } from './styles'
 import { useNavigation } from '@react-navigation/core';
@@ -20,6 +20,7 @@ const Notification = ({ medication }) => {
 	const [name, setName] = useState('')
 	const [days, setDays] = useState(NotificationHelper.daysOfWeek())
 	const [hours, setHours] = useState([])
+	const [error, setError] = useState('')
 	const navigation = useNavigation()
 	const dispatch = useDispatch()
 
@@ -27,8 +28,8 @@ const Notification = ({ medication }) => {
 	const chooseDay = (id) => {
 		setDays((days) => {
 			return days.map(day => {
-				if (day.id == id) {
-					day.selected = day.selected ? false : true
+				if (day.id === id) {
+					day.selected = !day.selected
 				}
 				return day
 			})
@@ -46,22 +47,38 @@ const Notification = ({ medication }) => {
 	}
 
 	const createNotification = () => {
+		if (!name) {
+			setError('Você precisa inserir um nome para o alarme')
+			return
+		}
+
 		let daysOfAlert = NotificationHelper.convertWeek(days)
+		if (daysOfAlert.length <= 0) {
+			setError('Você precisa selecionar os dias do alarme')
+			return
+		}
+
+		if (hours.length <= 0) {
+			setError('Adicione pelo menos um horário para o alarme')
+			return
+		}
+
 		let content = {
-			uuid: uuid(),
+			uuid: uuidGenerator(),
 			title: name,
 			days: daysOfAlert,
 			hours: hours,
 			identifiers: []
 		}
-		console.log(daysOfAlert, name, hours[0])
-		if (name !== '' &&
-			daysOfAlert.length > 0 &&
-			hours.length > 0 &&
-			hours[0] !== ''
-		) {
+
+		try {
 			dispatch(actions.createMedicationAlert(content))
 			navigation.navigate('AllMedicineNotification')
+		} catch (error) {
+			setError(
+				'Houve um erro desconhecido ao tentar salvar as'
+					+ ' informações deste alarme. Tente novamente.'
+			)
 		}
 	}
 
@@ -82,20 +99,28 @@ const Notification = ({ medication }) => {
 	}
 
 	useEffect(() => {
+		setError('')
 		setName('')
-		setHours([''])
+		setHours([`${(new Date()).getHours()}:00`])
 		setDays((days) => {
 			return days.map(day => {
 				day.selected = false
 				return day
 			})
 		})
-
 	}, [medication])
 
 	return (
 		<View style={styles({}).container}>
 			<ScrollView>
+				{
+					error ?
+						<View style={ styles({}).errorWrapper }>
+							<TextBase style={styles({}).errorMessage}>{ error }</TextBase>
+						</View>
+						: null
+				}
+
 				<TextInput
 					style={styles({}).input}
 					placeholder="Nome do medicamento"
