@@ -96,11 +96,10 @@ export const styles = StyleSheet.create({
 		width: messageWidth,
 		flex: 1,
 		resizeMode: "contain",
-		justifyContent: "center",
 
 		display: "flex",
-		justifyContent: "flex-end",
-		alignItems: "center"
+		alignItems: "center",
+		justifyContent: "center"
 	},
 	message_container: {
 		height: 400,
