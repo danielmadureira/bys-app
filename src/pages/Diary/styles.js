@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		paddingTop: 45,
 	},
+	loader: {
+		marginTop: '50%'
+	},
 	wrapper: {
 		display: "flex",
 		alignItems: "center",

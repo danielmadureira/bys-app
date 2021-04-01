@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	View
 } from 'react-native'
@@ -19,6 +19,7 @@ import { styles } from './styles'
 
 const Diary = ({ navigation }) => {
 	const { allTexts, isLoading } = useSelector(state => state.diary)
+	const [loading, setLoading] = useState(false)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -33,6 +34,9 @@ const Diary = ({ navigation }) => {
 				allTexts.current_page + 1
 			))
 		}
+		setTimeout(() => {
+			setLoading(false)
+		}, 10);
 	}
 
 	return (
@@ -44,7 +48,7 @@ const Diary = ({ navigation }) => {
 						title="Todos os meus dias"
 						subtitle="Esta é sua história"
 					/>
-					<BackBase navigation={navigation} />
+					<BackBase initial navigation={navigation} />
 				</View>
 
 				<View style={styles.wrapper_button}>
@@ -86,11 +90,15 @@ const Diary = ({ navigation }) => {
 							<View style={styles.button}>
 								<ButtonSettings
 									large
+									loader={loading}
 									type="success"
-									onPress={() => fetchMore()}
+									onPress={() => {
+										setLoading(true)
+										fetchMore()
+									}}
 								>
 									Carregar mais
-							</ButtonSettings>
+								</ButtonSettings>
 							</View>
 						)}
 					</View>
