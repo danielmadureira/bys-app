@@ -6,7 +6,7 @@ import { rootReducers, rootSagas } from './roots';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const persistConfig = {
-  key: 'bys-app',
+  key: 'bys-app-store',
   storage: AsyncStorage,
   stateReconciler: autoMergeLevel2,
   timeout: null,

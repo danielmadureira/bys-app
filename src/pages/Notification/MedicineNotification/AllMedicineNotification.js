@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	View
 } from 'react-native';
@@ -16,6 +16,10 @@ import { styles } from './styles'
 
 const AllMedicineNotification = ({ navigation }) => {
 	const { medications } = useSelector(state => state.notifications)
+
+	useEffect(() => {
+
+	}, [medications])
 
 	return (
 		<View style={styles.container}>

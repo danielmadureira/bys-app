@@ -16,7 +16,7 @@ class NotificationAdapter {
    * @return {Promise<*>}
    */
   async createWeeklyNotification(title, text, weekday, time) {
-    const [ hour, minute ] = this._parseTime(time);
+    const [hour, minute] = this._parseTime(time);
     const content = { title, body: text };
     const trigger = { weekday, hour, minute, repeats: true };
 
@@ -33,7 +33,7 @@ class NotificationAdapter {
    * @return {Promise<*>}
    */
   async createDailyNotification(title, text, time) {
-    const [ hour, minute ] = this._parseTime(time);
+    const [hour, minute] = this._parseTime(time);
     const content = { title, body: text };
     const trigger = { hour, minute, repeats: true };
 

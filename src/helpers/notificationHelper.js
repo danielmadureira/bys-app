@@ -37,8 +37,8 @@ const daysInString = [
 
 /**
  * Transform numbers of day
- * of week into name of day, 
- * and returns one string
+ * of week into name, 
+ * and returns string
  * 
  * @param {array} days
  * @returns {string}
@@ -46,7 +46,7 @@ const daysInString = [
 const convertDaysToString = (days) => {
   let daysName = []
   days.map(v => {
-    daysName.push(daysInString[v])
+    daysName.push(daysInString[v - 1])
   })
   return daysName.join('; ')
 }

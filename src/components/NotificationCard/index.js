@@ -55,11 +55,7 @@ const NotificationCard = (props) => {
               name="delete"
               size={25}
               onPress={() => {
-                let notify = medications.filter(res =>
-                  res.uuid !== notification.uuid
-                )
-
-                dispatch(actions.updateNotification(notify))
+                dispatch(actions.deleteMedicationAlert(notification.uuid))
               }}
             />
           </View>

@@ -24,7 +24,6 @@ const Notification = ({ medication }) => {
 	const [hours, setHours] = useState([])
 	const navigation = useNavigation()
 	const dispatch = useDispatch()
-	const { medications } = useSelector(state => state.notifications)
 
 	// Select a day and change status
 	const chooseDay = (id) => {
@@ -58,9 +57,9 @@ const Notification = ({ medication }) => {
 				title: name,
 				days: daysOfAlert,
 				hours: hours,
-				type: AlertTypes.MEDICATION
+				identifiers: []
 			}
-			dispatch(actions.addNotification(content))
+			dispatch(actions.createMedicationAlert(content))
 		}
 		navigation.navigate('AllMedicineNotification')
 	}

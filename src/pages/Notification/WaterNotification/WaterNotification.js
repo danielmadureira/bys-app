@@ -45,8 +45,8 @@ const WaterNotification = ({ navigation }) => {
 						title="Salvar alerta"
 						radius={5}
 						onPress={() => {
-							dispatch(actions.addWeight(weight))
-							navigation.goBack()
+							dispatch(actions.createWaterAlert(weight))
+							// navigation.goBack()
 						}}
 					/>
 				</View>
