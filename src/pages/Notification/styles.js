@@ -27,7 +27,7 @@ export const styles = (props) => StyleSheet.create({
 	},
 	input: {
 		width: '100%',
-		marginTop: 45,
+		marginTop: 10,
 		height: 40,
 		borderBottomWidth: 1,
 	},
@@ -74,5 +74,16 @@ export const styles = (props) => StyleSheet.create({
 	},
 	remove_hour: {
 		width: '40%'
+	},
+	errorWrapper: {
+		flexDirection: 'row',
+		alignItems: 'flex-start',
+		flexWrap: 'wrap',
+		flex: 1,
+		marginTop: 4,
+		width: '90%'
+	},
+	errorMessage: {
+		color: 'red'
 	}
 });
