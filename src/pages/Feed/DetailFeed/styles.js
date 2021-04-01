@@ -29,39 +29,41 @@ export const styles = StyleSheet.create({
 		width: '100%',
 		height: 200
 	},
-	picture: {
+	image_container: {
+		marginTop: 10,
+		width: '95%',
+		height: 350,
+		flexDirection: 'row',
+	},
+	image_wrapper: {
+		flex: 30,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	image: {
 		width: '100%',
 		height: 350
 	},
-	shadow_picture: {
-		width: '100%',
-
+	image_shadow: {
+		width: '98%',
 		borderRadius: 5,
 		shadowColor: "#F5F5F5",
 		shadowOffset: {
 			width: 1,
 			height: 0
 		},
-		shadowOpacity: 0.3,
+		shadowOpacity: 0.2,
 		shadowRadius: 30,
 		elevation: 15
 	},
-	wrapper_picture: {
-		marginTop: 40,
-		display: "flex",
-		alignItems: "flex-end",
-
-		width: '90%'
-	},
-	wrapper_row: {
+	image_description_wrapper: {
 		flex: 1,
-		flexDirection: "row",
-		width: '90%',
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
-	picture_title: {
-		fontSize: 11,
-		// transform: [{ rotate: '90deg' }],
-		right: 0,
-		top: 0,
-	}
+	image_description: {
+		transform: [{ rotate: '90deg'}],
+		width: 350,
+		paddingLeft: 20,
+	},
 });
