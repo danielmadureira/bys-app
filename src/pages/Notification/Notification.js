@@ -19,7 +19,7 @@ import { useNavigation } from '@react-navigation/core';
 const Notification = ({ medication }) => {
 	const [name, setName] = useState('')
 	const [days, setDays] = useState(NotificationHelper.daysOfWeek())
-	const [hours, setHours] = useState([''])
+	const [hours, setHours] = useState([])
 	const navigation = useNavigation()
 	const dispatch = useDispatch()
 
@@ -62,7 +62,7 @@ const Notification = ({ medication }) => {
 
 	useEffect(() => {
 		setName('')
-		setHours([])
+		setHours([''])
 		setDays((days) => {
 			return days.map(day => {
 				day.selected = false

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	View,
 	SafeAreaView
@@ -20,6 +20,7 @@ import ForumRoom from './Room';
 const Forum = ({ navigation }) => {
 	const { groups, isLoading } = useSelector(state => state.forum)
 	const dispatch = useDispatch()
+	const [loading, setLoading] = useState(false)
 
 	const fetchMore = () => {
 		if (groups.current_page < groups.last_page) {
@@ -27,6 +28,9 @@ const Forum = ({ navigation }) => {
 				groups.current_page + 1
 			))
 		}
+		setTimeout(() => {
+			setLoading(false)
+		}, 10);
 	}
 
 	useEffect(() => {
@@ -51,7 +55,7 @@ const Forum = ({ navigation }) => {
 					title="Conversa"
 					subtitle="Compartilhe experiências"
 				/>
-				<BackBase navigation={navigation} />
+				<BackBase initial navigation={navigation} />
 			</View>
 
 			<SafeAreaView style={{ flex: 1, marginBottom: 100 }}>
@@ -79,8 +83,12 @@ const Forum = ({ navigation }) => {
 							<View style={styles.button}>
 								<ButtonSettings
 									large
+									loader={loading}
 									type="success"
-									onPress={() => fetchMore()}
+									onPress={() => {
+										setLoading(true)
+										fetchMore()
+									}}
 								>
 									Carregar mais
 							</ButtonSettings>

@@ -18,7 +18,7 @@ const MainNotification = ({ navigation }) => {
 					title="Alertas"
 					subtitle="Crie alertas que te ajudam a manter a qualidade de vida"
 				/>
-				<BackBase navigation={navigation} />
+				<BackBase initial navigation={navigation} />
 			</View>
 
 			<View style={styles({}).wrapper_menu}>

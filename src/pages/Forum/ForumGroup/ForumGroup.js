@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	View
 } from 'react-native'
@@ -24,6 +24,7 @@ const ForumGroup = ({ navigation, route }) => {
 		isCommentLoading
 	} = useSelector(state => state.forum)
 	const dispatch = useDispatch()
+	const [loading, setLoading] = useState(false)
 
 	const fetchMore = () => {
 		if (comments.current_page < comments.last_page) {
@@ -32,6 +33,10 @@ const ForumGroup = ({ navigation, route }) => {
 				page: comments.current_page + 1
 			}))
 		}
+
+		setTimeout(() => {
+			setLoading(false)
+		}, 10);
 	}
 
 	useEffect(() => {
@@ -81,7 +86,6 @@ const ForumGroup = ({ navigation, route }) => {
 				</View>
 			</View>
 
-
 			{!isCommentLoading ? (
 				<View style={styles.wrapper_comment}>
 					{comments.data.map((comment) => {
@@ -97,8 +101,12 @@ const ForumGroup = ({ navigation, route }) => {
 						<View style={styles.button}>
 							<ButtonSettings
 								large
+								loader={loading}
 								type="success"
-								onPress={() => fetchMore()}
+								onPress={() => {
+									setLoading(true)
+									fetchMore()
+								}}
 							>
 								Carregar mais
 							</ButtonSettings>
