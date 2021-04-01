@@ -102,12 +102,12 @@ export const styles = StyleSheet.create({
 		justifyContent: "center"
 	},
 	message_container: {
-		height: 400,
+		height: 420,
 		width: wrapperWidth,
 		borderRadius: 10,
 
-		paddingTop: 80,
-		marginBottom: 200,
+		paddingTop: 40,
+		marginBottom: 150,
 
 		display: "flex",
 		alignItems: "center",
@@ -115,6 +115,11 @@ export const styles = StyleSheet.create({
 	message_title: {
 		width: width,
 		marginBottom: 20
+	},
+	alert_container: {
+		width: '90%',
+		display: "flex",
+		alignItems: "center",
 	},
 	title: {
 		fontSize: 24,

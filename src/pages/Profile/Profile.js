@@ -274,9 +274,12 @@ const Profile = ({ navigation }) => {
 			</Formik>
 
 			{isSend &&
-				<AlertBase type="success">
-					Publicado com sucesso.
-				</AlertBase>
+				<View style={styles.alert_container}>
+					<AlertBase type="success">
+						Publicado com sucesso.
+						Clique aqui, para ver seus diários.
+					</AlertBase>
+				</View>
 			}
 			{/** User's Diary */}
 			<View style={styles.message_container}>
