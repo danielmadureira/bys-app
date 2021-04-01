@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
@@ -18,7 +19,7 @@ const Calculator = ({ navigation }) => {
 					title="Calculadoras"
 					subtitle="Na medida certa"
 				/>
-				<BackBase navigation={navigation} />
+				<BackBase initial navigation={navigation} />
 			</View>
 
 			{SECTIONS.map((v, i) => {
