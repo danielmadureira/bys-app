@@ -37,10 +37,8 @@ const RegisterPassword = (props) => {
 
 	useEffect(() => {
 		if (isLoading) {
-			setTimeout(() => {
-				dispatch(actions.isLoading(false))
-				navigation.navigate('Home')
-			}, 1500);
+			dispatch(actions.isLoading(false))
+			navigation.navigate('Home')
 		}
 	}, [isLoading])
 

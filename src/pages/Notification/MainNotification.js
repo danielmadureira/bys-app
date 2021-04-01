@@ -1,15 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	View
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { BackBase, TextCard, TitleHeader } from '../../components';
+import * as Permissions from 'expo-permissions'
 
 import { styles } from './styles'
 
-
 const MainNotification = ({ navigation }) => {
+
+	const checkMultiPermissions = async () => {
+		const { permissions } = await Permissions.getAsync(
+			Permissions.NOTIFICATIONS
+		);
+
+		if (!permissions.notifications.granted) {
+			await Permissions.askAsync(Permissions.NOTIFICATIONS)
+		}
+	}
+
+	useEffect(() => {
+		(async () => {
+			await checkMultiPermissions()
+		})()
+	}, [])
+
 	return (
 		<ScrollView contentContainerStyle={styles({}).wrapper} style={styles({}).container}>
 			<StatusBar style="light" backgroundColor="#000" />

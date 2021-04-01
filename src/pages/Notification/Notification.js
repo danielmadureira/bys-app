@@ -27,10 +27,8 @@ const Notification = ({ medication }) => {
 	const chooseDay = (id) => {
 		setDays((days) => {
 			return days.map(day => {
-				if (day.id == id && day.selected) {
-					day.selected = false
-				} else if (day.id == id && !day.selected) {
-					day.selected = true
+				if (day.id == id) {
+					day.selected = day.selected ? false : true
 				}
 				return day
 			})
@@ -56,8 +54,15 @@ const Notification = ({ medication }) => {
 			hours: hours,
 			identifiers: []
 		}
-		dispatch(actions.createMedicationAlert(content))
-		navigation.navigate('AllMedicineNotification')
+		console.log(daysOfAlert, name, hours[0])
+		if (name !== '' &&
+			daysOfAlert.length > 0 &&
+			hours.length > 0 &&
+			hours[0] !== ''
+		) {
+			dispatch(actions.createMedicationAlert(content))
+			navigation.navigate('AllMedicineNotification')
+		}
 	}
 
 	useEffect(() => {
