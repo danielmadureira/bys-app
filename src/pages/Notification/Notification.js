@@ -11,7 +11,6 @@ import { useDispatch } from 'react-redux';
 import { TextBase, ButtonBase } from '../../components';
 import { NotificationHelper } from '../../helpers/notificationHelper';
 import { actions } from '../../store/notification'
-import { v4 as uuid } from 'uuid'
 
 import { styles } from './styles'
 import { useNavigation } from '@react-navigation/core';
@@ -48,9 +47,8 @@ const Notification = ({ medication }) => {
 	const createNotification = () => {
 		alert('entra')
 		let daysOfAlert = NotificationHelper.convertWeek(days)
-		alert('daysOfWeek')
 		let content = {
-			uuid: uuid(),
+			uuid: '1234567',
 			title: name,
 			days: daysOfAlert,
 			hours: hours,
@@ -60,13 +58,13 @@ const Notification = ({ medication }) => {
 
 		if (name !== '' &&
 			daysOfAlert.length > 0 &&
-			hours.length > 0 &&
-			hours[0] !== ''
+			hours.length > 0
 		) {
-			alert(JSON.stringify(content))
-			dispatch(actions.createMedicationAlert(content))
+			alert('condicao')
+			// dispatch(actions.createMedicationAlert(content))
 			// navigation.navigate('AllMedicineNotification')
 		}
+		alert(JSON.stringify(content))
 	}
 
 	const zeroFill = (integer, length = 2) => {
