@@ -67,6 +67,18 @@ const WaterNotification = ({ navigation }) => {
 							callMenssage()
 						}}
 					/>
+
+					{water_ingestion.weight !== '' && (
+						<ButtonBase
+							background="#EC9F9A"
+							title="Remover alerta"
+							radius={5}
+							onPress={() => {
+								dispatch(actions.deleteWaterAlert())
+								navigation.goBack()
+							}}
+						/>
+					)}
 				</View>
 			</View>
 		</ScrollView>
