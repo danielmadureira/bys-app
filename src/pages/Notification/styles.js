@@ -6,7 +6,6 @@ let wrapperWidth = '98%';
 export const styles = (props) => StyleSheet.create({
 	container: {
 		flex: 1,
-		marginBottom: 150
 	},
 	wrapper: {
 		display: "flex",
@@ -75,7 +74,7 @@ export const styles = (props) => StyleSheet.create({
 	remove_hour: {
 		width: '40%'
 	},
-	errorWrapper: {
+	error_wrapper: {
 		flexDirection: 'row',
 		alignItems: 'flex-start',
 		flexWrap: 'wrap',

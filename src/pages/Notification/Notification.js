@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { TextBase, ButtonBase } from '../../components';
 import { NotificationHelper } from '../../helpers/notificationHelper';
 import { actions } from '../../store/notification'
+import 'react-native-get-random-values';
 import { v4 as uuidGenerator } from 'uuid'
 
 import { styles } from './styles'
@@ -63,12 +64,18 @@ const Notification = ({ medication }) => {
 			return
 		}
 
+		/**
+		 * Retorna somente horários
+		 * não vazios e não repetidos.
+		 */
+		let safeHours = [ ...new Set(hours.filter(hour => !!hour)) ];
+
 		let content = {
 			uuid: uuidGenerator(),
 			title: name,
 			days: daysOfAlert,
-			hours: hours,
-			identifiers: []
+			hours: safeHours,
+			identifiers: [ ]
 		}
 
 		try {
@@ -115,7 +122,7 @@ const Notification = ({ medication }) => {
 			<ScrollView>
 				{
 					error ?
-						<View style={styles({}).errorWrapper}>
+						<View style={styles({}).error_wrapper}>
 							<TextBase style={styles({}).errorMessage}>{error}</TextBase>
 						</View>
 						: null
