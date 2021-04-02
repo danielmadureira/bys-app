@@ -42,21 +42,25 @@ const DetailFeed = ({ route, navigation }) => {
 					<BackBase navigation={navigation} />
 				</View>
 
-				<View style={styles.wrapper_picture}>
-					<View style={styles.shadow_picture}>
-						<Image
-							borderRadius={20}
-							style={styles.picture}
-							source={
-								details.picture ?
-									{ uri: details.picture } :
-									ImageDefault
-							}
-						/>
+				<View style={styles.image_container}>
+					<View style={styles.image_wrapper}>
+						<View style={styles.image_shadow}>
+							<Image
+								borderRadius={20}
+								style={styles.image}
+								source={
+									details.picture ?
+										{ uri: details.picture } :
+										ImageDefault
+								}
+							/>
+						</View>
 					</View>
-					<TextBase style={styles.picture_title}>
-						{details.picture_description}
-					</TextBase>
+					<View style={styles.image_description_wrapper}>
+						<TextBase numberOfLines={1} style={styles.image_description}>
+							{details.picture_description}
+						</TextBase>
+					</View>
 				</View>
 
 				<View style={styles.wrapper_body}>
