@@ -30,6 +30,6 @@ export const styles = (props) => StyleSheet.create({
 		paddingTop: 5
 	},
 	date: {
-		fontSize: 10,
+		fontSize: 13,
 	}
 });
