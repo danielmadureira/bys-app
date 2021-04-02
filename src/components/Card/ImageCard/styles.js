@@ -14,13 +14,6 @@ export const styles = (props) => StyleSheet.create({
 		display: "flex",
 		justifyContent: "flex-end",
 		alignItems: "center",
-	},
-	container_shadow: {
-		width: (props.smallSize) ? (280) : ('95%'),
-		height: (props.smallSize) ? (185) : (430),
-		marginTop: 38,
-		marginLeft: (props.smallSize) ? (15) : (0),
-
 		borderRadius: 15,
 		shadowColor: "#F5F5F5",
 		shadowOffset: {
@@ -30,6 +23,12 @@ export const styles = (props) => StyleSheet.create({
 		shadowOpacity: 1,
 		shadowRadius: 15,
 		elevation: 5
+	},
+	container_shadow: {
+		width: (props.smallSize) ? (280) : ('95%'),
+		height: (props.smallSize) ? (185) : (430),
+		marginTop: 38,
+		marginLeft: (props.smallSize) ? (15) : (0),
 	},
 	image: {
 		borderRadius: 15,
