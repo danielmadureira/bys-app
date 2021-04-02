@@ -29,6 +29,9 @@ export { default as LoaderBase } from './base/LoaderBase';
 // Componente comentário
 export { default as Comment } from './Comment/Comment';
 
+// Componente emoji
+export { default as EmojiSearch } from './EmojiSearch';
+
 // Botão para configurações
 export { default as ButtonSettings } from './ButtonSettings';
 

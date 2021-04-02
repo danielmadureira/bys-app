@@ -14,6 +14,12 @@ export const styles = StyleSheet.create({
 		alignItems: "center",
 		width: wrapperWidth,
 	},
+	wrapper_user: {
+		display: "flex",
+		alignItems: "center",
+		width: wrapperWidth,
+		marginBottom: 10
+	},
 	container_header: {
 		marginTop: 10,
 		paddingBottom: 2,
@@ -34,7 +40,7 @@ export const styles = StyleSheet.create({
 		fontSize: 14,
 	},
 	image: {
-		marginTop: 45,
+		marginTop: 40,
 		backgroundColor: '#EAEBCF'
 	},
 	profile_image_wrapper: {
@@ -77,7 +83,7 @@ export const styles = StyleSheet.create({
 		marginTop: 29,
 	},
 	flexbox: {
-		width: '80%',
+		width: '70%',
 		textAlign: 'right',
 		alignItems: 'flex-end',
 		justifyContent: 'center'
@@ -112,8 +118,8 @@ export const styles = StyleSheet.create({
 		width: wrapperWidth,
 		borderRadius: 10,
 
-		marginTop: 40,
-		marginBottom: 150,
+		marginTop: 30,
+		marginBottom: 160,
 
 		display: "flex",
 		alignItems: "center",
@@ -170,6 +176,7 @@ export const styles = StyleSheet.create({
 	},
 	mood: {
 		flex: 1,
+		width: '30%',
 		flexDirection: 'row',
 		justifyContent: "center",
 		alignItems: "center"

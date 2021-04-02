@@ -204,7 +204,7 @@ const Profile = ({ navigation }) => {
 					</View>
 
 					{/** User's Name and Profession */}
-					<View style={styles.wrapper}>
+					<View style={styles.wrapper_user}>
 						{isEditMode ? (
 							<>
 								<Field
@@ -246,16 +246,20 @@ const Profile = ({ navigation }) => {
 									/>
 								</View>
 								<View style={styles.mood}>
-									<Field
-										component={InputBase}
-										name="emoticon"
-										maxLeng
-										placeholder={user.mood.emoji_hex ?
-											String.fromCodePoint(user.mood.emoji_hex)
-											: ''
-										}
-										style={styles.mood_emoticon_edit}
-									/>
+									<TouchableOpacity
+										onPress={() => {
+											navigation.navigate('EmojiSearch')
+										}}
+									>
+										<TextBase
+											style={styles.mood_emoticon_edit}
+										>
+											{user.mood.emoji_hex ?
+												String.fromCodePoint(user.mood.emoji_hex)
+												: ''
+											}
+										</TextBase>
+									</TouchableOpacity>
 								</View>
 							</>
 							) : (

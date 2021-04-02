@@ -80,7 +80,6 @@ const Notification = ({ medication }) => {
 				+ ' informações deste alarme. Tente novamente.'
 			)
 		}
-		alert(JSON.stringify(content))
 	}
 
 	const zeroFill = (integer, length = 2) => {

@@ -22,7 +22,7 @@ const DetailsDiary = ({ navigation, route }) => {
 
 		setTimeout(() => {
 			setLoading(false)
-		}, 50);
+		}, 500);
 	}, [id])
 
 	return (

@@ -4,7 +4,8 @@ import { Text } from 'react-native';
 const TextBase = (props) => {
 	return (
 		<Text style={{
-			...props.style
+			...props.style,
+			fontFamily: 'Radley_400Regular'
 		}}
 			numberOfLines={props.numberOfLines}
 			onPress={props.onPress}

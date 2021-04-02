@@ -23,7 +23,7 @@ import {
 	WriteForumComment
 } from '../pages';
 
-import { Main } from '../components';
+import { EmojiSearch, Main } from '../components';
 import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 
@@ -37,7 +37,7 @@ const PrivateRoutes = () => {
 			initialRouteName="Feed"
 			tabBar={props => {
 				return (
-					![3, 7, 8, 10, 11, 13, 15].includes(props.state.index)
+					![3, 7, 8, 10, 11, 13, 15, 16].includes(props.state.index)
 				) ?
 					<View style={{
 						position: 'absolute',
@@ -179,6 +179,14 @@ const PrivateRoutes = () => {
 			<Tab.Screen
 				name="MedicineNotification"
 				component={MedicineNotification}
+				options={{
+					headerShown: false
+				}}
+			/>
+
+			<Tab.Screen
+				name="EmojiSearch"
+				component={EmojiSearch}
 				options={{
 					headerShown: false
 				}}
