@@ -6,7 +6,6 @@ export const styles = (props) => StyleSheet.create({
 	container: {
 		width: (props.smallSize) ? (280) : (width),
 		height: (props.smallSize) ? (185) : (430),
-
 		flex: 1,
 		resizeMode: "contain",
 		justifyContent: "center",
