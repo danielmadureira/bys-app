@@ -31,7 +31,6 @@ const Register = (props) => {
 	const getPermission = async () => {
 		if (Platform.OS !== 'web') {
 			const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-			console.log(status)
 			return status
 		}
 	}

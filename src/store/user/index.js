@@ -18,6 +18,7 @@ export const types = {
   FETCH_USER: '[User] Fetch User',
   GET_USER_MOOD: '[User] Get User Mood',
   FETCH_USER_MOOD: '[User] Fetch User Mood',
+  FETCH_USER_EMOJI: '[User] Fetch User Emoji',
   UPDATE_USER: '[User] Update User'
 }
 
@@ -30,6 +31,10 @@ export const actions = {
   fetchUser: (user) => ({
     type: types.FETCH_USER,
     payload: user
+  }),
+  fetchEmoji: (emoji) => ({
+    type: types.FETCH_USER_EMOJI,
+    payload: emoji
   }),
   getUserMood: (mood) => ({
     type: types.GET_USER_MOOD,
@@ -79,6 +84,17 @@ export const reducer = (
         mood: {
           description: mood.description,
           emoji_hex: mood.emoji_hex
+        }
+      }
+    }
+
+    case types.FETCH_USER_EMOJI: {
+      const emoji_hex = action.payload
+      return {
+        ...state,
+        mood: {
+          ...state.mood,
+          emoji_hex: emoji_hex
         }
       }
     }

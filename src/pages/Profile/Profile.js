@@ -64,7 +64,7 @@ const Profile = ({ navigation }) => {
 		AuthServices.unauthenticate()
 			.then(async (res) => {
 			})
-			.catch(err => console.log(err, 'Error'))
+			.catch(err => { })
 		SecureStoreAdapter.deleteItemAsync('_token')
 		dispatch(actions.unauthenticate())
 		navigation.navigate('Home')
@@ -86,8 +86,8 @@ const Profile = ({ navigation }) => {
 				}}
 				validationSchema={ProfileSchema}
 				onSubmit={(values, { resetForm }) => {
-					if (values.emoticon) {
-						values.emoticon = (values.emoticon).codePointAt(0)
+					if (user.mood.emoji_hex) {
+						values.emoticon = user.mood.emoji_hex
 					}
 					updateProfile(values)
 					resetForm()
