@@ -73,7 +73,7 @@ const Notification = ({ medication }) => {
 
 		try {
 			dispatch(actions.createMedicationAlert(content))
-			navigation.navigate('AllMedicineNotification')
+			navigation.goBack()
 		} catch (error) {
 			setError(
 				'Houve um erro desconhecido ao tentar salvar as'

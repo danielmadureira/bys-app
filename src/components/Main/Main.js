@@ -3,7 +3,7 @@ import { Image, ImageBackground, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from './styles';
 import DefaultProfile from '../../../assets/default-user-light.png'
-import { actions } from '../../store/forum'
+import { actions } from '../../store/diary'
 import { useDispatch } from 'react-redux';
 
 const Main = ({
@@ -42,6 +42,7 @@ const Main = ({
 						if (state.index > 0) {
 							navigation.navigate('Feed')
 						} else {
+							dispatch(actions.isSend(false))
 							navigation.navigate('Profile')
 						}
 					}}

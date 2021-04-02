@@ -42,14 +42,6 @@ const Profile = ({ navigation }) => {
 	const [imagePath, setPath] = useState('')
 	const { isSend } = useSelector(state => state.diary)
 
-	useEffect(() => {
-		if (isSend) {
-			setTimeout(() => {
-				dispatch(feedActions.isSend(false))
-			}, 2500);
-		}
-	}, [isSend])
-
 	const updateProfile = (form) => {
 		setEditMode(false)
 		dispatch(actions.updateProfile(form))
@@ -287,7 +279,10 @@ const Profile = ({ navigation }) => {
 			{isSend &&
 				<TouchableOpacity
 					style={styles.alert_container}
-					onPress={() => { navigation.navigate('Diary') }}
+					onPress={() => {
+						dispatch(feedActions.isSend(false))
+						navigation.navigate('Diary')
+					}}
 				>
 					<AlertBase type="success">
 						{`Publicado com sucesso. \nClique aqui, para ver seus diários.`}
