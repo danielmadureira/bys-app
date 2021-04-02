@@ -7,7 +7,8 @@ const initialState = {
   profession: null,
   profile_picture: null,
   email: "",
-  mood: {}
+  mood: {},
+  emoji: ''
 }
 
 /** Types */
@@ -92,10 +93,7 @@ export const reducer = (
       const emoji_hex = action.payload
       return {
         ...state,
-        mood: {
-          ...state.mood,
-          emoji_hex: emoji_hex
-        }
+        emoji: emoji_hex
       }
     }
 

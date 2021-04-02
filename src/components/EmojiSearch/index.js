@@ -23,8 +23,15 @@ const EmojiSearch = () => {
           showTabs={false}
           category={Categories.emotion}
           onEmojiSelected={(emoji) => {
+            console.log(String((emoji).codePointAt(0)))
             dispatch(actions.fetchEmoji(String((emoji).codePointAt(0))))
             navigation.goBack()
+          }}
+          shouldInclude={(e) => {
+            if (e.short_name !== "smiling_face_with_tear" &&
+              e.short_name !== "disguised_face") {
+              return e
+            }
           }}
         />
       </View>

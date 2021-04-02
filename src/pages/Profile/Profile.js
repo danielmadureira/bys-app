@@ -78,8 +78,8 @@ const Profile = ({ navigation }) => {
 				}}
 				validationSchema={ProfileSchema}
 				onSubmit={(values, { resetForm }) => {
-					if (user.mood.emoji_hex) {
-						values.emoticon = user.mood.emoji_hex
+					if (user.emoji) {
+						values.emoticon = user.emoji
 					}
 					updateProfile(values)
 					resetForm()
@@ -246,9 +246,9 @@ const Profile = ({ navigation }) => {
 										<TextBase
 											style={styles.mood_emoticon_edit}
 										>
-											{user.mood.emoji_hex ?
+											{user.emoji ?
+												String.fromCodePoint(user.emoji) :
 												String.fromCodePoint(user.mood.emoji_hex)
-												: ''
 											}
 										</TextBase>
 									</TouchableOpacity>
