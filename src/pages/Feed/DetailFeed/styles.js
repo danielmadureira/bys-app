@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
-let width = '85%';
-let titleWidth = '5%';
+const postImageHeight = 450;
 
 export const styles = StyleSheet.create({
 	container: {
@@ -15,12 +14,19 @@ export const styles = StyleSheet.create({
 	container_header: {
 		marginTop: 10,
 		paddingBottom: 2,
-		width: width
+		width: '85%'
 	},
-	wrapper_body: {
-		marginTop: 35,
-		width: width,
+	webview_wrapper: {
+		marginTop: 10,
+		width: '85%',
 		marginBottom: '30%',
+	},
+	webview: {
+		borderWidth: 1,
+		borderColor: 'black',
+		height: 0,
+		width: '100%',
+		marginTop: 35
 	},
 	body: {
 		flex: 1,
@@ -30,9 +36,9 @@ export const styles = StyleSheet.create({
 		height: 200
 	},
 	image_container: {
-		marginTop: 10,
+		marginTop: 5,
 		width: '95%',
-		height: 350,
+		height: postImageHeight,
 		flexDirection: 'row',
 	},
 	image_wrapper: {
@@ -42,7 +48,7 @@ export const styles = StyleSheet.create({
 	},
 	image: {
 		width: '100%',
-		height: 350
+		height: postImageHeight
 	},
 	image_shadow: {
 		width: '98%',
@@ -63,7 +69,7 @@ export const styles = StyleSheet.create({
 	},
 	image_description: {
 		transform: [{ rotate: '90deg'}],
-		width: 350,
+		width: postImageHeight, // O texto é girado 90 graus, então a largura corresponde à altura.
 		paddingLeft: 20,
 	},
 });
