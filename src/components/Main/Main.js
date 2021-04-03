@@ -17,7 +17,7 @@ const Main = ({
 		<View style={styles.container}>
 			<View style={styles.main}>
 				<TouchableOpacity
-					onPress={() => navigation.navigate('Diary')}
+					onPress={() => { navigation.navigate('Diary') }}
 				>
 					<Image
 						style={{ marginRight: 10 }}
@@ -42,7 +42,6 @@ const Main = ({
 						if (state.index > 0) {
 							navigation.navigate('Feed')
 						} else {
-							dispatch(actions.isSend(false))
 							navigation.navigate('Profile')
 						}
 					}}

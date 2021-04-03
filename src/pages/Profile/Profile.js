@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
 	ImageBackground,
 	View,
@@ -9,12 +9,12 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { useDispatch, useSelector } from 'react-redux'
 import {
 	AlertBase,
-	BackBase,
 	ButtonSettings,
+	FeedBackBase,
 	TextBase,
 	TitleHeader
 } from '../../components'
-import BodyWriteDiary from '../Diary/WriteDiary/BodyWriteDiary'
+import ProfileWriteDiary from '../Diary/WriteDiary/ProfileWriteDiary'
 
 import DefaultProfile from '../../../assets/default-user.png'
 import { styles } from './styles'
@@ -40,7 +40,7 @@ const Profile = ({ navigation }) => {
 	const user = useSelector(state => state.user)
 	const [isEditMode, setEditMode] = useState(false)
 	const [imagePath, setPath] = useState('')
-	const { isSend } = useSelector(state => state.diary)
+	const { isSendFromProfile } = useSelector(state => state.diary)
 
 	const updateProfile = (form) => {
 		setEditMode(false)
@@ -103,7 +103,7 @@ const Profile = ({ navigation }) => {
 							title="Perfil"
 							subtitle="Vamos falar sobre você"
 						/>
-						<BackBase initial navigation={navigation} />
+						<FeedBackBase navigation={navigation} />
 					</View>
 
 					<View style={styles.wrapper}>
@@ -282,10 +282,11 @@ const Profile = ({ navigation }) => {
 				</>)}
 			</Formik>
 
-			{isSend &&
+			{isSendFromProfile &&
 				<TouchableOpacity
 					style={styles.alert_container}
 					onPress={() => {
+						dispatch(feedActions.isSendFromProfile(false))
 						dispatch(feedActions.isSend(false))
 						navigation.navigate('Diary')
 					}}
@@ -305,7 +306,8 @@ const Profile = ({ navigation }) => {
 					<View style={styles.message_title}>
 						<TextBase style={styles.title}>Meu diário</TextBase>
 					</View>
-					<BodyWriteDiary
+
+					<ProfileWriteDiary
 						btnStyle={styles.wrapper_button}
 						containerStyle={styles.message}
 						numberOfLines={6}

@@ -7,11 +7,14 @@ const initialState = {
   allTexts: {},
   item: {},
   isLoading: true,
-  hasError: false
+  hasError: false,
+  isSend: false,
+  isSendFromProfile: false
 }
 
 export const types = {
   WRITE_DIARY: '[Diary] New diary',
+  WRITE_DIARY_FROM_PROFILE: '[Diary] Write from profile',
   SAVE_DIARY: '[Diary] Save diary',
   GET_ALL_DIARY: '[Diary] Get all diary',
   FETCH_ALL_DIARY: '[Diary] Fetch all diary',
@@ -20,11 +23,16 @@ export const types = {
   LOADER_DIARY: '[Diary] Loader',
   DIARY_HAS_ERRORS: '[Diary] Load Errors',
   DIARY_IS_SEND: '[Diary] Send',
+  DIARY_IS_WRITE_IN_PROFILE: '[Diary] Is send from profile'
 }
 
 export const actions = {
   writeDiary: (diary) => ({
     type: types.WRITE_DIARY,
+    payload: diary
+  }),
+  writeDiaryFromProfile: (diary) => ({
+    type: types.WRITE_DIARY_FROM_PROFILE,
     payload: diary
   }),
   getAllDiary: (diary) => ({
@@ -53,6 +61,10 @@ export const actions = {
   }),
   isSend: (send) => ({
     type: types.DIARY_IS_SEND,
+    payload: send
+  }),
+  isSendFromProfile: (send) => ({
+    type: types.DIARY_IS_WRITE_IN_PROFILE,
     payload: send
   })
 }
@@ -106,7 +118,16 @@ export const reducer = (
       const send = action.payload
       return {
         ...state,
-        isSend: send
+        isSend: send,
+        isLoading: true
+      }
+    }
+
+    case types.DIARY_IS_WRITE_IN_PROFILE: {
+      const isSendFromProfile = action.payload
+      return {
+        ...state,
+        isSendFromProfile: isSendFromProfile
       }
     }
 
@@ -128,6 +149,23 @@ export function* saga() {
       } else {
         yield put(actions.isSend(true))
       }
+
+    } catch (error) {
+      console.log(error)
+    }
+  })
+
+  yield takeLatest(types.WRITE_DIARY_FROM_PROFILE, function* writeDiaryProfile(action) {
+    let form = yield action.payload
+
+    try {
+      const data = yield DiaryServices.create(form)
+      if (data) {
+        yield put(actions.hasError(data.errors.title[0]))
+      } else {
+        yield put(actions.isSendFromProfile(true))
+      }
+
     } catch (error) {
       console.log(error)
     }

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {
-  ActivityIndicator,
   View
 } from 'react-native';
 import * as Yup from 'yup'
@@ -23,18 +22,9 @@ const DiarySchema = Yup.object().shape({
     .required('Este campo é obrigatório'),
 })
 
-const BodyWriteDiary = (props) => {
-  const navigation = useNavigation()
-  const { isSend } = useSelector(state => state.diary)
+const ProfileWriteDiary = (props) => {
   const dispatch = useDispatch()
   const titleDefault = `Meu diário hoje, ${DateHelpers.getBrazilianLongDate(new Date())}`
-
-  useEffect(() => {
-    if (isSend) {
-      navigation.goBack()
-      dispatch(actions.isSend(false))
-    }
-  }, [isSend])
 
   return (
     <View style={props.containerStyle}>
@@ -48,7 +38,7 @@ const BodyWriteDiary = (props) => {
           if (form.title === '') {
             form.title = titleDefault
           }
-          dispatch(actions.writeDiary(form))
+          dispatch(actions.writeDiaryFromProfile(form))
           resetForm({
             title: '',
             text: ''
@@ -83,11 +73,6 @@ const BodyWriteDiary = (props) => {
               }}
               disabled={!isValid}
             />
-            <ActivityIndicator
-              animating={isSend}
-              size="large"
-              color="green"
-            />
           </View>
         </>)}
       </Formik>
@@ -95,4 +80,4 @@ const BodyWriteDiary = (props) => {
   );
 };
 
-export default BodyWriteDiary;
+export default ProfileWriteDiary;

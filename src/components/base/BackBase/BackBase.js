@@ -7,14 +7,15 @@ import { useFocusEffect, useRoute } from '@react-navigation/native'
 import { styles } from './styles'
 import { Icon } from 'react-native-elements'
 import TextBase from '../TextBase';
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const BackBase = ({ navigation, initial }) => {
 	const route = useRoute()
 
 	const screens = [
 		'Calculator',
-		'Diary',
 		'Notification',
+		'Diary',
 		'Forum',
 		'Profile'
 	]
@@ -50,8 +51,8 @@ const BackBase = ({ navigation, initial }) => {
 	handleScreen()
 
 	return (
-		<View
-			onTouchEnd={() => {
+		<TouchableOpacity
+			onPress={() => {
 				if (initial) {
 					navigation.navigate('Feed')
 				} else {
@@ -65,7 +66,7 @@ const BackBase = ({ navigation, initial }) => {
 				size={30}
 			/>
 			<TextBase style={styles.header_back}>Voltar</TextBase>
-		</View>
+		</TouchableOpacity>
 	);
 };
 

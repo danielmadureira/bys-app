@@ -5,13 +5,14 @@ import {
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
-import { AlertBase, BackBase, TitleHeader } from '../../../components';
+import { AlertBase, FeedBackBase, TitleHeader } from '../../../components';
 import BodyWriteDiary from './BodyWriteDiary'
 import { styles } from './styles'
 import { actions } from '../../../store/diary';
 
-const WriteDiary = ({ navigation }) => {
-	const { hasError, isSend } = useSelector(state => state.diary)
+const WriteDiary = (props) => {
+	const { navigation } = props
+	const { hasError } = useSelector(state => state.diary)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -22,13 +23,6 @@ const WriteDiary = ({ navigation }) => {
 		}
 	}, [hasError])
 
-	useEffect(() => {
-		if (isSend) {
-			navigation.goBack()
-			dispatch(actions.isSend(false))
-		}
-	}, [isSend])
-
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
@@ -37,7 +31,7 @@ const WriteDiary = ({ navigation }) => {
 					title="Meu diário"
 					subtitle="Tudo sobre o seu dia"
 				/>
-				<BackBase navigation={navigation} />
+				<FeedBackBase navigation={navigation} />
 			</View>
 
 			{hasError &&

@@ -11,8 +11,10 @@ export { default as TextCard } from './Card/TextCard/TextCard';
 
 // Base: Componente mensagem básica
 export { default as MessageBase } from './base/MessageBase/MessageBase';
-// Base: Componente voltar
+// Base: Componente voltar com handler
 export { default as BackBase } from './base/BackBase/BackBase';
+// Base: Componente voltar
+export { default as FeedBackBase } from './base/BackBase/FeedBackBase';
 // Base: Componente prosseguir
 export { default as FowardBase } from './base/FowardBase/FowardBase';
 // Base: Alerta informativo

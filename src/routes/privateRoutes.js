@@ -79,7 +79,6 @@ const PrivateRoutes = () => {
 				}}
 			/>
 
-
 			<Tab.Screen
 				name="Diary"
 				component={Diary}

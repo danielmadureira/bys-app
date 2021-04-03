@@ -36,7 +36,7 @@ const Diary = ({ navigation }) => {
 		}
 		setTimeout(() => {
 			setLoading(false)
-		}, 10);
+		}, 200);
 	}
 
 	return (
