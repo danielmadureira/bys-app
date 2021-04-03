@@ -15,7 +15,6 @@ const Login = (props) => {
 	const { navigation, route: { params } } = props
 	const dispatch = useDispatch()
 	const user = useSelector(state => state.user)
-	console.log(params)
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')

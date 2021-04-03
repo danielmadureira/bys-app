@@ -38,13 +38,13 @@ export const styles = StyleSheet.create({
 		marginBottom: 150,
 
 		display: "flex",
-		alignItems: "center",
+		alignItems: "center"
 	},
 	message: {
 		width: '96%',
 
 		display: "flex",
-		alignItems: "flex-start",
+		alignItems: "center",
 	},
 	input: {
 		width: messageWidth,

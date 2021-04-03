@@ -23,7 +23,6 @@ const EmojiSearch = () => {
           showTabs={false}
           category={Categories.emotion}
           onEmojiSelected={(emoji) => {
-            console.log(String((emoji).codePointAt(0)))
             dispatch(actions.fetchEmoji(String((emoji).codePointAt(0))))
             navigation.goBack()
           }}
