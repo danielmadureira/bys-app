@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
-import { BackBase, TitleHeader, ButtonBase } from '../../../components';
+import {BackBase, TitleHeader, ButtonBase, TextBase} from '../../../components';
 import { actions } from '../../../store/notification'
 
 import { styles } from './styles'
@@ -14,6 +14,7 @@ import { styles } from './styles'
 const WaterNotification = ({ navigation }) => {
 	const { water_ingestion } = useSelector(state => state.notifications)
 	const [weight, setWeight] = useState(null)
+	const [ error, setError ] = useState('')
 	const dispatch = useDispatch()
 
 	const callMenssage = () => {
@@ -33,9 +34,33 @@ const WaterNotification = ({ navigation }) => {
 		);
 	}
 
+	const saveAlert = () => {
+		const numericInput = toNumericString(weight)
+		if (numericInput <= 0) {
+			setError('Você precisa adicionar seu peso em KG')
+			return
+		}
+
+		try {
+			dispatch(actions.createWaterAlert(numericInput))
+			callMenssage()
+		} catch (error) {
+			setError(
+				'Houve um erro desconhecido ao tentar salvar as'
+				+ ' informações deste alarme. Tente novamente.'
+			)
+		}
+	}
+
+	const toNumericString = (string) => {
+		return string
+			.replace(/[,]/g, '.')
+			.replace(/[^0-9.]/g, '');
+	}
+
 	useEffect(() => {
 		setWeight(water_ingestion.weight)
-
+		setError('')
 	}, [water_ingestion])
 
 	return (
@@ -50,22 +75,29 @@ const WaterNotification = ({ navigation }) => {
 			</View>
 
 			<View style={styles.body}>
+				{
+					error ?
+						<View style={styles.error_wrapper}>
+							<TextBase style={styles.errorMessage}>{error}</TextBase>
+						</View>
+						: null
+				}
+
 				<TextInput
 					style={styles.input}
 					placeholder="Seu peso em kg"
 					keyboardType="decimal-pad"
-					onChangeText={(text) => setWeight(text)}
+					onChangeText={(text) => setWeight(toNumericString(text))}
 					value={weight}
+					selectTextOnFocus
 				/>
 
 				<View style={styles.btn_wrapper}>
 					<ButtonBase
 						title="Salvar alerta"
+						keyboardType="numeric"
 						radius={5}
-						onPress={() => {
-							dispatch(actions.createWaterAlert(weight))
-							callMenssage()
-						}}
+						onPress={saveAlert}
 					/>
 
 					{water_ingestion.weight !== '' && (

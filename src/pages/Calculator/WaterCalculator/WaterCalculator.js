@@ -1,21 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	Alert,
 	View,
 	TextInput
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { BackBase, TitleHeader, ButtonBase } from '../../../components';
+
+import {BackBase, TitleHeader, ButtonBase, TextBase} from '../../../components';
+import { WaterIngestionAlertService } from "../../../services/AlertService";
 
 import { styles } from './styles'
 
 
 const WaterCalculator = ({ navigation }) => {
 	const [peso, setPeso] = useState('')
+	const [error, setError] = useState('')
 
 	const calcula = (peso) => {
-		let valor = (parseFloat(peso) * 35)
+		const mlPerKilo = (new WaterIngestionAlertService()).ML_PER_KILO
+		const valor = (parseFloat(toNumericString(peso)) * mlPerKilo)
+
+		if (!peso) {
+			setError('Você precisa adicionar seu peso em KG')
+			return
+		}
 
 		Alert.alert(
 			"Você deve consumir por dia:",
@@ -25,6 +34,14 @@ const WaterCalculator = ({ navigation }) => {
 			],
 			{ cancelable: false }
 		);
+		setPeso('')
+		setError('')
+	}
+
+	const toNumericString = (string) => {
+		return string
+			.replace(/[,]/g, '.')
+			.replace(/[^0-9.]/g, '');
 	}
 
 	return (
@@ -39,12 +56,21 @@ const WaterCalculator = ({ navigation }) => {
 			</View>
 
 			<View style={styles.wrapper}>
+				{
+					error ?
+						<View style={styles.error_wrapper}>
+							<TextBase style={styles.errorMessage}>{error}</TextBase>
+						</View>
+						: null
+				}
+
 				<TextInput
 					style={styles.input}
 					placeholder="Seu peso em quilogramas"
 					value={peso}
 					keyboardType="numeric"
-					onChangeText={(peso) => setPeso(peso.replace(',', '.'))}
+					selectTextOnFocus
+					onChangeText={(peso) => setPeso(toNumericString(peso))}
 				/>
 
 				<View style={styles.wrapper_button}>

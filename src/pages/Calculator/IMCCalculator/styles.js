@@ -23,11 +23,11 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_button: {
 		width: '85%',
-		marginTop: 40,
+		marginTop: 20,
 	},
 	input: {
 		width: '85%',
-		marginTop: 45,
+		marginTop: 10,
 		height: 40,
 		borderBottomWidth: 1,
 	},
@@ -97,5 +97,16 @@ export const styles = StyleSheet.create({
 		width: '50%',
 		borderWidth: 0.5,
 		borderColor: '#C4C4C4'
-	}
+	},
+	error_wrapper: {
+		flexDirection: 'row',
+		alignItems: 'flex-start',
+		flexWrap: 'wrap',
+		flex: 1,
+		marginTop: 4,
+		width: '90%'
+	},
+	errorMessage: {
+		color: 'red'
+	},
 });
