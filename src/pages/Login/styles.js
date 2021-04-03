@@ -56,10 +56,6 @@ export const styles = StyleSheet.create({
 	textHelper: {
 		marginTop: 5,
 	},
-	textLink: {
-		color: '#2F49C0',
-		marginTop: 5,
-	},
 	register: {
 		color: '#2F49C0',
 		marginLeft: 2,

@@ -102,9 +102,6 @@ const Login = (props) => {
 						/>
 					)}
 
-					<TextBase style={styles.textLink}>
-						Preciso de ajuda para acessar
-					</TextBase>
 					<TextBase style={styles.textHelper}>
 						Ainda não possui uma conta?&nbsp;
 						<Text
