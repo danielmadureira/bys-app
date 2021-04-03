@@ -81,6 +81,7 @@ export const styles = StyleSheet.create({
 
 		width: wrapperWidth,
 		marginTop: 29,
+		marginBottom: 20,
 	},
 	flexbox: {
 		width: '70%',
@@ -114,11 +115,20 @@ export const styles = StyleSheet.create({
 		justifyContent: "center"
 	},
 	message_container: {
-		height: 400,
+		height: 320,
 		width: wrapperWidth,
 		borderRadius: 10,
 
-		marginTop: 30,
+		marginTop: 20,
+		marginBottom: 160,
+
+		display: "flex",
+		alignItems: "center",
+	},
+	message_container_background: {
+		height: 400,
+		width: wrapperWidth,
+		borderRadius: 10,
 		marginBottom: 160,
 
 		display: "flex",
@@ -182,10 +192,10 @@ export const styles = StyleSheet.create({
 		alignItems: "center"
 	},
 	mood_emoticon: {
-		fontSize: 40
+		fontSize: 60
 	},
 	mood_emoticon_edit: {
-		fontSize: 40,
+		fontSize: 60,
 		borderWidth: 1,
 		borderColor: "#c0c0c0",
 		borderRadius: 5

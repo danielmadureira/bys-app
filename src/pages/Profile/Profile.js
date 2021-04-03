@@ -293,7 +293,7 @@ const Profile = ({ navigation }) => {
 			<View style={styles.message_container}>
 				<ImageBackground
 					source={require(`../../../assets/message-background.jpg`)}
-					imageStyle={styles.message_container}
+					imageStyle={styles.message_container_background}
 					style={styles.message_image}
 				>
 					<View style={styles.message_title}>
