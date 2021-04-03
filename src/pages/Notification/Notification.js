@@ -64,17 +64,11 @@ const Notification = ({ medication }) => {
 			return
 		}
 
-		/**
-		 * Retorna somente horários
-		 * não vazios e não repetidos.
-		 */
-		let safeHours = [ ...new Set(hours.filter(hour => !!hour)) ];
-
 		let content = {
 			uuid: uuidGenerator(),
 			title: name,
 			days: daysOfAlert,
-			hours: safeHours,
+			hours: sanitizeHours(hours),
 			identifiers: [ ]
 		}
 
@@ -87,6 +81,20 @@ const Notification = ({ medication }) => {
 				+ ' informações deste alarme. Tente novamente.'
 			)
 		}
+	}
+
+	/**
+	 * Retorna somente horários
+	 * não vazios e não repetidos.
+	 */
+	const sanitizeHours = (hours) => {
+		let sanitizedHours = [ ]
+		for (const hour of hours) {
+			if (!hour) continue;
+			sanitizedHours.push(formatHours(hour))
+		}
+
+		return [ ...new Set(sanitizedHours) ]
 	}
 
 	const zeroFill = (integer, length = 2) => {
