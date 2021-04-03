@@ -21,9 +21,8 @@ const InputBase = (props) => {
           hasError && styles(props).errorInput
         ]}
         value={value}
-        onChangeText={(text) => onChange(name)(text)}
-        onBlur={() => {
-          setFieldTouched(name)
+        onChangeText={(text) => {
+          onChange(name)(text)
           onBlur(name)
         }}
         {...inputProps}
