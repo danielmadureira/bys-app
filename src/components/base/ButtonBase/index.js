@@ -1,4 +1,5 @@
 import React from 'react';
+import { ActivityIndicator } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import TextBase from '../TextBase';
 
@@ -12,9 +13,16 @@ const ButtonBase = (props) => {
 			onPress={props.onPress}
 			disabled={props.disabled}
 		>
-			<TextBase style={styles(props).text}>
-				{props.title}
-			</TextBase>
+			{props.loader ? (<>
+				<ActivityIndicator
+					color="green"
+					size="small"
+				/>
+			</>) : (
+				<TextBase style={styles(props).text}>
+					{props.title}
+				</TextBase>
+			)}
 		</TouchableWithoutFeedback>
 	)
 }

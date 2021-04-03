@@ -121,7 +121,7 @@ const Register = (props) => {
 						<Field
 							component={InputBase}
 							name="profession"
-							placeholder="Profissão"
+							placeholder="Profissão (Opcional)"
 						/>
 
 						<View style={styles.wrapper_button}>

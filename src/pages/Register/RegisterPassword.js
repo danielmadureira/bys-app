@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -32,13 +32,16 @@ const RegisterPassword = (props) => {
 	const { navigation } = props;
 	const dispatch = useDispatch()
 	const register = useSelector(state => state.register)
-	let isLoading = register.isLoading
-	let error = register.error
+	const [isRegistered, setRegister] = useState(false)
+	let { isLoading, error } = register
 
 	useEffect(() => {
 		if (isLoading) {
+			setRegister(false)
 			dispatch(actions.isLoading(false))
-			navigation.navigate('Home')
+			navigation.navigate('Home', {
+				success: register.isLoading
+			})
 		}
 	}, [isLoading])
 
@@ -81,13 +84,6 @@ const RegisterPassword = (props) => {
 			>
 				{({ handleSubmit, isValid }) => (
 					<View style={styles.message_container}>
-						{register.isLoading &&
-							<AlertBase type="success">
-								Cadastrado com sucesso.
-								Efetue Login.
-							</AlertBase>
-						}
-
 						{register.error &&
 							<View style={{ width: '95%' }}>
 								<AlertBase type="danger">
@@ -114,8 +110,12 @@ const RegisterPassword = (props) => {
 
 						<View style={styles.wrapper_button}>
 							<ButtonBase
+								loader={isRegistered}
 								title="Cadastrar"
-								onPress={handleSubmit}
+								onPress={() => {
+									setRegister(true)
+									handleSubmit()
+								}}
 							/>
 						</View>
 					</View>

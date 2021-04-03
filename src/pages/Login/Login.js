@@ -12,20 +12,32 @@ import { AlertBase, ButtonBase, TextBase } from '../../components'
 import { SecureStoreAdapter } from '../../adapter/SecureStoreAdapter'
 
 const Login = (props) => {
-	const { navigation } = props
+	const { navigation, route: { params } } = props
 	const dispatch = useDispatch()
 	const user = useSelector(state => state.user)
+	console.log(params)
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [showError, setShowError] = useState(false)
 	const [isLoading, setLoading] = useState(false)
+	const [isRegistered, setRegistered] = useState(false)
 
 	useEffect(() => {
 		if (user.name) {
 			navigation.navigate('Feed')
 		}
 	}, [user])
+
+	useEffect(() => {
+		if (params && params.success) {
+			setRegistered(true)
+
+			setTimeout(() => {
+				setRegistered(false)
+			}, 2000);
+		}
+	}, [params])
 
 	const login = () => {
 		setLoading(true)
@@ -68,6 +80,13 @@ const Login = (props) => {
 						Login
 					</TextBase>
 				</View>
+				{isRegistered &&
+					<AlertBase type="success">
+						Cadastrado com sucesso.
+						Efetue Login.
+					</AlertBase>
+				}
+
 				{showError && (
 					<View style={styles.wrapper_alert}>
 						<AlertBase type="warning">
@@ -78,6 +97,7 @@ const Login = (props) => {
 
 				<TextInput
 					placeholder="E-mail"
+					keyboardType="email-address"
 					style={styles.input}
 					value={email}
 					onChangeText={(email) => setEmail(email)}
