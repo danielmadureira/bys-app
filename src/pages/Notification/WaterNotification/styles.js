@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 	},
 	input: {
 		width: '90%',
-		marginTop: 45,
+		marginTop: 10,
 		height: 40,
 		borderBottomWidth: 1,
 	},
@@ -36,5 +36,16 @@ export const styles = StyleSheet.create({
 		display: "flex",
 		alignItems: "center",
 		width: '90%'
+	},
+	error_wrapper: {
+		flexDirection: 'row',
+		alignItems: 'flex-start',
+		flexWrap: 'wrap',
+		flex: 1,
+		marginTop: 4,
+		width: '90%'
+	},
+	errorMessage: {
+		color: 'red'
 	},
 });
