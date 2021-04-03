@@ -31,7 +31,7 @@ const DetailFeed = ({ route, navigation }) => {
 	return (
 		<ScrollView contentContainerStyle={styles.wrapper} style={styles.container}>
 			<StatusBar style="light" backgroundColor="#000" />
-			{isLoadingDetails ? (
+			{isLoadingDetails && details.id !== itemId ? (
 				<LoaderBase height />
 			) : (<>
 				<View style={styles.container_header}>
