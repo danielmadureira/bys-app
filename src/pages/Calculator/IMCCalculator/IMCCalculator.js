@@ -42,17 +42,41 @@ const IMCCalculator = ({ navigation }) => {
 	const [peso, setPeso] = useState('')
 	const [altura, setAltura] = useState('')
 	const [isVisible, setVisible] = useState(false)
+	const [valorIMC, setValorIMC] = useState('')
+	const [error, setError] = useState('')
 
-	const calcula = (peso, altura) => {
-		let height = altura.replace(',', '')
-		height = height.replace('.', '')
+	const calcular = () => {
+		if (!peso) {
+			setError('Você precisa adicionar seu peso em KG')
+			return
+		}
 
-		let valorIMC = (
-			(parseFloat(peso) / (
-				parseFloat(height) * parseFloat(height)
-			)) * 10000
-		).toFixed(2);
-		return valorIMC
+		if (!altura) {
+			setError('Você precisa adicionar sua altura em CM')
+			return
+		}
+
+		const weight = parseFloat(toNumericString(peso))
+		const height = parseFloat(toNumericString(altura))
+
+		const calculo = (
+			(weight / (height * height)) * 10000
+		).toFixed(2)
+
+		setPeso('')
+		setAltura('')
+		setError('')
+		setValorIMC(calculo)
+		setVisible(true)
+	}
+
+	const toNumericString = (string, comma = true) => {
+		if (comma) {
+			return string
+				.replace(/[,]/g, '.')
+				.replace(/[^0-9.]/g, '');
+		}
+		return string.replace(/[^0-9]/g, '');
 	}
 
 	return (
@@ -72,7 +96,7 @@ const IMCCalculator = ({ navigation }) => {
 						<TextBase
 							style={styles.modalTitle}
 						>
-							Seu IMC é: {isVisible && calcula(peso, altura)}
+							Seu IMC é: {valorIMC}
 						</TextBase>
 						<TextBase style={styles.modalText}>
 							Veja a tabela de referência abaixo.
@@ -106,21 +130,30 @@ const IMCCalculator = ({ navigation }) => {
 			<View style={styles.container_header}>
 				<TitleHeader
 					title="Índice IMC"
-					subtitle="O IMC é reconhecido como padrão internacional 
-					para avaliar o grau de sobrepeso e obesidade. 
-					É calculado dividindo o peso (em kg) pela 
+					subtitle="O IMC é reconhecido como padrão internacional
+					para avaliar o grau de sobrepeso e obesidade.
+					É calculado dividindo o peso (em kg) pela
 					altura ao quadrado (em metros)."
 				/>
 				<BackBase navigation={navigation} />
 			</View>
 
 			<View style={styles.wrapper}>
+				{
+					error ?
+						<View style={styles.error_wrapper}>
+							<TextBase style={styles.errorMessage}>{error}</TextBase>
+						</View>
+						: null
+				}
+
 				<TextInput
 					style={styles.input}
 					placeholder="Seu peso em quilogramas"
 					value={String(peso)}
 					keyboardType="numeric"
-					onChangeText={(peso) => setPeso(peso.replace(',', '.'))}
+					onChangeText={(peso) => setPeso(toNumericString(peso))}
+					selectTextOnFocus
 				/>
 
 				<TextInput
@@ -128,7 +161,10 @@ const IMCCalculator = ({ navigation }) => {
 					style={styles.input}
 					value={altura}
 					keyboardType="number-pad"
-					onChangeText={(altura) => setAltura(altura)}
+					onChangeText={(altura) => {
+						setAltura(toNumericString(altura, false))
+					}}
+					selectTextOnFocus
 				/>
 
 				<View style={styles.wrapper_button}>
@@ -137,7 +173,7 @@ const IMCCalculator = ({ navigation }) => {
 						background="#EAEBCF"
 						color="#000"
 						radius={15}
-						onPress={() => setVisible(true)}
+						onPress={calcular}
 					/>
 				</View>
 			</View>

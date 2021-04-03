@@ -23,12 +23,23 @@ export const styles = StyleSheet.create({
 	},
 	wrapper_button: {
 		width: '85%',
-		marginTop: 40,
+		marginTop: 20,
 	},
-    input: {
-        width: '85%',
-		marginTop: 45,
+  input: {
+    width: '85%',
+		marginTop: 10,
 		height: 40,
-        borderBottomWidth: 1,
-    }
+    borderBottomWidth: 1,
+  },
+	error_wrapper: {
+		flexDirection: 'row',
+		alignItems: 'flex-start',
+		flexWrap: 'wrap',
+		flex: 1,
+		marginTop: 4,
+		width: '90%'
+	},
+	errorMessage: {
+		color: 'red'
+	},
 });
