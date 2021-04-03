@@ -62,6 +62,7 @@ export const styles = StyleSheet.create({
     textAlignVertical: 'top'
   },
   wrapper_button: {
+    marginTop: 20,
     width: '85%',
   }
 });

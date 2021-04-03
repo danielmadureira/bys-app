@@ -7,11 +7,11 @@ import TextBase from '../TextBase';
 const InputBase = (props) => {
   const {
     field: { name, onBlur, onChange, value },
-    form: { errors, touched, setFieldTouched },
+    form: { errors, touched, setFieldTouched, isValid },
     ...inputProps
   } = props
 
-  const hasError = errors[name] && touched[name]
+  const hasError = errors[name] && touched[name] && !isValid
 
   return (
     <>

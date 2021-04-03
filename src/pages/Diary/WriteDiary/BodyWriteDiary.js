@@ -44,7 +44,7 @@ const BodyWriteDiary = (props) => {
           })
         }}
       >
-        {({ handleSubmit }) => (<>
+        {({ handleSubmit, isValid }) => (<>
           <View style={styles.message}>
             <Field
               name="title"
@@ -67,7 +67,10 @@ const BodyWriteDiary = (props) => {
               background="#EAEBCF"
               color="#000"
               radius={15}
-              onPress={handleSubmit}
+              onPress={() => {
+                handleSubmit()
+              }}
+              disabled={!isValid}
             />
           </View>
         </>)}

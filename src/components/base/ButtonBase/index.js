@@ -10,7 +10,7 @@ const ButtonBase = (props) => {
 		<TouchableWithoutFeedback
 			containerStyle={styles(props).size}
 			style={styles(props).touchable}
-			onPress={props.onPress}
+			onPressOut={props.onPress}
 			disabled={props.disabled}
 		>
 			{props.loader ? (<>

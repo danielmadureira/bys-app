@@ -49,7 +49,7 @@ const BodyForumComment = (props) => {
           })
         }}
       >
-        {({ handleSubmit }) => (<>
+        {({ handleSubmit, isValid }) => (<>
           <View style={styles.message}>
             <Field
               name="text"
@@ -67,7 +67,10 @@ const BodyForumComment = (props) => {
               background="#EAEBCF"
               color="#000"
               radius={15}
-              onPress={handleSubmit}
+              disabled={!isValid}
+              onPress={() => {
+                handleSubmit()
+              }}
             />
           </View>
         </>)}

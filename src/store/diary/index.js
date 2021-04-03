@@ -106,8 +106,7 @@ export const reducer = (
       const send = action.payload
       return {
         ...state,
-        isSend: send,
-        isLoading: true
+        isSend: send
       }
     }
 
