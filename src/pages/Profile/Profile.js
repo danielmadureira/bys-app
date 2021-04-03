@@ -82,7 +82,13 @@ const Profile = ({ navigation }) => {
 						values.emoticon = user.emoji
 					}
 					updateProfile(values)
-					resetForm()
+					resetForm({
+						status: '',
+						image: '',
+						emoticon: '',
+						name: '',
+						profession: ''
+					})
 				}}
 			>
 				{({

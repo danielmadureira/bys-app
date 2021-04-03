@@ -44,7 +44,9 @@ const BodyForumComment = (props) => {
             forum_room_id: props.room_id
           }))
 
-          resetForm()
+          resetForm({
+            text: ''
+          })
         }}
       >
         {({ handleSubmit }) => (<>

@@ -38,7 +38,10 @@ const BodyWriteDiary = (props) => {
             form.title = titleDefault
           }
           dispatch(actions.writeDiary(form))
-          resetForm()
+          resetForm({
+            title: '',
+            text: ''
+          })
         }}
       >
         {({ handleSubmit }) => (<>
